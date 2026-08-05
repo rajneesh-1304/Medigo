@@ -1,0 +1,152 @@
+.header {
+    background: var(--white) ;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--primary);
+}
+
+.toolbar {
+  width: 100%;
+  max-width: 80vw;
+  margin: auto;
+  height: 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 1100px) {
+    max-width: 95vw;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.nav {
+  flex: 1;
+  margin-left: 2rem;
+
+  @media (max-width: 960px) {
+    display: none ;
+  }
+}
+
+.navItem {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-medium, 600);
+  color: var(--neutral);
+  position: relative;
+  transition: 0.3s;
+  white-space: nowrap;
+
+  &:hover,
+  &.active {
+    color: var(--primary-600);
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--primary-400);
+    transition: 0.3s;
+  }
+}
+
+.rightNav {
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 960px) {
+    display: none ;
+  }
+}
+
+.rightItem {
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: var(--neutral);
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.loginBtn {
+  text-transform: none ;
+  border-color: var(--border-color) ;
+  color: var(--neutral-600) ;
+  border-radius: calc(var(--border-radius) * 0.5px) ;
+  padding: 0rem 0.3rem ;
+  font-size: 0.8rem ;
+  margin-left: 1rem ;
+  font-weight: var(--font-weight-medium);
+
+  &:hover {
+    color: var(--primary-400) ;
+    border-color: var(--primary-400) ;
+  }
+}
+
+.menuBtn {
+  display: none ;
+  color: var(--neutral) ;
+
+  @media (max-width: 960px) {
+    display: flex ;
+  }
+}
+
+.drawer {
+  width: 280px;
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.drawerItem {
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+}
+
+.drawerActions {
+  padding: 1rem;
+  margin-top: auto;
+}
+
+.drawerLoginBtn {
+  text-transform: none ;
+  font-weight: 600 ;
+}
+
+@media (max-width: 1550px) {
+  .rightItemContainer {
+    display: none ;
+  }
+}

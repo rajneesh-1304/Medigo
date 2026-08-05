@@ -1,0 +1,135 @@
+.app-download-container {
+    padding: 5rem 0;
+    background-color: var(--background-bg);
+}
+
+.app-download-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: -1rem;
+}
+
+.app-download-image-col {
+    width: 50%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    @media (max-width: 900px) {
+        width: 100%;
+    }
+}
+
+.app-download-phone {
+    width: 300px;
+    height: 450px;
+    background-color: var(--white);
+    border-radius: 32px;
+    border: 8px solid var(--neutral-900);
+    overflow: hidden;
+    position: relative;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.app-download-content-col {
+    width: 50%;
+    padding: 1rem;
+
+    @media (max-width: 900px) {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.app-download-title {
+    color: #414146;
+    font-weight: bold;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.app-download-subtitle {
+    color: #787887;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+.app-download-link-text {
+    color: #414146;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.app-download-form {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: 600px) {
+        flex-direction: column;
+    }
+}
+
+.app-download-input {
+    flex: 1;
+    background-color: var(--white);
+    border-radius: 4px;
+}
+
+.app-download-send-btn {
+    background-color: #14bef0;
+    color: var(--white);
+    font-weight: bold;
+    text-transform: none;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: #0fa0cc;
+    }
+}
+
+.app-download-stores {
+    display: flex;
+    gap: 1rem;
+
+    @media (max-width: 900px) {
+        justify-content: center;
+    }
+
+    @media (max-width: 600px) {
+        flex-direction: column;
+    }
+}
+
+.app-download-store-btn {
+    background-color: var(--neutral-900);
+    color: var(--white);
+    text-transform: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: var(--neutral-900);
+    }
+}

@@ -1,0 +1,28 @@
+.mainBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    width: 100%;
+    gap: 5rem;
+    padding: 2rem;
+
+    @media (max-width: 900px) {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1rem;
+
+        img {
+            display: none;
+        }
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+
+        @media (max-width: 900px) {
+            max-width: 300px;
+        }
+    }
+}

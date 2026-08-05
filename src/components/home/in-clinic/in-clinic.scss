@@ -1,0 +1,36 @@
+.in-clinic-container {
+    padding: 3rem 0;
+    background-color: var(--white);
+}
+
+.in-clinic-title {
+    color: var(--neutral-900);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.in-clinic-subtitle {
+    color: var(--neutral-600);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+.in-clinic-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -0.75rem;
+}
+
+.in-clinic-item {
+    width: 25%;
+    padding: 0.75rem;
+
+    @media (max-width: 900px) {
+        width: 50%;
+    }
+
+    @media (max-width: 600px) {
+        width: 100%;
+    }
+}

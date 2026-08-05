@@ -1,0 +1,61 @@
+.specialties-container {
+    padding: 3rem 0;
+    background-color: var(--white);
+}
+
+.specialties-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.specialties-title {
+    color: var(--neutral-900);
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.specialties-subtitle {
+    color: var(--neutral-600);
+    font-size: 1rem;
+}
+
+.specialties-btn {
+    color: var(--primary-500);
+    border: 1px solid var(--primary-500);
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background: transparent;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+
+    &:hover {
+        background-color: var(--primary-50);
+    }
+}
+
+.specialties-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -0.75rem;
+    justify-content: center;
+}
+
+.specialty-item {
+    width: 16.666%;
+    padding: 0.75rem;
+
+    @media (max-width: 900px) {
+        width: 33.3%;
+    }
+
+    @media (max-width: 600px) {
+        width: 50%;
+    }
+}

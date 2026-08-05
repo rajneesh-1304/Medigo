@@ -1,0 +1,126 @@
+.offer-card {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    min-height: 160px;
+    border-radius: calc(var(--border-radius) * 1.4px);
+    border: 1px solid transparent;
+
+    .left-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.7rem;
+        padding: 1.4rem 1.6rem;
+    }
+
+    .type {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        padding: 4px 12px;
+        border-radius: calc(var(--border-radius) *125px);
+        background-color: var(--white);
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+    }
+
+    .title {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--neutral-900);
+        line-height: 1.35;
+    }
+
+    .button {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 0;
+        width: fit-content;
+        text-transform: none;
+
+        .arrow-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            background-color: var(--neutral-900);
+            color: var(--white);
+            font-size: 0.6rem;
+        }
+    }
+
+    .right-card {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 42%;
+
+        .card-img {
+            height: 80%;
+            width: 80%;
+            margin-top: 0.3rem;
+            object-fit: contain;
+            object-position: bottom right;
+        }
+    }
+
+    @media (max-width: 900px) {
+        min-width: 85vw;
+        scroll-snap-align: start;
+
+        .left-card {
+            width: 60%;
+            padding: 1.2rem 1.3rem;
+        }
+
+        .right-card {
+            width: 45%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        min-height: 140px;
+
+        .title {
+            font-size: 0.85rem;
+        }
+    }
+}
+
+.offer-card--orange {
+    background-color: var(--primary-100);
+    border-color: var(--primary-200);
+
+    .type {
+        border: 1px solid var(--primary-400);
+        color: var(--primary-700);
+    }
+
+    .button {
+        color: var(--primary-800);
+    }
+}
+
+.offer-card--green {
+    background-color: var(--success-100);
+    border-color: var(--success-200);
+
+    .type {
+        border: 1px solid var(--success-400);
+        color: var(--success-700);
+    }
+
+    .button {
+        color: var(--success-800);
+    }
+}

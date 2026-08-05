@@ -1,0 +1,43 @@
+.tabsContainer {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid var(--neutral-200);
+    max-width: 80vw;
+    margin: 0.5rem auto 0 auto;
+    gap: 4rem;
+}
+
+.tab {
+    padding: 1rem 2rem;
+    cursor: pointer;
+    position: relative;
+    color: var(--neutral-600);
+    transition: color 0.3s;
+
+    &:hover {
+        color: var(--neutral-900);
+    }
+}
+
+.tabText {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.active {
+    color: var(--primary-400);
+
+    .tabText {
+        font-weight: 600;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--primary-400);
+    }
+}

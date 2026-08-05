@@ -1,0 +1,124 @@
+.feature-section {
+  min-height: 85vh;
+  padding: 0 5rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 4rem;
+
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .heading {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--neutral-600);
+      max-width: 520px;
+    }
+
+    .points {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .point {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .number {
+          font-weight: 600;
+        }
+      }
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1.5rem;
+      padding: 0.5rem;
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
+      flex-wrap: wrap;
+
+      &.with-icon {
+        flex-wrap: nowrap;
+      }
+
+      .icon-box {
+        display: flex;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        width: 40%;
+
+        .icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--primary);
+          flex-shrink: 0;
+        }
+
+        .icon-text {
+          color: var(--neutral-900);
+          font-size: 12px;
+          word-break: break-all;
+        }
+      }
+    }
+  }
+
+  .media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    video,
+    img {
+      width: 35vh;
+      max-width: 100%;
+    }
+  }
+
+  // Responsive Styles
+  @media (max-width: 900px) {
+    padding: 3rem;
+    gap: 2rem;
+
+    .content {
+      .heading {
+        font-size: 2rem;
+      }
+      .buttons .icon-box .icon-text {
+        font-size: 10px;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    text-align: center;
+
+    &.reverse {
+      flex-direction: column;
+    }
+
+    .content {
+      .heading {
+        max-width: 100%;
+        font-size: 1.6rem;
+      }
+      .points .point {
+        justify-content: flex-start;
+      }
+      .buttons .icon-box .icon-text {
+        font-size: 8px;
+      }
+    }
+  }
+}
