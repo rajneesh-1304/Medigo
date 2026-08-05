@@ -6,6 +6,8 @@ import HealthConcern from './health-concern/health-concern.component';
 import Offers from './offers/offers.component';
 import Doctor from './doctor/doctor.component';
 import Work from './work/work.component';
+import OnlineConsultation from './online-consultation/online-consultation.component';
+import Experience from './experience/experience.component';
 
 const Consult = () => {
   return (
@@ -16,6 +18,8 @@ const Consult = () => {
         <Offers />
         <Doctor />
         <Work />
+        <OnlineConsultation/>
+        <Experience/>
     </>
   )
 }

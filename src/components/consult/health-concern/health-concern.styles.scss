@@ -1,23 +1,72 @@
-.health-concern{
+.health-concern {
     width: 100%;
-    height: 80vh;
     padding: 2rem 12vw;
 }
 
-.left{
+.left {
     padding: 2rem;
     display: flex;
     justify-content: space-between;
 }
 
-.title{
+.title {
     font-size: 2rem;
     font-weight: 700;
 }
 
-.subtitle{
+.subtitle {
     font-size: 1rem;
     color: var(--neutral-600);
-    
+
 }
 
+.right {
+    display: flex;
+    padding: 1rem;
+    overflow-x: auto;
+    gap: 1rem;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .card-wrapper {
+        width: 250px !important;
+        height: 250px !important;
+        flex-shrink: 0;
+    }
+
+    @media(max-width: 600px) {
+        --webkit-overflow-scrolling: touch;
+    }
+}
+
+@media (max-width: 900px) {
+    .health-concern {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .title{
+        font-size: 1.5rem;
+    }
+
+    .subtitle{
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .health-concern {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .title{
+        font-size: 1.3rem;
+    }
+
+    .subtitle{
+        font-size: 0.9rem;
+    }
+}

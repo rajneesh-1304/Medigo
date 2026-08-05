@@ -1,44 +1,57 @@
 import { Box, Button, Typography } from '@mui/material';
 import './health-concern.styles.scss';
+import SpecialistCard from '@/components/general/specialist-card/card';
 
 const HealthConcern = () => {
     const data= [
         {
-            image: "",
+            image: "https://www.practo.com/consult/static/images/cough-cold-v1.jpg",
             fee: "$499",
             name: "Cough & Cold?",
-            link: ""
+            link: "https://www.google.com"
         },
         {
-            image: "",
+            image: "https://www.practo.com/consult/static/images/cough-cold-v1.jpg",
             fee: "$400",
-            name: "",
-            link: ""
+            name: "Periods Problems?",
+            link: "https://www.google.com"
         },
         {
-            image: "",
+            image: "https://www.practo.com/consult/static/images/cough-cold-v1.jpg",
             fee: "$499",
-            name: "",
-            link: ""
+            name: "Want to Lose Weight?",
+            link: "https://www.google.com"
         },
         {
-            image: "",
+            image: "https://www.practo.com/consult/static/images/cough-cold-v1.jpg",
             fee: "$699",
-            name: "",
-            link: ""
+            name: "Depression & Anxiety?",
+            link: "https://www.google.com"
         },
         {
-            image: "",
+            image: "https://www.practo.com/consult/static/images/cough-cold-v1.jpg",
             fee: "$400",
-            name: "",
-            link: ""
+            name: "Skin problems?",
+            link: "https://www.google.com"
         },
         {
-            image: "",
+            image: "https://www.practo.com/consult/static/images/cough-cold-v1.jpg",
             fee: "$900",
-            name: "",
-            link: ""
+            name: "Performance issue in Bed?",
+            link: "https://www.google.com"
         },
+        {
+            image: "https://www.practo.com/consult/static/images/cough-cold-v1.jpg",
+            fee: "$699",
+            name: "Stomach Issues",
+            link: "https://www.google.com"
+        },
+        {
+            image: "https://www.practo.com/consult/static/images/cough-cold-v1.jpg",
+            fee: "$400",
+            name: "Sick Kids?",
+            link: "https://www.google.com"
+        }
     ];
 
     return (
@@ -57,7 +70,11 @@ const HealthConcern = () => {
             </Box>
             
             <Box className='right'>
-
+                {data.map((item, idx) => (
+                    <Box className='card-wrapper' key={idx}>
+                        <SpecialistCard {...item}  />
+                    </Box>
+                ))}
             </Box>
         </Box>
     )
