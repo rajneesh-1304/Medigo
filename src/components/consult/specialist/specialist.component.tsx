@@ -1,8 +1,7 @@
 import React from 'react'
-import './speclialist.styles.scss';
+import styles from './speclialist.module.scss';
 import { Box, Button, Typography } from '@mui/material';
 import SpecialistCard from '@/components/general/specialist-card/card';
-import './speclialist.styles.scss';
 import useEmblaCarousel from 'embla-carousel-react';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -69,31 +68,31 @@ const Specialist = () => {
     ]
 
     return (
-        <Box className='specialist'>
-            <Box className="header">
-                <Box className='title'>
-                    <Typography className='head-title'>
+        <Box className={styles['specialist']}>
+            <Box className={styles['header']}>
+                <Box className={styles['title']}>
+                    <Typography className={styles['head-title']}>
                         25+ Specialities
                     </Typography>
-                    <Typography className='head-subtitle'>Consult with top doctors across specialities</Typography>
+                    <Typography className={styles['head-subtitle']}>Consult with top doctors across specialities</Typography>
                 </Box>
                 <Button variant='outlined'>See all Specialists</Button>
             </Box>
 
-            <Box className="embla">
+            <Box className={styles['embla']}>
                 <Button onClick={scrollPrev}><ArrowBackIosIcon /></Button>
 
-                <Box className="embla_viewport" ref={emblaRef}>
-                    <Box className="embla_container">
+                <Box className={styles['embla_viewport']} ref={emblaRef}>
+                    <Box className={styles['embla_container']}>
                         {data.map((item, idx) => (
-                            <Box className="embla_slide" key={idx}>
+                            <Box className={styles['embla_slide']} key={idx}>
                                 <SpecialistCard name={item.name} fee={item.fee} link={item.link} image={item.image} />
                             </Box>
                         ))}
                     </Box>
                 </Box>
 
-                <Button onClick={scrollNext}><ArrowForwardIosIcon/></Button>
+                <Button onClick={scrollNext}><ArrowForwardIosIcon /></Button>
             </Box>
         </Box>
     )

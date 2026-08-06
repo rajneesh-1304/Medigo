@@ -92,7 +92,7 @@ export default function Header() {
         anchor="right"
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
-        slotProps={ { paper: { className: styles["drawer"] } } }
+        slotProps={{ paper: { className: styles["drawer"] } }}
       >
         <Box className={styles["drawerHeader"]}>
           <Image src="/Practo_New_Logo.png" alt="Practo" width={80} height={48} />

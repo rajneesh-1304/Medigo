@@ -36,7 +36,7 @@ declare module "@mui/material/styles" {
     titleMd: React.CSSProperties;
     titleSm: React.CSSProperties;
   }
-  
+
   interface TypographyVariantsOptions {
     paragraphLg?: React.CSSProperties;
     paragraphMd?: React.CSSProperties;
@@ -48,8 +48,22 @@ declare module "@mui/material/styles" {
     titleMd?: React.CSSProperties;
     titleSm?: React.CSSProperties;
   }
+
+  // New: registers the custom palette color groups (lagoon, amethyst,
+  // copper) so TypeScript accepts them in createTheme's palette option
+  // and in theme.palette.<name> / sx={{ color: '<name>.main' }} usage.
+  interface Palette {
+    lagoon: Palette["primary"];
+    amethyst: Palette["primary"];
+    copper: Palette["primary"];
+  }
+  interface PaletteOptions {
+    lagoon?: PaletteOptions["primary"];
+    amethyst?: PaletteOptions["primary"];
+    copper?: PaletteOptions["primary"];
+  }
 }
- 
+
 declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
     paragraphLg: true;

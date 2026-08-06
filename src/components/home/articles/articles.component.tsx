@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import { ReusableCard } from '../../general/card/card.component';
-import './articles.scss';
+import styles from './articles.module.scss';
 
 const articlesData = [
   {
@@ -20,24 +20,24 @@ const articlesData = [
 
 export const Articles = () => {
   return (
-    <Box className="articles-container">
+    <Box className={styles['articles-container']}>
       <Container maxWidth="lg">
-        <Box className="articles-row">
-          <Box className="articles-content">
-            <Typography variant="h4" className="articles-title">
+        <Box className={styles['articles-row']}>
+          <Box className={styles['articles-content']}>
+            <Typography variant="h4" className={styles['articles-title']}>
               Read top articles from health experts
             </Typography>
-            <Typography variant="body1" className="articles-subtitle">
+            <Typography variant="body1" className={styles['articles-subtitle']}>
               Health articles that keep you informed about good health practices and achieve your goals.
             </Typography>
-            <button className="articles-btn">
+            <button className={styles['articles-btn']}>
               See all articles
             </button>
           </Box>
-          <Box className="articles-list">
-            <Box className="articles-grid">
+          <Box className={styles['articles-list']}>
+            <Box className={styles['articles-grid']}>
               {articlesData.map((article, index) => (
-                <Box className="article-item" key={index}>
+                <Box className={styles['article-item']} key={index}>
                   <ReusableCard
                     variant="article"
                     subtitle={article.subtitle}

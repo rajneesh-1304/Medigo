@@ -8,12 +8,12 @@ import { Articles } from './articles/articles.component';
 import { Testimonials } from './testimonials/testimonials.component';
 import { AppDownload } from './app-download/app-download.component';
 import { Footer } from '../layout/footer/footer.component';
-import './home.scss';
+import styles from './home.module.scss';
 
 export const HomeComponent = () => {
   return (
-    <Box className="home-container">
-      <HeroSearch className="hero-section" />
+    <Box className={styles['home-container']}>
+      <HeroSearch className={styles['hero-section']} />
       <ActionCards />
       <Specialties />
       <InClinic />

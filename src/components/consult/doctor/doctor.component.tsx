@@ -1,8 +1,7 @@
 import React from 'react'
-import './doctor.styles.scss';
+import styles from './doctor.module.scss';
 import { Box, Typography } from '@mui/material';
 import DoctorCard from '@/components/general/doctor-card/doctor-card.component';
-import './doctor.styles.scss';
 
 const Doctor = () => {
     const data = [
@@ -66,11 +65,13 @@ const Doctor = () => {
 
 
     return (
-        <Box className='doctors-container'>
-            <Typography component="span" className='doctor-title'>Our Doctors</Typography>
-            <Box className="doctors">
+        <Box className={styles['doctors-container']}>
+            <Typography component="span" className={styles['doctor-title']}>Our Doctors</Typography>
+            <Box className={styles['doctors']}>
                 {data.map((doctor, idx) => (
-                    <DoctorCard key={idx} {...doctor} />
+                    <Box className={styles['doc-card']} key={idx}>
+                        <DoctorCard  {...doctor} />
+                    </Box>
                 ))}
             </Box>
 

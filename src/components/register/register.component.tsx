@@ -9,8 +9,8 @@ export const Register = () => {
         <Box>
             <AuthTabs />
             <Box className={styles["mainBox"]}>
-                <Image src="/login.png" alt="Register" width={400} height={400}/>
-                <RegisterForm/>
+                <Image src="/login.png" alt="Register" width={400} height={400} />
+                <RegisterForm />
             </Box>
         </Box>
     )

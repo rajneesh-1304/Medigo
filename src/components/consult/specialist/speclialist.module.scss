@@ -37,12 +37,13 @@
 
 .embla_container {
   display: flex;
-  gap: 1.5rem;
 }
 
 .embla_slide {
-  flex: 0 0 calc((100% - (4 * 1.5rem)) / 5);
+  flex: 0 0 20%;
+  padding-left: 12px;
   min-width: 0;
+  box-sizing: border-box;
 }
 
 .embla button {

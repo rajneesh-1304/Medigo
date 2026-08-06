@@ -8,6 +8,8 @@ import Doctor from './doctor/doctor.component';
 import Work from './work/work.component';
 import OnlineConsultation from './online-consultation/online-consultation.component';
 import Experience from './experience/experience.component';
+import Faq from './faq/faq.component';
+import DonwloadPage from './download-app/download-app.component';
 
 const Consult = () => {
   return (
@@ -20,6 +22,8 @@ const Consult = () => {
         <Work />
         <OnlineConsultation/>
         <Experience/>
+        <Faq/>
+        <DonwloadPage />
     </>
   )
 }

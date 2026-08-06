@@ -3,7 +3,7 @@ import { Box, Button, Typography } from "@mui/material";
 import useEmblaCarousel from "embla-carousel-react";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import "./articles.styles.scss";
+import styles from './articles.module.scss';
 
 const Articles = () => {
     const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -61,20 +61,20 @@ const Articles = () => {
     const scrollNext = () => emblaApi?.scrollNext();
 
     return (
-        <Box className="articles-container">
-            <Box className="title-container">
-                <Typography className="title">
+        <Box className={styles['articles-container']}>
+            <Box className={styles['title-container']}>
+                <Typography className={styles['title']}>
                     Read top articles from health experts
                 </Typography>
             </Box>
 
-            <Box className="embla">
+            <Box className={styles['embla']}>
                 <Button onClick={scrollPrev}><ArrowBackIosIcon /></Button>
 
-                <Box className="embla_viewport" ref={emblaRef}>
-                    <Box className="embla_container">
+                <Box className={styles['embla_viewport']} ref={emblaRef}>
+                    <Box className={styles['embla_container']}>
                         {data.map((item, idx) => (
-                            <Box className="embla_slide" key={idx}>
+                            <Box className={styles['embla_slide']} key={idx}>
                                 <ReusableCard
                                     variant="article"
                                     image={item.image}
@@ -87,7 +87,7 @@ const Articles = () => {
                     </Box>
                 </Box>
 
-                <Button onClick={scrollNext}><ArrowForwardIosIcon/></Button>
+                <Button onClick={scrollNext}><ArrowForwardIosIcon /></Button>
             </Box>
 
             <Box>

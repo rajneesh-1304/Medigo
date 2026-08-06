@@ -1,6 +1,6 @@
 import { Box, Button } from "@mui/material";
 import DoneIcon from "@mui/icons-material/Done";
-import "./feature-section.styles.scss";
+import styles from "./feature-section.module.scss";
 
 interface Point {
   number?: string;
@@ -11,13 +11,10 @@ interface FeatureSectionProps {
   title: React.ReactNode;
   points: Point[];
   buttonText: string;
-
   mediaType: "video" | "image";
   mediaSrc: string;
-
   reverse?: boolean;
   backgroundColor?: string;
-
   onButtonClick?: () => void;
   icon?: React.ReactNode;
   iconText?: string;
@@ -41,53 +38,60 @@ const FeatureSection = ({
 }: FeatureSectionProps) => {
   return (
     <Box
-      className={`feature-section ${reverse ? "reverse" : ""}`}
+      className={`${styles["feature-section"]} ${
+        reverse ? styles["reverse"] : ""
+      }`}
       sx={{ backgroundColor }}
     >
-      <Box className="content">
+      <Box className={styles["content"]}>
+        <Box className={styles["heading"]}>{title}</Box>
 
-        <Box className="heading">{title}</Box>
-
-        <Box className="points">
+        <Box className={styles["points"]}>
           {points.map((point, index) => (
-            <Box key={index} className="point">
+            <Box key={index} className={styles["point"]}>
               <DoneIcon color="primary" />
 
-              <Box className="number">{point.number}</Box>
+              {point.number && (
+                <Box className={styles["number"]}>{point.number}</Box>
+              )}
 
-              <Box className="text">{point.text}</Box>
+              <Box className={styles["text"]}>{point.text}</Box>
             </Box>
           ))}
         </Box>
 
-        <Box className={icon ? "buttons with-icon" : "buttons"}>
-          <Button
-            variant="contained"
-            onClick={onButtonClick}
-          >
+        <Box
+          className={`${styles["buttons"]} ${
+            icon ? styles["with-icon"] : ""
+          }`}
+        >
+          <Button variant="contained" onClick={onButtonClick}>
             {buttonText}
           </Button>
 
           {icon && iconText && (
-            <Box className="icon-box">
-              <Box className="icon">{icon}</Box>
-              <Box className="icon-text">{iconText}</Box>
+            <Box className={styles["icon-box"]}>
+              <Box className={styles["icon"]}>{icon}</Box>
+              <Box className={styles["icon-text"]}>{iconText}</Box>
             </Box>
           )}
         </Box>
-
       </Box>
 
-      <Box className="media">
-
+      <Box className={styles["media"]}>
         {mediaType === "video" ? (
           <video autoPlay muted loop playsInline>
             <source src={mediaSrc} type="video/webm" />
           </video>
         ) : (
-          <img src={mediaSrc} alt="" height={imageHeight} width={imageWidth} style={{ objectFit: 'cover' }} />
+          <img
+            src={mediaSrc}
+            alt=""
+            height={imageHeight}
+            width={imageWidth}
+            style={{ objectFit: "cover" }}
+          />
         )}
-
       </Box>
     </Box>
   );

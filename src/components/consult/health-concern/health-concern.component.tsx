@@ -1,9 +1,9 @@
 import { Box, Button, Typography } from '@mui/material';
-import './health-concern.styles.scss';
+import styles from './health-concern.module.scss';
 import SpecialistCard from '@/components/general/specialist-card/card';
 
 const HealthConcern = () => {
-    const data= [
+    const data = [
         {
             image: "https://www.practo.com/consult/static/images/cough-cold-v1.jpg",
             fee: "$499",
@@ -55,24 +55,24 @@ const HealthConcern = () => {
     ];
 
     return (
-        <Box className='health-concern'>
-            <Box className='left'>
+        <Box className={styles['health-concern']}>
+            <Box className={styles['left']}>
                 <Box>
-                    <Typography className='title'>
+                    <Typography className={styles['title']}>
                         Common Health Concerns
                     </Typography>
-                    <Typography className='subtitle'>
+                    <Typography className={styles['subtitle']}>
                         Consult a doctor online for any health issue
                     </Typography>
                 </Box>
 
                 <Button variant="outlined">See all Symptoms</Button>
             </Box>
-            
-            <Box className='right'>
+
+            <Box className={styles['right']}>
                 {data.map((item, idx) => (
-                    <Box className='card-wrapper' key={idx}>
-                        <SpecialistCard {...item}  />
+                    <Box className={styles['card-wrapper']} key={idx}>
+                        <SpecialistCard {...item} />
                     </Box>
                 ))}
             </Box>

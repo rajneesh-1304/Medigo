@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Container } from '@mui/material';
 import { ReusableCard } from '../../general/card/card.component';
-import './action-cards.scss';
+import styles from './action-cards.module.scss';
 
 const actionCardsData = [
   {
@@ -32,11 +32,11 @@ const actionCardsData = [
 
 export const ActionCards = () => {
   return (
-    <Box className="action-cards-container">
+    <Box className={styles['action-cards-container']}>
       <Container maxWidth="lg">
-        <Box className="action-cards-grid">
+        <Box className={styles['action-cards-grid']}>
           {actionCardsData.map((card, index) => (
-            <Box className="action-card-item" key={index}>
+            <Box className={styles['action-card-item']} key={index}>
               <ReusableCard
                 title={card.title}
                 subtitle={card.subtitle}

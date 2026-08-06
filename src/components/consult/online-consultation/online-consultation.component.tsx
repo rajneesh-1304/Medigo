@@ -1,6 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import DoneIcon from '@mui/icons-material/Done';
-import './online-consultation.styles.scss';
+import styles from './online-consultation.module.scss';
 
 const OnlineConsultation = () => {
 
@@ -28,17 +28,17 @@ const OnlineConsultation = () => {
     ];
 
     return (
-        <Box className='online-consultation'>
-            <Typography className='title'>Benifits of Online Consultation</Typography>
+        <Box className={styles['online-consultation']}>
+            <Typography className={styles['title']}>Benifits of Online Consultation</Typography>
 
-            <Box className='benifits-box'>
+            <Box className={styles['benifits-box']}>
                 {data.map((item, idx) => (
-                    <Box className="box" key={idx}>
-                        <Box className='top'>
+                    <Box className={styles['box']} key={idx}>
+                        <Box className={styles['top']}>
                             <DoneIcon />
-                            <Typography component={"span"} className='top-title'>{item.title}</Typography>
+                            <Typography component={"span"} className={styles['top-title']}>{item.title}</Typography>
                         </Box>
-                        <Typography className='top-description'>{item.description}</Typography>
+                        <Typography className={styles['top-description']}>{item.description}</Typography>
                     </Box>
                 ))}
             </Box>

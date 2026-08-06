@@ -1,6 +1,6 @@
 'use client';
 import { Box, Button } from '@mui/material';
-import './about-doctor.styles.scss';
+import styles from './about-doctor.module.scss';
 import DoneIcon from '@mui/icons-material/Done';
 
 const AboutDoctor = () => {
@@ -32,33 +32,33 @@ const AboutDoctor = () => {
   ];
 
   return (
-    <Box className="about-doctor-container">
-      <Box className="about-doctor-content">
-        <Box className="about-doctor-header">
-          <Box className="doctor-title">
-            Safety of your data is our <span className="top-priority">top priority</span>
+    <Box className={styles['about-doctor-container']}>
+      <Box className={styles['about-doctor-content']}>
+        <Box className={styles['about-doctor-header']}>
+          <Box className={styles['doctor-title']}>
+            Safety of your data is our <span className={styles['top-priority']}>top priority</span>
           </Box>
-          <Box className="data-points">
+          <Box className={styles['data-points']}>
             {dataPoints.map((point, index) => (
-              <Box key={index} className="data-items">
+              <Box key={index} className={styles['data-items']}>
                 <DoneIcon color="primary" />
                 {point}
               </Box>
             ))}
           </Box>
-          <Box className="read-more-button">
+          <Box className={styles['read-more-button']}>
             <Button variant="contained">Read more</Button>
           </Box>
         </Box>
-        <Box className="image-section">
-          <img src="https://www.practostatic.com/web-assets/home/assets/images/security_1.4f45ac92aba979dac915f864df632d90.png" alt="" className='image' />
+        <Box className={styles['image-section']}>
+          <img src="https://www.practostatic.com/web-assets/home/assets/images/security_1.4f45ac92aba979dac915f864df632d90.png" alt="" className={styles['image']} />
         </Box>
       </Box>
-      <Box className="data-points-2">
+      <Box className={styles['data-points-2']}>
         {dataPoints2.map((point, index) => (
-          <Box key={index} className="data-item">
-            <img src={point.url} alt="" className='icon' />
-            <Box className='text-item'>
+          <Box key={index} className={styles['data-item']}>
+            <img src={point.url} alt="" className={styles['icon']} />
+            <Box className={styles['text-item']}>
               {point.text}
             </Box>
           </Box>

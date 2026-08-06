@@ -4,122 +4,179 @@ import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
 const myTheme = {
   white: "#ffffff",
-  black: "#16120F",
-  alternate: "#F3EFEB",
-  backgroundBg: "#FBF7F2", // warm cream, not clinical white
-  scrollbarBg: "#F0EAE3",
-  scrollbarThumbBg: "#C9BCAE",
-  logoBackground: "#FBF7F2",
-  borderRadius: 14, // softer, more editorial than a typical clinical 8px
+  black: "#16140F",
+  alternate: "#F1ECE1",
+  backgroundBg: "#FAF8F4", // warm ivory — soft and premium, not stark clinical white
+  scrollbarBg: "#F0EBDF",
+  scrollbarThumbBg: "#C9C0AC",
+  logoBackground: "#FAF8F4",
+  borderRadius: 14, // confident, soft rounding — refined rather than either boxy-clinical or overly playful
 };
 
 export const colors = {
-  // Warm ink/taupe neutrals instead of cool blue-grays — feels editorial, not clinical
+  // Warm charcoal ink neutrals — grounded and premium, not cold slate,
+  // not beige-flat
   neutral: {
-    50: "#FAF8F6",
-    100: "#F3EFEB",
-    200: "#E5DED7",
-    300: "#D0C5BB",
-    400: "#A99C8E",
-    500: "#7A6E62",
-    600: "#574E45",
-    700: "#3D362F",
-    800: "#28221D",
-    900: "#16120F",
+    50: "#FAFAF9",
+    100: "#F2F1EE",
+    200: "#E4E2DC",
+    300: "#C9C6BC",
+    400: "#9C978A",
+    500: "#6E6A5E",
+    600: "#4E4A40",
+    700: "#37342C",
+    800: "#24211C",
+    900: "#16140F",
   },
 
-  // Primary: terracotta/coral — bold, warm, distinctly not teal-medical
+  // Primary: deep jade "Pine" — a rich, confident jewel tone. Reads as
+  // trustworthy and modern without being the pastel/teal blue that most
+  // medical sites (Practo included) default to.
   primary: {
-    50: "#FFF1EE",
-    100: "#FFDDD4",
-    200: "#FFB8A8",
-    300: "#FF9078",
-    400: "#FA6B4C",
-    500: "#E8543E",
-    600: "#C93F2C",
-    700: "#A32F20",
-    800: "#7E2418",
-    900: "#5C1A11",
+    50: "#EEF7F4",
+    100: "#D3ECE3",
+    200: "#A7D9C8",
+    300: "#74C0A8",
+    400: "#45A386",
+    500: "#1D8567",
+    600: "#146B52",
+    700: "#0F5340",
+    800: "#0B3F31",
+    900: "#072A21",
   },
 
-  // Accent: deep ink navy — used for contrast elements, dark sections, secondary CTAs
+  // Accent: warm terracotta-coral — used deliberately sparingly (CTAs,
+  // highlights) as the one high-contrast pop against the jade/ivory base,
+  // rather than competing with the primary everywhere
   secondaryAccent: {
-    50: "#EEF0F5",
-    100: "#D3D8E5",
-    200: "#A8B1CB",
-    300: "#7C87B0",
-    400: "#576393",
-    500: "#37426E",
-    600: "#2A3357",
-    700: "#1F2740",
-    800: "#161B2E",
-    900: "#0D101B",
+    50: "#FFF2ED",
+    100: "#FFDFD1",
+    200: "#FFBBA3",
+    300: "#FF9370",
+    400: "#FA6F49",
+    500: "#EF5227",
+    600: "#CC3D18",
+    700: "#A32E12",
+    800: "#7A230E",
+    900: "#521808",
   },
 
+  // Critical: rose-crimson, shifted cooler than the coral accent so error
+  // states never get confused with a CTA
   critical: {
-    50: "#FEF2F2",
-    100: "#FEE2E2",
-    200: "#FECACA",
-    300: "#FCA5A5",
-    400: "#F87171",
-    500: "#EF4444",
-    600: "#DC2626",
-    700: "#B91C1C",
-    800: "#991B1B",
-    900: "#7F1D1D",
+    50: "#FFF1F3",
+    100: "#FFE0E5",
+    200: "#FEC3CE",
+    300: "#FD93A8",
+    400: "#FB5D82",
+    500: "#F0264F",
+    600: "#C81842",
+    700: "#9F1338",
+    800: "#7A0F2C",
+    900: "#560A1F",
   },
 
+  // High/warning: golden yellow, kept clearly distinct from the orange
+  // accent hue
   high: {
-    50: "#FFF8EB",
-    100: "#FEEDC7",
-    200: "#FDD98A",
-    300: "#FCCB56",
-    400: "#F9B938",
-    500: "#F59E0B",
-    600: "#D97706",
-    700: "#B45309",
-    800: "#92400E",
-    900: "#78350F",
+    50: "#FFFBEB",
+    100: "#FFF3C4",
+    200: "#FFE58A",
+    300: "#FFD34D",
+    400: "#FFC221",
+    500: "#F2A900",
+    600: "#C98700",
+    700: "#9C6900",
+    800: "#6F4B00",
+    900: "#473000",
   },
 
   medium: {
-    50: "#FFFBEB",
-    100: "#FEF3C7",
-    200: "#FDE68A",
-    300: "#FCD34D",
-    400: "#FBBF24",
-    500: "#FACC15",
-    600: "#EAB308",
-    700: "#CA8A04",
-    800: "#A16207",
-    900: "#854D0E",
+    50: "#FFFDE7",
+    100: "#FFF9C4",
+    200: "#FFF085",
+    300: "#FFE45C",
+    400: "#FFD53D",
+    500: "#FFC800",
+    600: "#DBA800",
+    700: "#AD8400",
+    800: "#7F6100",
+    900: "#523F00",
   },
 
-  // Success: muted sage instead of a bright kelly-green — keeps the warm, editorial mood
+  // Success: shares the jade primary family for a cohesive "healthy" signal
   success: {
-    50: "#F3F7ED",
-    100: "#E1EBD3",
-    200: "#C3D8A9",
-    300: "#A1C17E",
-    400: "#82AC5C",
-    500: "#67923F",
-    600: "#517432",
-    700: "#3F5A27",
-    800: "#31461F",
-    900: "#263617",
+    50: "#EEF7F4",
+    100: "#D3ECE3",
+    200: "#A7D9C8",
+    300: "#74C0A8",
+    400: "#45A386",
+    500: "#146B52",
+    600: "#0F5340",
+    700: "#0B3F31",
+    800: "#072A21",
+    900: "#041A15",
   },
 
+  // Info: cool sky blue — reserved strictly for informational states, kept
+  // away from the jade/coral brand pair
   info: {
-    50: "#EEF0F5",
-    100: "#D3D8E5",
-    200: "#A8B1CB",
-    300: "#7C87B0",
-    400: "#576393",
-    500: "#37426E",
-    600: "#2A3357",
-    700: "#1F2740",
-    800: "#161B2E",
-    900: "#0D101B",
+    50: "#EFF6FF",
+    100: "#DBEAFE",
+    200: "#BFDBFE",
+    300: "#93C5FD",
+    400: "#60A5FA",
+    500: "#3B82F6",
+    600: "#2563EB",
+    700: "#1D4ED8",
+    800: "#1E40AF",
+    900: "#1E3A8A",
+  },
+
+  // Lagoon: teal-cyan, distinct from Practo's brand blue — for telehealth
+  // / video-consult CTAs, "available online" badges, live-call indicators
+  lagoon: {
+    50: "#EAFBFA",
+    100: "#CCF4F2",
+    200: "#99E8E5",
+    300: "#5DD3CE",
+    400: "#2BB8B2",
+    500: "#0E9A94",
+    600: "#0A7C77",
+    700: "#0A6360",
+    800: "#0B4D4A",
+    900: "#093B39",
+  },
+
+  // Amethyst: violet, for premium/subscription tiers, "featured doctor"
+  // highlights — a jewel-tone sibling to the jade primary
+  amethyst: {
+    50: "#F6F1FC",
+    100: "#E9DCF8",
+    200: "#D2B8F1",
+    300: "#B68EE6",
+    400: "#9A66D9",
+    500: "#7F45C4",
+    600: "#6533A3",
+    700: "#4F2882",
+    800: "#3B1E63",
+    900: "#291447",
+  },
+
+  // Copper: warm amber, for "pending confirmation" / "awaiting response"
+  // appointment states — kept distinct from `high` (golden warning yellow)
+  // so pending and warning never read as the same signal
+  copper: {
+    50: "#FFF6EC",
+    100: "#FFE7C7",
+    200: "#FFCC8A",
+    300: "#FFAD4D",
+    400: "#FA8F26",
+    500: "#E8720A",
+    600: "#C15A05",
+    700: "#954505",
+    800: "#6E3306",
+    900: "#482206",
   },
 };
 
@@ -239,6 +296,55 @@ const theme = createTheme({
       800: colors.high[800],
       900: colors.high[900],
     },
+    // New: lagoon exposed as a MUI palette group so you can use
+    // theme.palette.lagoon.main etc. directly on components
+    lagoon: {
+      light: colors.lagoon[50],
+      main: colors.lagoon[500],
+      dark: colors.lagoon[700],
+      50: colors.lagoon[50],
+      100: colors.lagoon[100],
+      200: colors.lagoon[200],
+      300: colors.lagoon[300],
+      400: colors.lagoon[400],
+      500: colors.lagoon[500],
+      600: colors.lagoon[600],
+      700: colors.lagoon[700],
+      800: colors.lagoon[800],
+      900: colors.lagoon[900],
+    },
+    // New: amethyst palette group — premium/subscription accents
+    amethyst: {
+      light: colors.amethyst[50],
+      main: colors.amethyst[500],
+      dark: colors.amethyst[700],
+      50: colors.amethyst[50],
+      100: colors.amethyst[100],
+      200: colors.amethyst[200],
+      300: colors.amethyst[300],
+      400: colors.amethyst[400],
+      500: colors.amethyst[500],
+      600: colors.amethyst[600],
+      700: colors.amethyst[700],
+      800: colors.amethyst[800],
+      900: colors.amethyst[900],
+    },
+    // New: copper palette group — pending/awaiting-response states
+    copper: {
+      light: colors.copper[50],
+      main: colors.copper[500],
+      dark: colors.copper[700],
+      50: colors.copper[50],
+      100: colors.copper[100],
+      200: colors.copper[200],
+      300: colors.copper[300],
+      400: colors.copper[400],
+      500: colors.copper[500],
+      600: colors.copper[600],
+      700: colors.copper[700],
+      800: colors.copper[800],
+      900: colors.copper[900],
+    },
     background: {
       paper: myTheme.white,
       default: myTheme.backgroundBg,
@@ -248,33 +354,38 @@ const theme = createTheme({
     borderRadius: myTheme.borderRadius,
   },
   typography: {
-    // Pairing a serif display face with Inter body text gives an "editorial"
-    // modern-healthcare feel (Ro / Oscar / Hims style) instead of the
-    // generic clinical sans-only look.
+    // Pairing an elegant serif display face ("Fraunces") with Inter body
+    // text gives a premium, editorial, human feel — the direction modern
+    // health brands (Parsley, Ro, Tia) actually lean into, instead of a
+    // loud/playful all-sans look.
     fontFamily: '"Inter", "sans-serif" !important',
     fontWeightBold: fontWeight.bold,
     fontWeightMedium: fontWeight.semiBold,
     fontWeightLight: fontWeight.regular,
     h1: {
       fontFamily: '"Fraunces", "Georgia", serif',
-      fontSize: "34px",
-      lineHeight: 1.2,
+      fontSize: "36px",
+      fontWeight: fontWeight.semiBold,
+      lineHeight: 1.15,
       letterSpacing: -0.4,
     },
     h2: {
       fontFamily: '"Fraunces", "Georgia", serif',
-      fontSize: "29px",
-      lineHeight: 1.25,
+      fontSize: "30px",
+      fontWeight: fontWeight.semiBold,
+      lineHeight: 1.2,
       letterSpacing: -0.3,
     },
     h3: {
       fontFamily: '"Fraunces", "Georgia", serif',
       fontSize: "25px",
-      lineHeight: 1.35,
+      fontWeight: fontWeight.semiBold,
+      lineHeight: 1.3,
     },
     h4: {
       fontSize: "22px",
-      lineHeight: 1.45,
+      fontWeight: fontWeight.semiBold,
+      lineHeight: 1.4,
     },
     h5: {
       fontSize: "20px",
@@ -455,11 +566,53 @@ const theme = createTheme({
           "--warning-700": colors.high[700],
           "--warning-800": colors.high[800],
           "--warning-900": colors.high[900],
+          // New: lagoon CSS vars — telehealth / video-consult accents
+          "--lagoon": colors.lagoon[500],
+          "--lagoon-light": colors.lagoon[50],
+          "--lagoon-dark": colors.lagoon[700],
+          "--lagoon-50": colors.lagoon[50],
+          "--lagoon-100": colors.lagoon[100],
+          "--lagoon-200": colors.lagoon[200],
+          "--lagoon-300": colors.lagoon[300],
+          "--lagoon-400": colors.lagoon[400],
+          "--lagoon-500": colors.lagoon[500],
+          "--lagoon-600": colors.lagoon[600],
+          "--lagoon-700": colors.lagoon[700],
+          "--lagoon-800": colors.lagoon[800],
+          "--lagoon-900": colors.lagoon[900],
+          // New: amethyst CSS vars — premium / subscription accents
+          "--amethyst": colors.amethyst[500],
+          "--amethyst-light": colors.amethyst[50],
+          "--amethyst-dark": colors.amethyst[700],
+          "--amethyst-50": colors.amethyst[50],
+          "--amethyst-100": colors.amethyst[100],
+          "--amethyst-200": colors.amethyst[200],
+          "--amethyst-300": colors.amethyst[300],
+          "--amethyst-400": colors.amethyst[400],
+          "--amethyst-500": colors.amethyst[500],
+          "--amethyst-600": colors.amethyst[600],
+          "--amethyst-700": colors.amethyst[700],
+          "--amethyst-800": colors.amethyst[800],
+          "--amethyst-900": colors.amethyst[900],
+          // New: copper CSS vars — pending / awaiting-response states
+          "--copper": colors.copper[500],
+          "--copper-light": colors.copper[50],
+          "--copper-dark": colors.copper[700],
+          "--copper-50": colors.copper[50],
+          "--copper-100": colors.copper[100],
+          "--copper-200": colors.copper[200],
+          "--copper-300": colors.copper[300],
+          "--copper-400": colors.copper[400],
+          "--copper-500": colors.copper[500],
+          "--copper-600": colors.copper[600],
+          "--copper-700": colors.copper[700],
+          "--copper-800": colors.copper[800],
+          "--copper-900": colors.copper[900],
           "--border-color": colors.neutral[300],
           "--placeholder-color": colors.neutral[500],
           "--border-radius": myTheme.borderRadius,
           "--logo-background": myTheme.logoBackground,
-          "--alternate-bg-50": "#F6F1EA",
+          "--alternate-bg-50": "#F1ECE1",
         },
       },
     },
@@ -467,24 +620,28 @@ const theme = createTheme({
       styleOverrides: {
         h1: {
           fontFamily: '"Fraunces", "Georgia", serif',
-          fontSize: "34px",
-          lineHeight: 1.2,
+          fontSize: "36px",
+          fontWeight: fontWeight.semiBold,
+          lineHeight: 1.15,
           letterSpacing: -0.4,
         },
         h2: {
           fontFamily: '"Fraunces", "Georgia", serif',
-          fontSize: "29px",
-          lineHeight: 1.25,
+          fontSize: "30px",
+          fontWeight: fontWeight.semiBold,
+          lineHeight: 1.2,
           letterSpacing: -0.3,
         },
         h3: {
           fontFamily: '"Fraunces", "Georgia", serif',
           fontSize: "25px",
-          lineHeight: 1.35,
+          fontWeight: fontWeight.semiBold,
+          lineHeight: 1.3,
         },
         h4: {
           fontSize: "22px",
-          lineHeight: 1.45,
+          fontWeight: fontWeight.semiBold,
+          lineHeight: 1.4,
         },
         h5: {
           fontSize: "20px",
@@ -500,10 +657,12 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           cursor: "pointer",
-          height: "36px",
+          height: "40px",
           boxShadow: "none",
           whiteSpace: "nowrap",
-          textTransform: "none", // sentence case reads more editorial/premium than ALL CAPS
+          textTransform: "none",
+          fontWeight: fontWeight.semiBold,
+          borderRadius: "10px",
           "&:hover, &.MuiSelected": {
             boxShadow: "none",
           },
@@ -545,6 +704,13 @@ const theme = createTheme({
         root: {
           fontSize: "14px",
           color: "var(--secondary-600)",
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          fontWeight: fontWeight.semiBold,
         },
       },
     },

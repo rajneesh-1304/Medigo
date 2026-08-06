@@ -1,6 +1,6 @@
 .download-page {
   display: flex;
-  height: 95vh;
+  height: 85vh;
   width: 100vw;
   justify-content: space-evenly;
   align-items: center;
@@ -92,6 +92,10 @@
     }
   }
 
+  .subtitle{
+    margin-bottom: 1rem !important;
+  }
+
   .app-download-item {
     display: flex;
     flex-direction: row;
@@ -102,4 +106,9 @@
     margin-bottom: 1rem !important;
     text-align: left;
   }
+
+  .app-download-btn{
+    width: 20rem;
+  }
 }
+

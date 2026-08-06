@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Container, Typography, IconButton, useMediaQuery, useTheme } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import './testimonials.scss';
+import styles from './testimonials.module.scss';
 import Carousel from 'react-material-ui-carousel';
 
 const testimonials = [
@@ -25,11 +25,11 @@ const testimonials = [
 
 export const Testimonials = () => {
   const theme = useTheme();
-const mobileView = useMediaQuery(theme.breakpoints.down('md'));
+  const mobileView = useMediaQuery(theme.breakpoints.down('md'));
   return (
-    <Box className="testimonials-container">
+    <Box className={styles['testimonials-container']}>
       <Container maxWidth="md">
-        <Typography variant="h4" className="testimonials-title">
+        <Typography variant="h4" className={styles['testimonials-title']}>
           What our users have to say
         </Typography>
         <Carousel
@@ -39,21 +39,21 @@ const mobileView = useMediaQuery(theme.breakpoints.down('md'));
           PrevIcon={mobileView ? <></> : <ArrowBackIosNewIcon />}
         >
           {testimonials.map((testimonial, index) => (
-            <Box key={index} className="testimonials-content">
-          <Box className="testimonials-text-wrapper">
-            <Typography variant="h6" className="testimonials-text">
-              {testimonial.text}
-            </Typography>
-            <Box className="testimonials-author">
-               <Box className="testimonials-avatar">
-                  <Typography variant="subtitle2" className="testimonials-avatar-text">J</Typography>
-               </Box>
-               <Typography variant="subtitle1" className="testimonials-author-name">
-                 {testimonial.name}
-               </Typography>
+            <Box key={index} className={styles['testimonials-content']}>
+              <Box className={styles['testimonials-text-wrapper']}>
+                <Typography variant="h6" className={styles['testimonials-text']}>
+                  {testimonial.text}
+                </Typography>
+                <Box className={styles['testimonials-author']}>
+                  <Box className={styles['testimonials-avatar']}>
+                    <Typography variant="subtitle2" className={styles['testimonials-avatar-text']}>J</Typography>
+                  </Box>
+                  <Typography variant="subtitle1" className={styles['testimonials-author-name']}>
+                    {testimonial.name}
+                  </Typography>
+                </Box>
+              </Box>
             </Box>
-          </Box>
-        </Box>
           ))}
         </Carousel>
       </Container>

@@ -13,7 +13,7 @@ export const LoginPage = () => {
             <AuthTabs />
             <Box className={styles["mainBox"]}>
                 <Image src="/login.png" alt="" width={400} height={400} />
-                <LoginForm/>
+                <LoginForm />
             </Box>
         </Box>
     )

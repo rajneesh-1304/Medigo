@@ -1,0 +1,51 @@
+.store-btn {
+    background: var(--black) !important;
+    color: var(--white) !important;
+    border-radius: 6px !important;
+    padding: 8px 16px !important;
+    min-width: 170px;
+    height: 3.5rem;
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    text-transform: none !important;
+    transition: opacity 0.2s;
+
+    &:hover {
+        background: var(--black) !important;
+        opacity: 0.9;
+    }
+
+    @media (max-width: 900px) {
+        width: 100%;
+        justify-content: center;
+        height: 3rem;
+    }
+
+    .store-icon {
+        font-size: 30px !important;
+    }
+
+    .store-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        line-height: 1.1;
+
+        @media (max-width: 900px) {
+            font-size: 12px;
+        }
+
+        .small-text {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .big-text {
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+}

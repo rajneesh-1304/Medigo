@@ -1,0 +1,33 @@
+.experience-wrapper {
+    padding-inline: clamp(1rem, 12.86vw - 1.57rem, 10rem);
+    padding-block: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 2rem;
+
+    .experience-title {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .experience-cards {
+        display: flex;
+        gap: 2rem;
+        overflow-x: auto;
+        width: 100%;
+        height: 25vh;
+        padding: 1rem;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .experience-card {
+        border: 1px solid var(--neutral-200);
+        border-radius: calc(var(--border-radius) * 0.5px);
+        flex: 0 0 20%;
+    }
+}

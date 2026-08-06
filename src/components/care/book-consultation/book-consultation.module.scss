@@ -1,0 +1,34 @@
+.book-consultation-container {
+    width: 23vw;
+    padding: 1rem;
+    background-color: var(--secondary-100);
+
+
+    .book-consultation {
+        padding: 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: calc(var(--border-radius) * 1px);
+
+        .input {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .appointment-btn {
+            width: 100%;
+            height: 3.2rem;
+        }
+    }
+
+    .title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+    }
+}

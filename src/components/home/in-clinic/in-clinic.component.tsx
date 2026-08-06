@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import { ReusableCard } from '../../general/card/card.component';
-import './in-clinic.scss';
+import styles from './in-clinic.module.scss';
 
 const inClinicData = [
   {
@@ -28,17 +28,17 @@ const inClinicData = [
 
 export const InClinic = () => {
   return (
-    <Box className="in-clinic-container">
+    <Box className={styles['in-clinic-container']}>
       <Container maxWidth="lg">
-        <Typography variant="h5" className="in-clinic-title">
+        <Typography variant="h5" className={styles['in-clinic-title']}>
           Book an appointment for an in-clinic consultation
         </Typography>
-        <Typography variant="body1" className="in-clinic-subtitle">
+        <Typography variant="body1" className={styles['in-clinic-subtitle']}>
           Find experienced doctors across all specialties
         </Typography>
-        <Box className="in-clinic-grid">
+        <Box className={styles['in-clinic-grid']}>
           {inClinicData.map((item, index) => (
-            <Box className="in-clinic-item" key={index}>
+            <Box className={styles['in-clinic-item']} key={index}>
               <ReusableCard
                 title={item.title}
                 subtitle={item.subtitle}

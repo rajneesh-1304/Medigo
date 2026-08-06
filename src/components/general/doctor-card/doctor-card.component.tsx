@@ -1,25 +1,27 @@
 import { Box, Typography } from '@mui/material';
-import './doctor-card.styles.scss';
+import styles from './doctor-card.module.scss';
 
 interface DoctorCardProps {
   imgUrl: string;
   name: string;
-  occupation: string;
-  experience: string;
-  consultDone: string;
+  title?: string;
+  subtitle?: string;
+  occupation?: string;
+  experience?: string;
+  consultDone?: string;
 }
 
-const DoctorCard = ({ imgUrl, name, occupation, experience, consultDone }: DoctorCardProps) => {
+const DoctorCard = ({ imgUrl, name, title, subtitle, occupation, experience, consultDone }: DoctorCardProps) => {
   return (
-    <Box className='doctor-card'>
-      <Box className='img-box'>
-          <img src={imgUrl} alt="" className='doctor-img' />
+    <Box className={styles['doctor-card']}>
+      <Box className={styles['img-box']}>
+        <img src={imgUrl} alt="" className={styles['doctor-img']} />
       </Box>
-      <Box className="content">
-        <Typography component="span" className='name text'>{name}</Typography>
-        <Typography component="span" className='occupation text'>{occupation}</Typography>
-        <Typography component="span" className="experience text">{experience}</Typography>
-        <Typography component="span" className='consult-done text'>{consultDone}</Typography>
+      <Box className={styles['content']}>
+        <Typography component="span" className={(styles['name'] + ' ' + styles['text'])}>{name}</Typography>
+        <Typography component="span" className={(styles['occupation'] + ' ' + styles['text'])}>{occupation || title}</Typography>
+        <Typography component="span" className={(styles['experience'] + ' ' + styles['text'])}>{subtitle}</Typography>
+        <Typography component="span" className={(styles['consult-done'] + ' ' + styles['text'])}>{experience || consultDone}</Typography>
       </Box>
     </Box>
   )

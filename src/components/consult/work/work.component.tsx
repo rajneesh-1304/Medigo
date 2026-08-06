@@ -2,7 +2,7 @@ import { Box, Divider, Typography } from '@mui/material'
 import NearMeIcon from '@mui/icons-material/NearMe';
 import ForumIcon from '@mui/icons-material/Forum';
 import FollowTheSignsIcon from '@mui/icons-material/FollowTheSigns';
-import './work.styles.scss';
+import styles from './work.module.scss';
 
 const Work = () => {
     const data = [
@@ -26,34 +26,34 @@ const Work = () => {
 
     return (
         <>
-            <Box className="work-container">
-                <Typography className='work-title'>How it works</Typography>
-                <Box className="work-steps">
-                    <Box className="step">
-                        <Box className='icon-box'>
+            <Box className={styles['work-container']}>
+                <Typography className={styles['work-title']}>How it works</Typography>
+                <Box className={styles['work-steps']}>
+                    <Box className={styles['step']}>
+                        <Box className={styles['icon-box']}>
                             <NearMeIcon />
                         </Box>
-                        <Typography className='work-text'>Select a speciality or symptom</Typography>
+                        <Typography className={styles['work-text']}>Select a speciality or symptom</Typography>
                     </Box>
-                    <Box className="step">
-                        <Box className='icon-box'>
+                    <Box className={styles['step']}>
+                        <Box className={styles['icon-box']}>
                             <ForumIcon />
                         </Box>
-                        <Typography className='work-text'>Audio/ video call with a verified doctor</Typography>
+                        <Typography className={styles['work-text']}>Audio/ video call with a verified doctor</Typography>
                     </Box>
-                    <Box className="step">
-                        <Box className='icon-box'>
+                    <Box className={styles['step']}>
+                        <Box className={styles['icon-box']}>
                             <FollowTheSignsIcon />
                         </Box>
-                        <Typography className='work-text'>Get a digital prescription & a free follow-up</Typography>
+                        <Typography className={styles['work-text']}>Get a digital prescription & a free follow-up</Typography>
                     </Box>
                 </Box>
             </Box>
-            <Box className="stats-container">
+            <Box className={styles['stats-container']}>
                 {data.map((item, idx) => (
-                    <Box className="stats" key={idx}>
-                        <Typography className='stats-count'>{item.users}</Typography>
-                        <Typography className='stats-title'>{item.title}</Typography>
+                    <Box className={styles['stats']} key={idx}>
+                        <Typography className={styles['stats-count']}>{item.users}</Typography>
+                        <Typography className={styles['stats-title']}>{item.title}</Typography>
                     </Box>
                 ))}
             </Box>

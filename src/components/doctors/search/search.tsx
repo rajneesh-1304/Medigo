@@ -7,7 +7,7 @@ import MedicationIcon from '@mui/icons-material/Medication';
 import ScienceIcon from '@mui/icons-material/Science';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
-import './search.scss';
+import styles from './search.module.scss';
 
 interface SearchProps {
   className: string;
@@ -44,15 +44,15 @@ const Search = () => {
 
 
   return (
-    <Box className="search-container">
-      <Box className="header">
+    <Box className={styles['search-container']}>
+      <Box className={styles['header']}>
         <Box >
           Your home for health
         </Box>
-        <Box className="hero-section">
-          <Box className="title">Find and Book</Box>
-          <Box className="search-bar"><HeroSearch className="search-bar" /></Box>
-          <Box className="popular-searches">
+        <Box className={styles['hero-section']}>
+          <Box className={styles['title']}>Find and Book</Box>
+          <Box className={styles['search-bar']}><HeroSearch className={styles['search-bar']} /></Box>
+          <Box className={styles['popular-searches']}>
             <span>Popular searches:</span>
             <span><a href="#">Dermatologist</a></span>
             <span><a href="#">Pediatrician</a></span>
@@ -61,13 +61,13 @@ const Search = () => {
           </Box>
         </Box>
       </Box>
-      <Box className="buttons-section">
-        <Box className="buttons">
+      <Box className={styles['buttons-section']}>
+        <Box className={styles['buttons']}>
           {buttons.map((btn, index) => (
-            <Box className="button-item" key={index}>
-              <Box className="icon">{btn.icon}</Box>
-              <Box className="text">{btn.text}</Box>
-              <Divider/>
+            <Box className={styles['button-item']} key={index}>
+              <Box className={styles['icon']}>{btn.icon}</Box>
+              <Box className={styles['text']}>{btn.text}</Box>
+              <Divider />
             </Box>
           ))}
         </Box>

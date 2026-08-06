@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Container, Typography, Link as MuiLink } from '@mui/material';
-import './footer.styles.scss';
+import styles from './footer.module.scss';
 
 const footerLinks = [
   {
@@ -31,21 +31,21 @@ const footerLinks = [
 
 export const Footer = () => {
   return (
-    <Box className="head">
+    <Box className={styles['head']}>
       <Container maxWidth="lg" >
-        <Box className="footer-links">
+        <Box className={styles['footer-links']}>
           {footerLinks.map((section, index) => (
-            <Box className="footer-section" key={index}>
-              <Typography variant="subtitle1" className="footer-section-title">
+            <Box className={styles['footer-section']} key={index}>
+              <Typography variant="subtitle1" className={styles['footer-section-title']}>
                 {section.title}
               </Typography>
-              <Box className='footer-links-items'>
+              <Box className={styles['footer-links-items']}>
                 {section.links.map((link, linkIndex) => (
                   <MuiLink
                     key={linkIndex}
                     href="#"
                     underline="hover"
-                    className="footer-section-links"
+                    className={styles['footer-section-links']}
                   >
                     {link}
                   </MuiLink>
@@ -54,11 +54,11 @@ export const Footer = () => {
             </Box>
           ))}
         </Box>
-        <Box className='footer-bottom'>
-          <Box className='footer-section-image'>
-            <img src="/Practo_New_Logo.png" alt="Practo" className="footer-logo" />
+        <Box className={styles['footer-bottom']}>
+          <Box className={styles['footer-section-image']}>
+            <img src="/Practo_New_Logo.png" alt="Practo" className={styles['footer-logo']} />
           </Box>
-          <Typography variant="body2" align="center" className="footer-copyright">
+          <Typography variant="body2" align="center" className={styles['footer-copyright']}>
             Copyright © {new Date().getFullYear()}, Practo. All rights reserved.
           </Typography>
         </Box>

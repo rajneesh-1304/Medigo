@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material'
-import './offers.styles.scss'
+import styles from './offers.module.scss';
 import OfferCard from '@/components/general/offer-card/offer-card.component';
 
 const Offers = () => {
@@ -24,9 +24,9 @@ const Offers = () => {
   ];
 
   return (
-    <Box className='offers-wrapper'>
-      <Typography className='offers-heading'>Offers</Typography>
-      <Box className='offers'>
+    <Box className={styles['offers-wrapper']}>
+      <Typography className={styles['offers-heading']}>Offers</Typography>
+      <Box className={styles['offers']}>
         {data.map((item, index) => (
           <OfferCard key={index} {...item} />
         ))}

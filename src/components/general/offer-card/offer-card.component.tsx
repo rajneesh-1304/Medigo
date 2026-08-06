@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from '@mui/material'
 import { useRouter } from 'next/navigation'
-import './offer-card.styles.scss'
+import styles from './offer-card.module.scss';
 
 interface OfferCardProps {
     type: string,
@@ -14,21 +14,21 @@ interface OfferCardProps {
 const OfferCard = ({ type, image, title, button, link, variant = 'orange' }: OfferCardProps) => {
     const router = useRouter();
     return (
-        <Box className={`offer-card offer-card--${variant}`}>
-            <Box className='left-card'>
-                <Typography className='type' component="span">
+        <Box className={styles['offer-card'] + ' ' + styles['offer-card--' + variant]}>
+            <Box className={styles['left-card']}>
+                <Typography className={styles['type']} component="span">
                     {type}
                 </Typography>
-                <Typography className='title'>
+                <Typography className={styles['title']}>
                     {title}
                 </Typography>
-                <Button variant="text" className='button' onClick={() => router.push(link)}>
+                <Button variant="text" className={styles['button']} onClick={() => router.push(link)}>
                     {button}
-                    <span className='arrow-circle'>➔</span>
+                    <span className={styles['arrow-circle']}>➔</span>
                 </Button>
             </Box>
-            <Box className='right-card'>
-                <img src={image} alt="" className='card-img' />
+            <Box className={styles['right-card']}>
+                <img src={image} alt="" className={styles['card-img']} />
             </Box>
         </Box>
     )

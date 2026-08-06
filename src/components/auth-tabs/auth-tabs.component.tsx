@@ -10,13 +10,13 @@ export const AuthTabs = () => {
 
     return (
         <Box className={styles.tabsContainer}>
-            <Box 
+            <Box
                 className={`${styles.tab} ${pathname === "/login" ? styles.active : ""}`}
                 onClick={() => router.push("/login")}
             >
                 <Typography className={styles.tabText}>Login</Typography>
             </Box>
-            <Box 
+            <Box
                 className={`${styles.tab} ${pathname === "/register" ? styles.active : ""}`}
                 onClick={() => router.push("/register")}
             >

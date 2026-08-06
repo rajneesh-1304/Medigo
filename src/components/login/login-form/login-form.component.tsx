@@ -39,10 +39,10 @@ export const LoginForm = () => {
                         name="username"
                         control={control}
                         render={({ field }) => (
-                            <TextField 
-                                {...field} 
-                                variant="outlined" 
-                                className={styles["mui-textfield"]} 
+                            <TextField
+                                {...field}
+                                variant="outlined"
+                                className={styles["mui-textfield"]}
                                 error={!!errors.username}
                                 helperText={errors.username?.message}
                             />
@@ -56,11 +56,11 @@ export const LoginForm = () => {
                         name="password"
                         control={control}
                         render={({ field }) => (
-                            <TextField 
-                                {...field} 
-                                type="password" 
-                                variant="outlined" 
-                                className={styles["mui-textfield"]} 
+                            <TextField
+                                {...field}
+                                type="password"
+                                variant="outlined"
+                                className={styles["mui-textfield"]}
                                 error={!!errors.password}
                                 helperText={errors.password?.message}
                             />

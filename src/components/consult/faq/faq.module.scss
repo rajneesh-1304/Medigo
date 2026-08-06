@@ -1,0 +1,144 @@
+.faq-wrapper {
+    padding-inline: clamp(1rem, 12.86vw - 1.57rem, 10rem);
+    padding-block: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 2rem;
+}
+
+.faq-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: start;
+    width: 100%;
+    color: var(--black);
+}
+
+.faq-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem 4rem;
+    width: 100%;
+}
+
+.faq-card {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--neutral-100);
+}
+
+.question-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.2rem;
+    margin-bottom: 1rem;
+}
+
+.arrow-icon {
+    font-size: 1.2rem;
+    margin-top: 0.15rem;
+    color: var(--neutral-700);
+    margin-left: -0.2rem;
+}
+
+.question-text {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--neutral-800);
+    line-height: 1.4;
+}
+
+.answer-text {
+    padding-left: 1rem;
+    color: var(--neutral-500);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.read-more {
+    color: var(--neutral-500);
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--secondary-600);
+    font-weight: 600;
+
+    &:hover {
+        color: var(--primary-600);
+    }
+}
+
+.consult-now-wrapper {
+    padding-block: 2rem;
+    width: 100%;
+    padding-inline: clamp(1rem, 12.86vw - 1.57rem, 10rem);
+    background-color: var(--neutral-800);
+    color: var(--white);
+}
+
+.consult-now-card{
+    // padding: 0 4rem;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.health-concern{
+    padding: 0 !important;
+    margin-bottom: 1rem;
+    letter-spacing: -0.8px;
+}
+
+.msg{
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.btnn{
+    width: 250px;
+    height: 60px;
+    font-size: 1.3rem;
+    letter-spacing: -0.8px;
+}
+
+@media (max-width: 900px){
+    .faq-cards {
+        display: flex;
+        flex-direction: column;;
+    }
+
+    .answer-text{
+        width: 95%;
+    }
+
+    .consult-now-card{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .text-box{
+        text-align: center;
+    }
+
+    .health-concern{
+        font-size: 0.9rem;
+    }
+
+    .msg{
+        font-size: 1.3rem;
+    }
+
+    .btnn{
+        height: 45px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .answer-text {
+        font-size: 14px;
+        width: 100%;
+    }
+}

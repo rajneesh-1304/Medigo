@@ -7,10 +7,9 @@ import ConsultOnline from '@/components/doctors/consult-online/consult-online.co
 import InstantAppointment from '@/components/doctors/instant-appointment/instant-appointment.component';
 import OrderMedicine from '@/components/doctors/order-medicines/order-medicines.component';
 import Search from '@/components/doctors/search/search';
-import { Footer } from '@/components/layout/footer/footer.component';
 import MedicalRecord from '@/components/doctors/medical-record/medical-record.component';
 import HealthcareProviders from '@/components/doctors/healthcare-providers/healthcare-providers.component';
-import DownloadPage from '@/components/doctors/download-app/download.component';
+import DownloadApp from '@/components/doctors/download-app/download.component';
 
 export default function DoctorsPage() {
   return (
@@ -23,7 +22,7 @@ export default function DoctorsPage() {
         <OrderMedicine/>
         <MedicalRecord />
         <HealthcareProviders/>
-        <DownloadPage/>
+        <DownloadApp />
     </Box>
   );
 };

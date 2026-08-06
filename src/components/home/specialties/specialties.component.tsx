@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import { ReusableCard } from '../../general/card/card.component';
-import './specialties.scss';
+import styles from './specialties.module.scss';
 
 const specialtiesData = [
   { title: 'Period doubts or Pregnancy', image: 'https://www.practostatic.com/consult/consult-home/symptoms_icon/irregular-painful+period.png', actionText: 'CONSULT NOW' },
@@ -14,24 +14,24 @@ const specialtiesData = [
 
 export const Specialties = () => {
   return (
-    <Box className="specialties-container">
+    <Box className={styles['specialties-container']}>
       <Container maxWidth="lg">
-        <Box className="specialties-header">
+        <Box className={styles['specialties-header']}>
           <Box>
-            <Typography variant="h5" className="specialties-title">
+            <Typography variant="h5" className={styles['specialties-title']}>
               Consult top doctors online for any health concern
             </Typography>
-            <Typography variant="body1" className="specialties-subtitle">
+            <Typography variant="body1" className={styles['specialties-subtitle']}>
               Private online consultations with verified doctors in all specialists
             </Typography>
           </Box>
-          <button className="specialties-btn">
+          <button className={styles['specialties-btn']}>
             View All Specialities
           </button>
         </Box>
-        <Box className="specialties-grid">
+        <Box className={styles['specialties-grid']}>
           {specialtiesData.map((specialty, index) => (
-            <Box className="specialty-item" key={index}>
+            <Box className={styles['specialty-item']} key={index}>
               <ReusableCard
                 variant="circular"
                 title={specialty.title}

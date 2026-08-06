@@ -38,19 +38,19 @@ export const RegisterForm = () => {
                     <Typography className={styles["title"]}>Join Practo</Typography>
                     <Typography className={styles["subtitle"]}>Are you a doctor? <span className={`${styles.link}`}>Register here</span></Typography>
                 </Box>
-                
-                <Divider sx={{padding: "0 !important"}}/>
-                
+
+                <Divider sx={{ padding: "0 !important" }} />
+
                 <Box className={styles["field1"]}>
                     <Typography className={styles["label"]}>Full Name</Typography>
                     <Controller
                         name="fullName"
                         control={control}
                         render={({ field }) => (
-                            <TextField 
-                                {...field} 
-                                variant="outlined" 
-                                className={styles["mui-textfield"]} 
+                            <TextField
+                                {...field}
+                                variant="outlined"
+                                className={styles["mui-textfield"]}
                                 error={!!errors.fullName}
                                 helperText={errors.fullName?.message}
                             />
@@ -64,10 +64,10 @@ export const RegisterForm = () => {
                         name="mobileNumber"
                         control={control}
                         render={({ field }) => (
-                            <TextField 
-                                {...field} 
-                                variant="outlined" 
-                                className={styles["mui-textfield"]} 
+                            <TextField
+                                {...field}
+                                variant="outlined"
+                                className={styles["mui-textfield"]}
                                 error={!!errors.mobileNumber}
                                 helperText={errors.mobileNumber?.message}
                             />
@@ -81,11 +81,11 @@ export const RegisterForm = () => {
                         name="password"
                         control={control}
                         render={({ field }) => (
-                            <TextField 
-                                {...field} 
-                                type="password" 
-                                variant="outlined" 
-                                className={styles["mui-textfield"]} 
+                            <TextField
+                                {...field}
+                                type="password"
+                                variant="outlined"
+                                className={styles["mui-textfield"]}
                                 error={!!errors.password}
                                 helperText={errors.password?.message}
                             />
@@ -99,11 +99,11 @@ export const RegisterForm = () => {
                             name="offers"
                             control={control}
                             render={({ field: { value, onChange, ...field } }) => (
-                                <Checkbox 
-                                    {...field} 
-                                    checked={value} 
-                                    onChange={onChange} 
-                                    sx={{ color: "#b5aaaaff", marginLeft: "-10px" }} 
+                                <Checkbox
+                                    {...field}
+                                    checked={value}
+                                    onChange={onChange}
+                                    sx={{ color: "#b5aaaaff", marginLeft: "-10px" }}
                                 />
                             )}
                         />
