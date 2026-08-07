@@ -1,135 +1,127 @@
 .app-download-container {
-    padding: 5rem 0;
-    background-color: var(--background-bg);
+  padding: 5rem 0;
+  background-color: var(--background);
 }
 
 .app-download-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    margin: -1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: -1rem;
 }
 
 .app-download-image-col {
-    width: 50%;
-    padding: 1rem;
-    display: flex;
-    justify-content: center;
-    position: relative;
+  width: 50%;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  position: relative;
 
-    @media (max-width: 900px) {
-        width: 100%;
-    }
+  @media (max-width: 900px) {
+    width: 100%;
+  }
 }
 
 .app-download-phone {
-    width: 300px;
-    height: 450px;
-    background-color: var(--white);
-    border-radius: 32px;
-    border: 8px solid var(--neutral-900);
-    overflow: hidden;
-    position: relative;
+  width: 300px;
+  height: 450px;
+  background-color: var(--white);
+  border-radius: 32px;
+  border: 8px solid var(--neutral-900);
+  overflow: hidden;
+  position: relative;
 
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 .app-download-content-col {
-    width: 50%;
-    padding: 1rem;
+  width: 50%;
+  padding: 1rem;
 
-    @media (max-width: 900px) {
-        width: 100%;
-        text-align: center;
-    }
+  @media (max-width: 900px) {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 .app-download-title {
-    color: #414146;
-    font-weight: bold;
-    font-size: 2.5rem;
+  &.app-download-title {
+    font-family: 'Fraunces', 'Georgia', serif;
+    color: var(--neutral-900);
+    font-weight: 600;
+    font-size: clamp(2rem, 3.5vw, 2.5rem);
     margin-bottom: 0.5rem;
+  }
 }
 
 .app-download-subtitle {
-    color: #787887;
+  &.app-download-subtitle {
+    color: var(--neutral-50);
     margin-bottom: 2rem;
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
 }
 
 .app-download-link-text {
-    color: #414146;
+  &.app-download-link-text {
+    color: var(--neutral-800);
     margin-bottom: 1rem;
-    font-weight: bold;
-    font-size: 1rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
 }
 
 .app-download-form {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
 
-    @media (max-width: 600px) {
-        flex-direction: column;
-    }
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 }
 
 .app-download-input {
-    flex: 1;
-    background-color: var(--white);
-    border-radius: 4px;
+  flex: 1;
+}
+
+.app-download-input :global(.MuiOutlinedInput-root) {
+  background-color: var(--white);
+  border-radius: 10px;
 }
 
 .app-download-send-btn {
-    background-color: #14bef0;
-    color: var(--white);
-    font-weight: bold;
-    text-transform: none;
-    padding: 12px 32px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.2s;
+  background: linear-gradient(135deg, var(--primary-400), var(--primary-500));
+  color: var(--white);
+  font-weight: 600;
+  padding: 12px 32px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: box-shadow 0.2s, transform 0.15s;
 
-    &:hover {
-        background-color: #0fa0cc;
-    }
+  &:hover {
+    background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+    box-shadow: 0 4px 18px color-mix(in srgb, var(--primary-500) 45%, transparent);
+    transform: translateY(-1px);
+  }
 }
 
 .app-download-stores {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 1rem;
 
-    @media (max-width: 900px) {
-        justify-content: center;
-    }
-
-    @media (max-width: 600px) {
-        flex-direction: column;
-    }
-}
-
-.app-download-store-btn {
-    background-color: var(--neutral-900);
-    color: var(--white);
-    text-transform: none;
-    padding: 12px 24px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
+  @media (max-width: 900px) {
     justify-content: center;
-    gap: 8px;
-    transition: background-color 0.2s;
+  }
 
-    &:hover {
-        background-color: var(--neutral-900);
-    }
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 }

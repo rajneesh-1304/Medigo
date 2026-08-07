@@ -27,9 +27,9 @@ const DownloadApp = () => {
 
     return (
         <Box className={styles['download-page']}>
-            <DownloadPage 
+            <DownloadPage
                 image="https://www.practostatic.com/web-assets/home/assets/images/download.a9fb5307ceed47df0af1f39cf4e95519.png"
-                title="Download the Practo app"
+                title="Download the Medigo app"
                 subtitle=""
                 data={data}
             />

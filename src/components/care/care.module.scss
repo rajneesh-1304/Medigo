@@ -1,0 +1,10 @@
+.consultation {
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto; 
+
+    @media (max-width: 900px){
+        // display: flex;
+        // justify-content: center;
+    }
+}

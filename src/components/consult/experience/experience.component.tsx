@@ -8,37 +8,37 @@ const Experience = () => {
     {
       name: "Abhay",
       title: "33 yr old IT Professional",
-      subtitle: "I was really sick and couldn't get out of bed.  I talked to the doctor through Practo and he shared advice in 10 minutes. I even got the medicines delivered on the same day through Practo, just a WOW experience.",
+      subtitle: "I was really sick and couldn't get out of bed.  I talked to the doctor through Medigo and he shared advice in 10 minutes. I even got the medicines delivered on the same day through Medigo, just a WOW experience.",
       image: "https://www.practo.com/consult/static/images/testimonial-abhy-v1.png",
     },
     {
       name: "Preeti",
       title: "28 yr old Business Owner",
-      subtitle: "I was really sick and couldn't get out of bed.  I talked to the doctor through Practo and he shared advice in 10 minutes. I even got the medicines delivered on the same day through Practo, just a WOW experience.",
+      subtitle: "I was really sick and couldn't get out of bed.  I talked to the doctor through Medigo and he shared advice in 10 minutes. I even got the medicines delivered on the same day through Medigo, just a WOW experience.",
       image: "https://www.practo.com/consult/static/images/testimonial-default-women-v1.png",
     },
     {
       name: "Deepak",
       title: "25 yr old traveller",
-      subtitle: "I was really sick and couldn't get out of bed.  I talked to the doctor through Practo and he shared advice in 10 minutes. I even got the medicines delivered on the same day through Practo, just a WOW experience.",
+      subtitle: "I was really sick and couldn't get out of bed.  I talked to the doctor through Medigo and he shared advice in 10 minutes. I even got the medicines delivered on the same day through Medigo, just a WOW experience.",
       image: "https://www.practo.com/consult/static/images/testimonial-deepak-v1.png",
     },
     {
       name: "Abhay",
       title: "33 yr old IT Professional",
-      subtitle: "I was really sick and couldn't get out of bed.  I talked to the doctor through Practo and he shared advice in 10 minutes. I even got the medicines delivered on the same day through Practo, just a WOW experience.",
+      subtitle: "I was really sick and couldn't get out of bed.  I talked to the doctor through Medigo and he shared advice in 10 minutes. I even got the medicines delivered on the same day through Medigo, just a WOW experience.",
       image: "https://www.practo.com/consult/static/images/testimonial-abhy-v1.png",
     },
     {
       name: "Preeti",
       title: "28 yr old Business Owner",
-      subtitle: "I was really sick and couldn't get out of bed.  I talked to the doctor through Practo and he shared advice in 10 minutes. I even got the medicines delivered on the same day through Practo, just a WOW experience.",
+      subtitle: "I was really sick and couldn't get out of bed.  I talked to the doctor through Medigo and he shared advice in 10 minutes. I even got the medicines delivered on the same day through Medigo, just a WOW experience.",
       image: "https://www.practo.com/consult/static/images/testimonial-default-women-v1.png",
     },
     {
       name: "Deepak",
       title: "25 yr old traveller",
-      subtitle: "I was really sick and couldn't get out of bed.  I talked to the doctor through Practo and he shared advice in 10 minutes. I even got the medicines delivered on the same day through Practo, just a WOW experience.",
+      subtitle: "I was really sick and couldn't get out of bed.  I talked to the doctor through Medigo and he shared advice in 10 minutes. I even got the medicines delivered on the same day through Medigo, just a WOW experience.",
       image: "https://www.practo.com/consult/static/images/testimonial-deepak-v1.png",
     },
   ];

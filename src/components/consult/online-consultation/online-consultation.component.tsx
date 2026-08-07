@@ -19,7 +19,7 @@ const OnlineConsultation = () => {
         },
         {
             title: "Similar Clinic Experience",
-            description: "Experience clinic-like consultation through a video call with the doctor. Video consultation is available only on the Practo app."
+            description: "Experience clinic-like consultation through a video call with the doctor. Video consultation is available only on the Medigo app."
         },
         {
             title: "Free Follow-up",

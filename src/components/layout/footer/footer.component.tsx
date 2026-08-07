@@ -1,68 +1,112 @@
 import React from 'react';
-import { Box, Container, Typography, Link as MuiLink } from '@mui/material';
+import Link from 'next/link';
+import LocalHospitalRoundedIcon from '@mui/icons-material/LocalHospitalRounded';
+import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import styles from './footer.module.scss';
 
-const footerLinks = [
+const footerColumns = [
   {
-    title: 'Practo',
-    links: ['About', 'Blog', 'Careers', 'Press', 'Contact Us']
+    heading: 'Platform',
+    links: [
+      { label: 'Find Doctors', href: '/doctors' },
+      { label: 'Video Consult', href: '/consult' },
+      { label: 'Care Plans', href: '/care' },
+      { label: 'Lab Tests', href: '#' },
+      { label: 'Surgeries', href: '#' },
+    ],
   },
   {
-    title: 'For patients',
-    links: ['Search for doctors', 'Search for clinics', 'Search for hospitals', 'Surgery Costs', 'Book Diagnostic Tests', 'Practo Plus', 'Read health articles', 'Read about medicines', 'Practo drive', 'Health app']
+    heading: 'For Providers',
+    links: [
+      { label: 'Doctor Profile', href: '#' },
+      { label: 'Clinic Management', href: '#' },
+      { label: 'Hospital Suite', href: '#' },
+      { label: 'Partner with Us', href: '#' },
+    ],
   },
   {
-    title: 'For doctors',
-    links: ['Practo Profile', 'For clinics', 'Ray by Practo', 'Practo Reach', 'Ray Tab', 'Practo Pro']
+    heading: 'Company',
+    links: [
+      { label: 'About Us', href: '#' },
+      { label: 'Blog', href: '#' },
+      { label: 'Careers', href: '#' },
+      { label: 'Press', href: '#' },
+      { label: 'Contact', href: '#' },
+    ],
   },
   {
-    title: 'For hospitals',
-    links: ['Insta by Practo', 'Qikwell by Practo', 'Practo Profile', 'Practo Reach', 'Practo Drive']
+    heading: 'Legal',
+    links: [
+      { label: 'Privacy Policy', href: '#' },
+      { label: 'Terms of Service', href: '#' },
+      { label: 'Cookie Policy', href: '#' },
+      { label: 'Security', href: '#' },
+    ],
   },
-  {
-    title: 'More',
-    links: ['Help', 'Developers', 'Privacy Policy', 'Terms & Conditions', 'PCS T&C', 'Healthcare Directory', 'Practo Health Wiki']
-  },
-  {
-    title: 'Social',
-    links: ['Facebook', 'Twitter', 'LinkedIn', 'Youtube', 'Github']
-  }
 ];
+
+const socialLinks = ['Twitter', 'LinkedIn', 'Instagram', 'YouTube'];
 
 export const Footer = () => {
   return (
-    <Box className={styles['head']}>
-      <Container maxWidth="lg" >
-        <Box className={styles['footer-links']}>
-          {footerLinks.map((section, index) => (
-            <Box className={styles['footer-section']} key={index}>
-              <Typography variant="subtitle1" className={styles['footer-section-title']}>
-                {section.title}
-              </Typography>
-              <Box className={styles['footer-links-items']}>
-                {section.links.map((link, linkIndex) => (
-                  <MuiLink
-                    key={linkIndex}
-                    href="#"
-                    underline="hover"
-                    className={styles['footer-section-links']}
-                  >
-                    {link}
-                  </MuiLink>
+    <footer className={styles.footer}>
+      {/* Gradient accent bar */}
+      <div className={styles.footerAccentBar} aria-hidden="true" />
+
+      <div className={styles.footerInner}>
+        {/* Brand column */}
+        <div className={styles.footerBrandCol}>
+          <div className={styles.footerLogoMark}>
+            <span className={styles.footerLogoIconWrap}>
+              <LocalHospitalRoundedIcon fontSize="inherit" />
+            </span>
+            <span className={styles.footerLogoText}>
+              medi<span className={styles.footerLogoAccent}>go</span>
+            </span>
+          </div>
+
+          <p className={styles.footerTagline}>
+            Modern healthcare, instantly accessible. Connect with top doctors,
+            book labs, and manage your wellness — all in one place.
+          </p>
+
+          <div className={styles.footerSocialRow}>
+            {socialLinks.map((s) => (
+              <a key={s} href="#" className={styles.footerSocialPill} aria-label={s}>
+                {s}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Link grid */}
+        <div className={styles.footerLinkGrid}>
+          {footerColumns.map((col) => (
+            <div key={col.heading} className={styles.footerLinkCol}>
+              <h4 className={styles.footerColHeading}>{col.heading}</h4>
+              <ul className={styles.footerLinkList}>
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    <Link href={link.href} className={styles.footerLink}>
+                      {link.label}
+                    </Link>
+                  </li>
                 ))}
-              </Box>
-            </Box>
+              </ul>
+            </div>
           ))}
-        </Box>
-        <Box className={styles['footer-bottom']}>
-          <Box className={styles['footer-section-image']}>
-            <img src="/Practo_New_Logo.png" alt="Practo" className={styles['footer-logo']} />
-          </Box>
-          <Typography variant="body2" align="center" className={styles['footer-copyright']}>
-            Copyright © {new Date().getFullYear()}, Practo. All rights reserved.
-          </Typography>
-        </Box>
-      </Container>
-    </Box>
+        </div>
+      </div>
+
+      {/* Bottom strip */}
+      <div className={styles.footerBottomStrip}>
+        <span className={styles.footerCopyright}>
+          © {new Date().getFullYear()} Medigo. All rights reserved.
+        </span>
+        <span className={styles.footerMadeWith}>
+          Made with <FavoriteRoundedIcon className={styles.footerHeartIcon} /> for better health
+        </span>
+      </div>
+    </footer>
   );
 };

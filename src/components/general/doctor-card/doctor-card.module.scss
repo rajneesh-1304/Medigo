@@ -1,50 +1,93 @@
-.doctor-card{
+.doctor-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background-color: var(--white);
+  border: 1px solid var(--neutral-200);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--neutral-900) 4%, transparent);
+  transition: transform 0.22s, box-shadow 0.22s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px color-mix(in srgb, var(--neutral-900) 8%, transparent);
+  }
+
+  .img-box {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--neutral-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--neutral-200);
+  }
+  
+  .doctor-img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+  }
+
+  .content {
     display: flex;
-    justify-content: space-between;
-    padding: 0.5rem;
-    border-radius: calc(var(--border-radius) * 0.5px);
-    margin-right: 1rem !important;
-    
-    .text{
-        font-size: 10px;
-        text-overflow: ellipsis;   
-        overflow: hidden;
-        white-space: nowrap;  
-        max-width: 150px;  
-    }
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    flex: 1;
+    min-width: 0;
+  }
 
-    .experience {
-        white-space: normal;
-        overflow: visible;
-        text-overflow: unset;
-        word-break: break-all;
+  .name {
+    &.name {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--neutral-900);
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
     }
+  }
 
-    .name {
-        margin-bottom: 0 !important;
+  .occupation {
+    &.occupation {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--primary-500);
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
     }
+  }
 
-    .content{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
+  .experience {
+    &.experience {
+      font-size: 0.85rem;
+      color: var(--neutral-600);
+      line-height: 1.5;
+      margin: 0.25rem 0 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
+  }
 
-    .img-box{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 150px;
+  .consult-done {
+    &.consult-done {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--neutral-600);
     }
-    
-    .doctor-img{
-        height: 80%;
-        width: 80%;
-        border-radius: 50%;
-    }
-
-    
+  }
 }

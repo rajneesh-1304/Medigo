@@ -4,7 +4,7 @@
     align-items: stretch;
     justify-content: space-between;
     min-height: 160px;
-    border-radius: calc(var(--border-radius) * 1.4px);
+    border-radius: calc(var(--border-radius) * 1px);
     border: 1px solid transparent;
 
     .left-card {
@@ -20,7 +20,7 @@
         align-items: center;
         width: fit-content;
         padding: 4px 12px;
-        border-radius: calc(var(--border-radius) *125px);
+        border-radius: calc(var(--border-radius) * 125px);
         background-color: var(--white);
         font-size: 0.65rem;
         font-weight: 700;

@@ -1,7 +1,4 @@
-import React from 'react';
 import { Box, Container, Typography, TextField, InputAdornment } from '@mui/material';
-import AppleIcon from '@mui/icons-material/Apple';
-import ShopIcon from '@mui/icons-material/Shop';
 import styles from './app-download.module.scss';
 import PlayStore from '@/components/general/icons/play-store/play-store.component';
 import AppleStore from '@/components/general/icons/apple-store/apple-store.component';
@@ -18,10 +15,10 @@ export const AppDownload = () => {
           </Box>
           <Box className={styles['app-download-content-col']}>
             <Typography variant="h3" className={styles['app-download-title']}>
-              Download the Practo app
+              Download the Medigo app
             </Typography>
             <Typography variant="body1" className={styles['app-download-subtitle']}>
-              Access video consultation with India’s top doctors on the Practo app. Connect with doctors online, available 24/7, from the comfort of your home.
+              Access video consultation with India's top doctors on the Medigo app. Connect with doctors online, available 24/7, from the comfort of your home.
             </Typography>
             <Typography variant="subtitle1" className={styles['app-download-link-text']}>
               Get the link to download the app

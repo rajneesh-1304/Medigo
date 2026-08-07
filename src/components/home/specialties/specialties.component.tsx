@@ -1,6 +1,5 @@
 import React from 'react';
-import { Box, Container, Typography } from '@mui/material';
-import { ReusableCard } from '../../general/card/card.component';
+import { Container } from '@mui/material';
 import styles from './specialties.module.scss';
 
 const specialtiesData = [
@@ -9,40 +8,41 @@ const specialtiesData = [
   { title: 'Performance issues in bed', image: 'https://www.practo.com/consult/static/images/top-speciality-sexology.svg', actionText: 'CONSULT NOW' },
   { title: 'Cold, cough or fever', image: 'https://www.practostatic.com/consult/consult-home/symptoms_icon/coughing.png', actionText: 'CONSULT NOW' },
   { title: 'Child not feeling well', image: 'https://www.practo.com/consult/static/images/top-speciality-pediatric.svg', actionText: 'CONSULT NOW' },
-  { title: 'Depression or anxiety', image: 'https://www.practostatic.com/acred/search-assets/2/12-mental-wellness.png', actionText: 'CONSULT NOW' }
+  { title: 'Depression or anxiety', image: 'https://www.practostatic.com/acred/search-assets/2/12-mental-wellness.png', actionText: 'CONSULT NOW' },
 ];
 
 export const Specialties = () => {
   return (
-    <Box className={styles['specialties-container']}>
+    <section className={styles.specialtiesSection}>
       <Container maxWidth="lg">
-        <Box className={styles['specialties-header']}>
-          <Box>
-            <Typography variant="h5" className={styles['specialties-title']}>
-              Consult top doctors online for any health concern
-            </Typography>
-            <Typography variant="body1" className={styles['specialties-subtitle']}>
-              Private online consultations with verified doctors in all specialists
-            </Typography>
-          </Box>
-          <button className={styles['specialties-btn']}>
+        <div className={styles.specialtiesHeader}>
+          <div className={styles.specialtiesTitleGroup}>
+            <h2 className={styles.specialtiesTitle}>
+              Consult top doctors online
+            </h2>
+            <p className={styles.specialtiesSubtitle}>
+              Private online consultations with verified doctors in all specialties
+            </p>
+          </div>
+          <button className={styles.specialtiesViewAllBtn}>
             View All Specialities
           </button>
-        </Box>
-        <Box className={styles['specialties-grid']}>
+        </div>
+
+        <div className={styles.specialtiesGrid}>
           {specialtiesData.map((specialty, index) => (
-            <Box className={styles['specialty-item']} key={index}>
-              <ReusableCard
-                variant="circular"
-                title={specialty.title}
-                image={specialty.image}
-                actionText={specialty.actionText}
-                bgColor="#ffffff"
+            <div key={index} className={styles.specialtyCard}>
+              <img
+                src={specialty.image}
+                alt={specialty.title}
+                className={styles.specialtyImage}
               />
-            </Box>
+              <span className={styles.specialtyTitle}>{specialty.title}</span>
+              <span className={styles.specialtyAction}>{specialty.actionText}</span>
+            </div>
           ))}
-        </Box>
+        </div>
       </Container>
-    </Box>
+    </section>
   );
 };

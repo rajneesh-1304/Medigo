@@ -1,59 +1,141 @@
-.testimonials-container {
-    padding: 5rem 0;
-    background-color: var(--white);
-    text-align: center;
+.testimonialsSection {
+  padding: 5rem 0;
+  background: linear-gradient(
+    160deg,
+    var(--primary-900) 0%,
+    var(--primary-800) 60%,
+    var(--primary-700) 100%
+  );
+  overflow: hidden;
+  position: relative;
 }
 
-.testimonials-title {
-    color: var(--neutral-900);
-    margin-bottom: 3rem;
-    font-weight: bold;
-    font-size: 2rem;
+.testimonialsBlobRight {
+  position: absolute;
+  top: -80px;
+  right: -100px;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--lagoon-400) 10%, transparent),
+    transparent 70%
+  );
+  pointer-events: none;
 }
 
-.testimonials-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.testimonialsHeader {
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
-.testimonials-text-wrapper {
-    padding: 0 2rem;
-    flex: 1;
+.testimonialsLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: color-mix(in srgb, var(--primary-300) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--primary-300) 25%, transparent);
+  border-radius: 99px;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--primary-300);
+  margin-bottom: 1rem;
 }
 
-.testimonials-text {
-    color: var(--neutral-900);
-    font-style: italic;
-    margin-bottom: 2rem;
-    font-size: 1.25rem;
+.testimonialsTitle {
+  font-family: 'Fraunces', 'Georgia', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+  font-weight: 600;
+  color: var(--white);
+  margin: 0;
 }
 
-.testimonials-author {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+.testimonialsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
 }
 
-.testimonials-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--neutral-200);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.testimonialCard {
+  background: color-mix(in srgb, var(--white) 5%, transparent);
+  border: 1px solid color-mix(in srgb, var(--white) 10%, transparent);
+  border-radius: 16px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+
+  &:hover {
+    background: color-mix(in srgb, var(--white) 9%, transparent);
+    border-color: color-mix(in srgb, var(--primary-300) 30%, transparent);
+    transform: translateY(-3px);
+  }
 }
 
-.testimonials-avatar-text {
-    color: var(--neutral-600);
-    font-size: 0.875rem;
+.testimonialStars {
+  display: flex;
+  gap: 0.2rem;
 }
 
-.testimonials-author-name {
-    color: #414146;
-    font-weight: bold;
-    font-size: 1rem;
+.testimonialStar {
+  font-size: 1rem;
+  color: var(--warning-400);
 }
 
+.testimonialQuote {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--white) 80%, transparent);
+  font-style: italic;
+  margin: 0;
+  flex: 1;
+}
+
+.testimonialAuthorRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.testimonialAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-400), var(--lagoon-500));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--white);
+  flex-shrink: 0;
+}
+
+.testimonialAuthorInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.testimonialAuthorName {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.testimonialAuthorRole {
+  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--white) 50%, transparent);
+}

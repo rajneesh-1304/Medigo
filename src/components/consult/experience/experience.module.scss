@@ -1,33 +1,54 @@
 .experience-wrapper {
-    padding-inline: clamp(1rem, 12.86vw - 1.57rem, 10rem);
-    padding-block: 2rem;
+  padding: 4.5rem 10% 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  background-color: var(--neutral-50);
+  border-top: 1px solid var(--neutral-200);
+  border-bottom: 1px solid var(--neutral-200);
+
+  .experience-title {
+    font-family: 'Fraunces', 'Georgia', serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    font-weight: 600;
+    color: var(--neutral-900);
+    text-align: center;
+    max-width: 800px;
+    line-height: 1.25;
+  }
+
+  .experience-cards {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 2rem;
+    gap: 1.5rem;
+    overflow-x: auto;
+    width: 100%;
+    padding: 0.5rem 0.25rem 1.5rem;
 
-    .experience-title {
-        font-size: 2rem;
-        font-weight: bold;
+    &::-webkit-scrollbar {
+      display: none;
     }
 
-    .experience-cards {
-        display: flex;
-        gap: 2rem;
-        overflow-x: auto;
-        width: 100%;
-        height: 25vh;
-        padding: 1rem;
-
-        &::-webkit-scrollbar {
-            display: none;
-        }
+    &::-webkit-scrollbar-track {
+      background: transparent;
     }
 
-    .experience-card {
-        border: 1px solid var(--neutral-200);
-        border-radius: calc(var(--border-radius) * 0.5px);
-        flex: 0 0 20%;
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--neutral-300);
+      border-radius: 99px;
     }
+
+    @media (max-width: 900px) {
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  .experience-card {
+    flex: 0 0 350px;
+    min-width: 0;
+    
+    @media (max-width: 480px) {
+      flex: 0 0 280px;
+    }
+  }
 }

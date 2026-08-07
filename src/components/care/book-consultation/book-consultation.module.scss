@@ -1,13 +1,13 @@
 .book-consultation-container {
-    width: 23vw;
+    width: 100%;
     padding: 1rem;
-    background-color: var(--secondary-100);
 
 
     .book-consultation {
         padding: 1rem;
         border: 1px solid var(--border-color);
         border-radius: calc(var(--border-radius) * 1px);
+        background-color: var(--secondary-100);
 
         .input {
             width: 100%;
@@ -23,7 +23,7 @@
     .title {
         font-size: 1.1rem;
         font-weight: 600;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.3rem;
     }
 
     .subtitle {

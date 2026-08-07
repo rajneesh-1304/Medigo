@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Container } from '@mui/material';
-import { ReusableCard } from '../../general/card/card.component';
+import { Container } from '@mui/material';
+import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import styles from './action-cards.module.scss';
 
 const actionCardsData = [
@@ -8,45 +8,51 @@ const actionCardsData = [
     title: 'Instant Video Consultation',
     subtitle: 'Connect within 60 secs',
     image: 'https://www.practostatic.com/consumer-home/desktop/images/1597423628/dweb_instant_video_consulation.png',
-    bgColor: '#AFCFED'
   },
   {
     title: 'Find Doctors Near You',
     subtitle: 'Confirmed appointments',
     image: 'https://www.practostatic.com/consumer-home/desktop/images/1597423628/dweb_find_doctors.png',
-    bgColor: '#98CBD6'
   },
   {
-    title: 'Lab Tests',
-    subtitle: 'Safe and trusted lab tests',
+    title: 'Lab Tests at Home',
+    subtitle: 'Safe and trusted labs',
     image: 'https://www.practostatic.com/consumer-home/desktop/images/1597423628/dweb_lab_tests.png',
-    bgColor: '#D5D8FC'
   },
   {
     title: 'Surgeries',
-    subtitle: 'Safe and trusted surgery centers',
+    subtitle: 'Trusted surgery centres',
     image: 'https://www.practostatic.com/consumer-home/desktop/images/1597423628/dweb_surgeries.png',
-    bgColor: '#D8DFE3'
-  }
+  },
 ];
 
 export const ActionCards = () => {
   return (
-    <Box className={styles['action-cards-container']}>
+    <section className={styles.actionCardsSection}>
       <Container maxWidth="lg">
-        <Box className={styles['action-cards-grid']}>
+        <h2 className={styles.actionCardsSectionTitle}>How can we help you?</h2>
+        <p className={styles.actionCardsSectionSubtitle}>
+          From home consults to lab tests — healthcare the way you need it.
+        </p>
+        <div className={styles.actionCardsGrid}>
           {actionCardsData.map((card, index) => (
-            <Box className={styles['action-card-item']} key={index}>
-              <ReusableCard
-                title={card.title}
-                subtitle={card.subtitle}
-                image={card.image}
-                bgColor={card.bgColor}
+            <div key={index} className={styles.actionCard}>
+              <img
+                src={card.image}
+                alt={card.title}
+                className={styles.actionCardImage}
               />
-            </Box>
+              <div>
+                <p className={styles.actionCardTitle}>{card.title}</p>
+                <p className={styles.actionCardSubtitle}>{card.subtitle}</p>
+              </div>
+              <div className={styles.actionCardArrow}>
+                Consult now <ArrowForwardRoundedIcon sx={{ fontSize: 14 }} />
+              </div>
+            </div>
           ))}
-        </Box>
+        </div>
       </Container>
-    </Box>
+    </section>
   );
 };

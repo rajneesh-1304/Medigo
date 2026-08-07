@@ -6,16 +6,14 @@ const myTheme = {
   white: "#ffffff",
   black: "#16140F",
   alternate: "#F1ECE1",
-  backgroundBg: "#FAF8F4", // warm ivory — soft and premium, not stark clinical white
+  backgroundBg: "#FAF8F4", 
   scrollbarBg: "#F0EBDF",
   scrollbarThumbBg: "#C9C0AC",
   logoBackground: "#FAF8F4",
-  borderRadius: 14, // confident, soft rounding — refined rather than either boxy-clinical or overly playful
+  borderRadius: 8, 
 };
 
 export const colors = {
-  // Warm charcoal ink neutrals — grounded and premium, not cold slate,
-  // not beige-flat
   neutral: {
     50: "#FAFAF9",
     100: "#F2F1EE",
@@ -29,9 +27,6 @@ export const colors = {
     900: "#16140F",
   },
 
-  // Primary: deep jade "Pine" — a rich, confident jewel tone. Reads as
-  // trustworthy and modern without being the pastel/teal blue that most
-  // medical sites (Practo included) default to.
   primary: {
     50: "#EEF7F4",
     100: "#D3ECE3",
@@ -45,9 +40,6 @@ export const colors = {
     900: "#072A21",
   },
 
-  // Accent: warm terracotta-coral — used deliberately sparingly (CTAs,
-  // highlights) as the one high-contrast pop against the jade/ivory base,
-  // rather than competing with the primary everywhere
   secondaryAccent: {
     50: "#FFF2ED",
     100: "#FFDFD1",
@@ -61,8 +53,6 @@ export const colors = {
     900: "#521808",
   },
 
-  // Critical: rose-crimson, shifted cooler than the coral accent so error
-  // states never get confused with a CTA
   critical: {
     50: "#FFF1F3",
     100: "#FFE0E5",
@@ -76,8 +66,6 @@ export const colors = {
     900: "#560A1F",
   },
 
-  // High/warning: golden yellow, kept clearly distinct from the orange
-  // accent hue
   high: {
     50: "#FFFBEB",
     100: "#FFF3C4",
@@ -104,7 +92,6 @@ export const colors = {
     900: "#523F00",
   },
 
-  // Success: shares the jade primary family for a cohesive "healthy" signal
   success: {
     50: "#EEF7F4",
     100: "#D3ECE3",
@@ -118,8 +105,6 @@ export const colors = {
     900: "#041A15",
   },
 
-  // Info: cool sky blue — reserved strictly for informational states, kept
-  // away from the jade/coral brand pair
   info: {
     50: "#EFF6FF",
     100: "#DBEAFE",
@@ -133,8 +118,6 @@ export const colors = {
     900: "#1E3A8A",
   },
 
-  // Lagoon: teal-cyan, distinct from Practo's brand blue — for telehealth
-  // / video-consult CTAs, "available online" badges, live-call indicators
   lagoon: {
     50: "#EAFBFA",
     100: "#CCF4F2",
@@ -148,8 +131,6 @@ export const colors = {
     900: "#093B39",
   },
 
-  // Amethyst: violet, for premium/subscription tiers, "featured doctor"
-  // highlights — a jewel-tone sibling to the jade primary
   amethyst: {
     50: "#F6F1FC",
     100: "#E9DCF8",
@@ -163,9 +144,6 @@ export const colors = {
     900: "#291447",
   },
 
-  // Copper: warm amber, for "pending confirmation" / "awaiting response"
-  // appointment states — kept distinct from `high` (golden warning yellow)
-  // so pending and warning never read as the same signal
   copper: {
     50: "#FFF6EC",
     100: "#FFE7C7",
@@ -296,8 +274,6 @@ const theme = createTheme({
       800: colors.high[800],
       900: colors.high[900],
     },
-    // New: lagoon exposed as a MUI palette group so you can use
-    // theme.palette.lagoon.main etc. directly on components
     lagoon: {
       light: colors.lagoon[50],
       main: colors.lagoon[500],
@@ -313,7 +289,6 @@ const theme = createTheme({
       800: colors.lagoon[800],
       900: colors.lagoon[900],
     },
-    // New: amethyst palette group — premium/subscription accents
     amethyst: {
       light: colors.amethyst[50],
       main: colors.amethyst[500],
@@ -329,7 +304,6 @@ const theme = createTheme({
       800: colors.amethyst[800],
       900: colors.amethyst[900],
     },
-    // New: copper palette group — pending/awaiting-response states
     copper: {
       light: colors.copper[50],
       main: colors.copper[500],
@@ -354,10 +328,6 @@ const theme = createTheme({
     borderRadius: myTheme.borderRadius,
   },
   typography: {
-    // Pairing an elegant serif display face ("Fraunces") with Inter body
-    // text gives a premium, editorial, human feel — the direction modern
-    // health brands (Parsley, Ro, Tia) actually lean into, instead of a
-    // loud/playful all-sans look.
     fontFamily: '"Inter", "sans-serif" !important',
     fontWeightBold: fontWeight.bold,
     fontWeightMedium: fontWeight.semiBold,
@@ -580,7 +550,6 @@ const theme = createTheme({
           "--lagoon-700": colors.lagoon[700],
           "--lagoon-800": colors.lagoon[800],
           "--lagoon-900": colors.lagoon[900],
-          // New: amethyst CSS vars — premium / subscription accents
           "--amethyst": colors.amethyst[500],
           "--amethyst-light": colors.amethyst[50],
           "--amethyst-dark": colors.amethyst[700],
@@ -594,7 +563,6 @@ const theme = createTheme({
           "--amethyst-700": colors.amethyst[700],
           "--amethyst-800": colors.amethyst[800],
           "--amethyst-900": colors.amethyst[900],
-          // New: copper CSS vars — pending / awaiting-response states
           "--copper": colors.copper[500],
           "--copper-light": colors.copper[50],
           "--copper-dark": colors.copper[700],

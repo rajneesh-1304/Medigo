@@ -1,62 +1,72 @@
+"use client";
+
 import React from 'react';
-import { Box, Container, Typography, IconButton, useMediaQuery, useTheme } from '@mui/material';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { Container } from '@mui/material';
 import styles from './testimonials.module.scss';
-import Carousel from 'react-material-ui-carousel';
 
 const testimonials = [
   {
-    text: "This platform completely transformed our team's workflow. Tasks that used to take us days are now completed in just a few hours.",
+    quote: "This platform completely transformed how I manage my health. Booking a doctor took less than 2 minutes and the consultation was seamless.",
     name: "Jyothi Bhatia",
-    initial: "J"
+    role: "Patient · Mumbai",
+    initial: "J",
+    rating: 5,
   },
   {
-    text: "The user interface is incredibly intuitive and clean. Our onboarding time dropped to zero, and the support team is top-notch.",
+    quote: "The video consultation feature is a game-changer. I got expert advice at midnight when no clinic was available. Truly 24/7 care.",
     name: "Rahul Sharma",
-    initial: "R"
+    role: "Patient · Delhi",
+    initial: "R",
+    rating: 5,
   },
   {
-    text: "An absolute game-changer for project management. The customization options allow us to build exactly what we need.",
+    quote: "Found a specialist near me within seconds. The confirmed appointment system means no more waiting for hours at the clinic.",
     name: "Ananya Iyer",
-    initial: "A"
-  }
+    role: "Patient · Bangalore",
+    initial: "A",
+    rating: 5,
+  },
 ];
 
 export const Testimonials = () => {
-  const theme = useTheme();
-  const mobileView = useMediaQuery(theme.breakpoints.down('md'));
   return (
-    <Box className={styles['testimonials-container']}>
-      <Container maxWidth="md">
-        <Typography variant="h4" className={styles['testimonials-title']}>
-          What our users have to say
-        </Typography>
-        <Carousel
-          navButtonsAlwaysVisible={true}
-          indicators={false}
-          NextIcon={mobileView ? <></> : <ArrowForwardIosIcon />}
-          PrevIcon={mobileView ? <></> : <ArrowBackIosNewIcon />}
-        >
-          {testimonials.map((testimonial, index) => (
-            <Box key={index} className={styles['testimonials-content']}>
-              <Box className={styles['testimonials-text-wrapper']}>
-                <Typography variant="h6" className={styles['testimonials-text']}>
-                  {testimonial.text}
-                </Typography>
-                <Box className={styles['testimonials-author']}>
-                  <Box className={styles['testimonials-avatar']}>
-                    <Typography variant="subtitle2" className={styles['testimonials-avatar-text']}>J</Typography>
-                  </Box>
-                  <Typography variant="subtitle1" className={styles['testimonials-author-name']}>
-                    {testimonial.name}
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
+    <section className={styles.testimonialsSection}>
+      {/* Decorative blob */}
+      <div className={styles.testimonialsBlobRight} aria-hidden="true" />
+
+      <Container maxWidth="lg">
+        <div className={styles.testimonialsHeader}>
+          <div className={styles.testimonialsLabel}>Patient Stories</div>
+          <h2 className={styles.testimonialsTitle}>
+            What our patients have to say
+          </h2>
+        </div>
+
+        <div className={styles.testimonialsGrid}>
+          {testimonials.map((t, i) => (
+            <div key={i} className={styles.testimonialCard}>
+              {/* Star rating */}
+              <div className={styles.testimonialStars}>
+                {Array.from({ length: t.rating }).map((_, si) => (
+                  <span key={si} className={styles.testimonialStar}>★</span>
+                ))}
+              </div>
+
+              {/* Quote */}
+              <p className={styles.testimonialQuote}>"{t.quote}"</p>
+
+              {/* Author */}
+              <div className={styles.testimonialAuthorRow}>
+                <div className={styles.testimonialAvatar}>{t.initial}</div>
+                <div className={styles.testimonialAuthorInfo}>
+                  <span className={styles.testimonialAuthorName}>{t.name}</span>
+                  <span className={styles.testimonialAuthorRole}>{t.role}</span>
+                </div>
+              </div>
+            </div>
           ))}
-        </Carousel>
+        </div>
       </Container>
-    </Box>
+    </section>
   );
 };

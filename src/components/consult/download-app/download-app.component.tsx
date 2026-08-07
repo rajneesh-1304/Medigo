@@ -17,16 +17,16 @@ const DownloadApp = () => {
         }
     ]
 
-  return (
-    <Box>
-        <DownloadPage 
-            title = "Download the Practo app"
-            subtitle = "Get ₹200 HealthCash"
-            image = "https://www.practo.com/consult/static/images/app-download-banner-mobile.png"
-            data={data}
-        />
-    </Box>
-  )
+    return (
+        <Box>
+            <DownloadPage
+                title="Download the Medigo app"
+                subtitle="Get ₹200 HealthCash"
+                image="https://www.practo.com/consult/static/images/app-download-banner-mobile.png"
+                data={data}
+            />
+        </Box>
+    )
 }
 
 export default DownloadApp

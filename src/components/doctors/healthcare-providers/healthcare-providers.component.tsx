@@ -3,11 +3,11 @@ import { Box } from '@mui/material'
 
 const HealthcareProviders = () => {
     const data = [{
-        text: "Get seen by 25M+ patients on medigo.com"
+        text: "Get seen by 25M+ patients on practo.com"
     },
     {
         text: "The most advanced software for clinics and hospitals"
-    }, 
+    },
     {
         text: "State of the art business analytics for enterprises"
     }]

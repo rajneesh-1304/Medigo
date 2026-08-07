@@ -17,8 +17,8 @@ const Faq = () => {
                 "Online doctor consultation or online medical consultation is a method to connect patients and doctors virtually. It is a convenient and easy way to get online doctor advice using doctor apps or telemedicine apps or platforms, and the internet.",
         },
         {
-            question: "How do I start an online consultation with doctors on Practo?",
-            answer: `Starting an online doctor consultation is very simple on Practo.
+            question: "How do I start an online consultation with doctors on Medigo?",
+            answer: `Starting an online doctor consultation is very simple on Medigo.
                 Follow these 4 simple steps:
                 • Choose your health concern.
                 • Connect with a doctor within 2 minutes.
@@ -28,10 +28,10 @@ const Faq = () => {
         {
             question: "Are your online doctors qualified?",
             answer:
-                "We follow a strict verification process for every doctor providing online medical services on Practo. Our team manually verifies necessary documents, registrations, and certifications for every doctor.",
+                "We follow a strict verification process for every doctor providing online medical services on Medigo. Our team manually verifies necessary documents, registrations, and certifications for every doctor.",
         },
         {
-            question: "Is online doctor consultation safe and secured on Practo?",
+            question: "Is online doctor consultation safe and secured on Medigo?",
             answer:
                 "The privacy of our patients is critical to us, and thus, we are compliant with industry standards like ISO 27001. Rest assured that your online consultation with a doctor is completely safe and secured with 256-bit encryption.",
         },
@@ -41,7 +41,7 @@ const Faq = () => {
                 "In the unlikely event that an online doctor does not respond, you will be entitled to a 100% refund.",
         },
         {
-            question: "Can I do a free online doctor consultation on Practo?",
+            question: "Can I do a free online doctor consultation on Medigo?",
             beforeLink:
                 "Avail a free online consultation with top doctors in India during the India Health Hour. Click ",
             link: {

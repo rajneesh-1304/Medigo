@@ -1,9 +1,12 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, Dialog, DialogContent, DialogTitle, IconButton, List, ListItemButton, ListItemText, TextField, Typography } from "@mui/material";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Autocomplete from '@mui/material/Autocomplete';
 import styles from "./book-consultation.module.scss";
+import { useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
+import LocationPicker from "@/components/general/location-picker/location-picker.component";
 
 const ConsultationSchema = z.object({
     name: z.string().min(2, "Name is required"),
@@ -45,60 +48,61 @@ const BookConsultation = () => {
         'Visakhapatnam',
 
     ];
+    const [value, setValue] = useState('');
+
 
     return (
-        <Box className={styles['book-consultation-container']}>
-            <Box className={styles['book-consultation']}>
-            <Typography className={styles['title']}>
-                Book your consultation today
-            </Typography>
-            <Typography className={styles['subtitle']}>
-                Get a Call Back Within 15 Minutes
-            </Typography>
+        <>
+            <Box className={styles['book-consultation-container']}>
+                <Box className={styles['book-consultation']}>
+                    <Typography className={styles['title']}>
+                        Book your consultation today
+                    </Typography>
+                    <Typography className={styles['subtitle']}>
+                        Get a Call Back Within 15 Minutes
+                    </Typography>
 
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <TextField
-                    label="Name"
-                    className={styles['input']}
-                    {...register("name")}
-                    error={!!errors.name}
-                    helperText={errors.name?.message}
-                />
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <Autocomplete
+                            disablePortal
+                            className={styles['input']}
+                            options={['Male', 'Female', 'Other']}
+                            sx={{ width: 300 }}
+                            renderInput={(params) => <TextField {...params} label="Surgery" />}
+                        />
 
-                <TextField
-                    label="Mobile"
-                    className={styles['input']}
-                    {...register("mobile")}
-                    error={!!errors.mobile}
-                    helperText={errors.mobile?.message}
-                />
+                        <LocationPicker
+                            value={value}
+                            onChange={setValue}
+                        />
 
-                <Autocomplete
-                    disablePortal
-                    className={styles['input']}
-                    options={locations}
-                    sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="Choose your problem area" />}
-                />
+                        <TextField
+                            label="Name"
+                            className={styles['input']}
+                            {...register("name")}
+                            error={!!errors.name}
+                            helperText={errors.name?.message}
+                        />
 
-                <Autocomplete
-                    disablePortal
-                    className={styles['input']}
-                    options={['Male', 'Female', 'Other']}
-                    sx={{ width: 300 }}
-                    renderInput={(params) => <TextField {...params} label="Choose your problem area" />}
-                />
+                        <TextField
+                            label="Mobile"
+                            className={styles['input']}
+                            {...register("mobile")}
+                            error={!!errors.mobile}
+                            helperText={errors.mobile?.message}
+                        />
 
-                <Button type="submit" className={styles['appointment-btn']} variant="contained">
-                    Book Appointment
-                </Button>
+                        <Button type="submit" className={styles['appointment-btn']} variant="contained">
+                            Book Appointment
+                        </Button>
 
-                <Typography>
-                    By submitting the form, you agree to Practo's T&C
-                </Typography>
-            </form>
-        </Box>
-        </Box>
+                        <Typography>
+                            By submitting the form, you agree to Medigo's T&C
+                        </Typography>
+                    </form>
+                </Box>
+            </Box>
+        </>
     );
 };
 

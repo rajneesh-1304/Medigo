@@ -7,7 +7,6 @@ import { InClinic } from './in-clinic/in-clinic.component';
 import { Articles } from './articles/articles.component';
 import { Testimonials } from './testimonials/testimonials.component';
 import { AppDownload } from './app-download/app-download.component';
-import { Footer } from '../layout/footer/footer.component';
 import styles from './home.module.scss';
 
 export const HomeComponent = () => {
