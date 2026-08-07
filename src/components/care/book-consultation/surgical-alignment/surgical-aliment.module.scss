@@ -1,0 +1,40 @@
+.dialog-header {
+    padding: 0.5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.dialog-content {
+    display: flex;
+    width: 100%;
+}
+
+.dialog-header-text {
+    font-weight: 600;
+    width: 100%;
+    text-align:center;
+    padding-right: 1rem;
+}
+
+.list{
+    padding: 0;
+    flex:1;
+    overflow-y: auto;
+    max-height: 50vh;
+    
+}
+
+.list-item-button {
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.list-item-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

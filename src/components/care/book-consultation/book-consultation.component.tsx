@@ -7,6 +7,8 @@ import styles from "./book-consultation.module.scss";
 import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import LocationPicker from "@/components/care/book-consultation/location-picker/location-picker.component";
+import SurgicalAlignment from "./surgical-alignment/surgical-alignment.component";
+import SurgicalAliment from "./surgical-alignment/surgical-aliment.component";
 
 const ConsultationSchema = z.object({
     name: z.string().min(2, "Name is required"),
@@ -50,13 +52,16 @@ const BookConsultation = () => {
                     </Typography>
 
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <Autocomplete
+                        {/* <Autocomplete
                             disablePortal
                             className={styles['input']}
                             options={['Male', 'Female', 'Other']}
                             sx={{ width: 300 }}
                             renderInput={(params) => <TextField {...params} label="Surgery" />}
-                        />
+                        /> */}
+                        <Box className={styles['input'] + ' ' + styles['dialog']} >
+                            <SurgicalAliment />
+                        </Box>
 
                         <Box className={styles['input'] + ' ' + styles['dialog']}>
                             <LocationPicker
