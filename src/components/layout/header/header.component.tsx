@@ -10,6 +10,7 @@ import {
   ListItem,
   ListItemText,
   Divider,
+  Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
@@ -39,46 +40,45 @@ export default function Header() {
 
   return (
     <>
-      <header
+      <Box
+        component="header"
         className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}
       >
-        <div className={styles.headerInner}>
-          {/* Logo */}
+        <Box className={styles.headerInner}>
           <button
             className={styles.headerLogoBtn}
             onClick={() => router.push("/")}
             aria-label="Go to home"
           >
-            <span className={styles.headerLogoIcon}>
+            <Box component="span" className={styles.headerLogoIcon}>
               <LocalHospitalRoundedIcon fontSize="inherit" />
-            </span>
-            <span className={styles.headerLogoText}>
+            </Box>
+            <Box component="span" className={styles.headerLogoText}>
               medi
-              <span className={styles.headerLogoAccent}>go</span>
-            </span>
+              <Box component="span" className={styles.headerLogoAccent}>go</Box>
+            </Box>
           </button>
 
-          {/* Desktop nav — pill tabs */}
-          <nav className={styles.headerNav} aria-label="Main navigation">
+          <Box component="nav" className={styles.headerNav} aria-label="Main navigation">
             {navLinks.map((link) => (
-              <a
+              <Box
                 key={link.label}
+                component="a"
                 href={link.href}
                 className={`${styles.headerNavLink} ${
                   pathname === link.href ? styles.headerNavLinkActive : ""
                 }`}
-                onClick={(e) => {
+                onClick={(e: React.MouseEvent) => {
                   e.preventDefault();
                   router.push(link.href);
                 }}
               >
                 {link.label}
-              </a>
+              </Box>
             ))}
-          </nav>
+          </Box>
 
-          {/* Right side */}
-          <div className={styles.headerRightSide}>
+          <Box className={styles.headerRightSide}>
             <button
               className={styles.headerGhostBtn}
               onClick={() => router.push("/login")}
@@ -91,9 +91,8 @@ export default function Header() {
             >
               Get Started
             </button>
-          </div>
+          </Box>
 
-          {/* Mobile hamburger */}
           <IconButton
             className={styles.headerMenuBtn}
             onClick={() => setDrawerOpen(true)}
@@ -101,10 +100,9 @@ export default function Header() {
           >
             <MenuIcon />
           </IconButton>
-        </div>
-      </header>
+        </Box>
+      </Box>
 
-      {/* Mobile Drawer */}
       <Drawer
         anchor="left"
         open={drawerOpen}
@@ -112,11 +110,11 @@ export default function Header() {
         slotProps={{ paper: { className: styles.headerDrawer } }}
       >
         <Box className={styles.headerDrawerHeader}>
-          <span className={styles.headerDrawerLogo}>
+          <Typography component="span" className={styles.headerDrawerLogo}>
             <LocalHospitalRoundedIcon fontSize="small" />
             medi
-            <span className={styles.headerLogoAccent}>go</span>
-          </span>
+            <Box component="span" className={styles.headerLogoAccent}>go</Box>
+          </Typography>
           <IconButton
             onClick={() => setDrawerOpen(false)}
             className={styles.headerDrawerClose}

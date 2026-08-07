@@ -101,15 +101,7 @@
   font-size: 0.8rem;
   color: var(--neutral-600);
   cursor: pointer;
-}
-
-.checkboxContainer :global(.MuiCheckbox-root) {
-  padding: 4px;
-  color: var(--neutral-300);
-}
-
-.checkboxContainer :global(.MuiCheckbox-root.Mui-checked) {
-  color: var(--primary-500);
+  margin-left: -10px;
 }
 
 .forgotText {
@@ -130,6 +122,7 @@
   gap: 0.25rem;
   font-size: 0.8rem;
   color: var(--neutral-600);
+  margin-left: -10px;
 }
 
 .loginBtn {

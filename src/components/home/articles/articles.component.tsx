@@ -1,5 +1,4 @@
-import React from 'react';
-import { Container } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import styles from './articles.module.scss';
 
 const articlesData = [
@@ -35,63 +34,63 @@ const articlesData = [
 
 export const Articles = () => {
   return (
-    <section className={styles.articlesSection}>
+    <Box component="section" className={styles.articlesSection}>
       <Container maxWidth="lg">
-        <div className={styles.articlesInner}>
-          {/* Left sticky pane */}
-          <div className={styles.articlesContentPane}>
-            <div className={styles.articlesLabel}>
-              <span className={styles.articlesLabelDot} />
+        <Box className={styles.articlesInner}>
+          <Box className={styles.articlesContentPane}>
+            <Box className={styles.articlesLabel}>
+              <Box component="span" className={styles.articlesLabelDot} />
               Health Reads
-            </div>
-            <h2 className={styles.articlesTitle}>
+            </Box>
+            <Typography component="h2" className={styles.articlesTitle}>
               Read top articles from health experts
-            </h2>
-            <p className={styles.articlesSubtitle}>
+            </Typography>
+            <Typography component="p" className={styles.articlesSubtitle}>
               Stay informed with curated health articles written by verified
               doctors and medical professionals.
-            </p>
+            </Typography>
             <button className={styles.articlesViewAllBtn}>
               See all articles
             </button>
-          </div>
+          </Box>
 
-          {/* Right articles grid */}
-          <div className={styles.articlesGrid}>
+          <Box className={styles.articlesGrid}>
             {articlesData.map((article, index) => (
-              <div key={index} className={styles.articleCard}>
-                <img
+              <Box key={index} className={styles.articleCard}>
+                <Box
+                  component="img"
                   src={article.image}
                   alt={article.title}
                   className={styles.articleCardImage}
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = 'none';
+                  onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                    e.currentTarget.style.display = 'none';
                   }}
                 />
-                <div className={styles.articleCardBody}>
-                  <span className={styles.articleCardCategory}>
+                <Box className={styles.articleCardBody}>
+                  <Typography component="span" className={styles.articleCardCategory}>
                     {article.category}
-                  </span>
-                  <p className={styles.articleCardTitle}>{article.title}</p>
-                  <div className={styles.articleCardAuthor}>
-                    <img
+                  </Typography>
+                  <Typography component="p" className={styles.articleCardTitle}>{article.title}</Typography>
+                  <Box className={styles.articleCardAuthor}>
+                    <Box
+                      component="img"
                       src={article.authorImage}
                       alt={article.author}
                       className={styles.articleCardAuthorAvatar}
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).style.display = 'none';
+                      onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                        e.currentTarget.style.display = 'none';
                       }}
                     />
-                    <span className={styles.articleCardAuthorName}>
+                    <Typography component="span" className={styles.articleCardAuthorName}>
                       {article.author}
-                    </span>
-                  </div>
-                </div>
-              </div>
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
             ))}
-          </div>
-        </div>
+          </Box>
+        </Box>
       </Container>
-    </section>
+    </Box>
   );
 };

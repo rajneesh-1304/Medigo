@@ -1,5 +1,4 @@
-import React from 'react';
-import { Container } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import styles from './action-cards.module.scss';
 
@@ -28,31 +27,29 @@ const actionCardsData = [
 
 export const ActionCards = () => {
   return (
-    <section className={styles.actionCardsSection}>
+    <Box component="section" className={styles.actionCardsSection}>
       <Container maxWidth="lg">
-        <h2 className={styles.actionCardsSectionTitle}>How can we help you?</h2>
-        <p className={styles.actionCardsSectionSubtitle}>
+        <Typography component="h2" className={styles.actionCardsSectionTitle}>
+          How can we help you?
+        </Typography>
+        <Typography component="p" className={styles.actionCardsSectionSubtitle}>
           From home consults to lab tests — healthcare the way you need it.
-        </p>
-        <div className={styles.actionCardsGrid}>
+        </Typography>
+        <Box className={styles.actionCardsGrid}>
           {actionCardsData.map((card, index) => (
-            <div key={index} className={styles.actionCard}>
-              <img
-                src={card.image}
-                alt={card.title}
-                className={styles.actionCardImage}
-              />
-              <div>
-                <p className={styles.actionCardTitle}>{card.title}</p>
-                <p className={styles.actionCardSubtitle}>{card.subtitle}</p>
-              </div>
-              <div className={styles.actionCardArrow}>
+            <Box key={index} className={styles.actionCard}>
+              <Box component="img" src={card.image} alt={card.title} className={styles.actionCardImage} />
+              <Box>
+                <Typography component="p" className={styles.actionCardTitle}>{card.title}</Typography>
+                <Typography component="p" className={styles.actionCardSubtitle}>{card.subtitle}</Typography>
+              </Box>
+              <Box className={styles.actionCardArrow}>
                 Consult now <ArrowForwardRoundedIcon sx={{ fontSize: 14 }} />
-              </div>
-            </div>
+              </Box>
+            </Box>
           ))}
-        </div>
+        </Box>
       </Container>
-    </section>
+    </Box>
   );
 };

@@ -1,5 +1,4 @@
-import React from 'react';
-import { Container } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import styles from './specialties.module.scss';
 
 const specialtiesData = [
@@ -13,36 +12,32 @@ const specialtiesData = [
 
 export const Specialties = () => {
   return (
-    <section className={styles.specialtiesSection}>
+    <Box component="section" className={styles.specialtiesSection}>
       <Container maxWidth="lg">
-        <div className={styles.specialtiesHeader}>
-          <div className={styles.specialtiesTitleGroup}>
-            <h2 className={styles.specialtiesTitle}>
+        <Box className={styles.specialtiesHeader}>
+          <Box className={styles.specialtiesTitleGroup}>
+            <Typography component="h2" className={styles.specialtiesTitle}>
               Consult top doctors online
-            </h2>
-            <p className={styles.specialtiesSubtitle}>
+            </Typography>
+            <Typography component="p" className={styles.specialtiesSubtitle}>
               Private online consultations with verified doctors in all specialties
-            </p>
-          </div>
+            </Typography>
+          </Box>
           <button className={styles.specialtiesViewAllBtn}>
             View All Specialities
           </button>
-        </div>
+        </Box>
 
-        <div className={styles.specialtiesGrid}>
+        <Box className={styles.specialtiesGrid}>
           {specialtiesData.map((specialty, index) => (
-            <div key={index} className={styles.specialtyCard}>
-              <img
-                src={specialty.image}
-                alt={specialty.title}
-                className={styles.specialtyImage}
-              />
-              <span className={styles.specialtyTitle}>{specialty.title}</span>
-              <span className={styles.specialtyAction}>{specialty.actionText}</span>
-            </div>
+            <Box key={index} className={styles.specialtyCard}>
+              <Box component="img" src={specialty.image} alt={specialty.title} className={styles.specialtyImage} />
+              <Typography component="span" className={styles.specialtyTitle}>{specialty.title}</Typography>
+              <Typography component="span" className={styles.specialtyAction}>{specialty.actionText}</Typography>
+            </Box>
           ))}
-        </div>
+        </Box>
       </Container>
-    </section>
+    </Box>
   );
 };

@@ -1,3 +1,21 @@
+.location-picker-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog-paper {
+    width: 100%;
+    max-width: 380px;
+    margin: 1rem;
+}
+
+.divider {
+    width: 90%;
+    margin: 0 auto;
+}
+
 .dialog-header {
     display: flex;
     align-items: center;

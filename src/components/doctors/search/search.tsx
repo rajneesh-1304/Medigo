@@ -1,5 +1,6 @@
 "use client";
 import React from 'react';
+import { Box, Typography } from '@mui/material';
 import { HeroSearch } from '@/components/home/hero-search/hero-search.component';
 import MessageIcon from '@mui/icons-material/Message';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -9,64 +10,46 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import styles from './search.module.scss';
 
-const Search = () => {
-  const buttons = [
-    {
-      text: "Consult with a doctor",
-      icon: <MessageIcon />
-    },
-    {
-      text: "Order Medicines",
-      icon: <ShoppingCartIcon />
-    },
-    {
-      text: "View Medical Records",
-      icon: <MedicationIcon />
-    },
-    {
-      text: "Consult online",
-      icon: <ScienceIcon />
-    },
-    {
-      text: "Book Tests",
-      icon: <MenuBookIcon />
-    },
-    {
-      text: "For healthcare providers",
-      icon: <BusinessCenterIcon />
-    },
-  ];
+const buttons = [
+  { text: "Consult with a doctor", icon: <MessageIcon /> },
+  { text: "Order Medicines", icon: <ShoppingCartIcon /> },
+  { text: "View Medical Records", icon: <MedicationIcon /> },
+  { text: "Consult online", icon: <ScienceIcon /> },
+  { text: "Book Tests", icon: <MenuBookIcon /> },
+  { text: "For healthcare providers", icon: <BusinessCenterIcon /> },
+];
 
+const Search = () => {
   return (
-    <div className={styles.searchContainer}>
-      <div className={styles.header}>
-        <h1 className={styles.mainTitle}>
-          Your home for <span>health</span>
-        </h1>
-        <div className={styles.heroSection}>
-          <div className={styles.searchBarWrapper}>
+    <Box className={styles.searchContainer}>
+      <Box className={styles.header}>
+        <Typography component="h1" className={styles.mainTitle}>
+          Your home for <Typography component="span">health</Typography>
+        </Typography>
+        <Box className={styles.heroSection}>
+          <Box className={styles.searchBarWrapper}>
             <HeroSearch minimal />
-          </div>
-          <div className={styles.popularSearches}>
-            <span>Popular searches:</span>
-            <a href="#">Dermatologist</a>
-            <a href="#">Pediatrician</a>
-            <a href="#">Gynecologist</a>
-            <a href="#">Others</a>
-          </div>
-        </div>
-      </div>
-      <div className={styles.buttonsSection}>
-        <div className={styles.buttonsGrid}>
+          </Box>
+          <Box className={styles.popularSearches}>
+            <Typography component="span">Popular searches:</Typography>
+            <Typography component="a" href="#">Dermatologist</Typography>
+            <Typography component="a" href="#">Pediatrician</Typography>
+            <Typography component="a" href="#">Gynecologist</Typography>
+            <Typography component="a" href="#">Others</Typography>
+          </Box>
+        </Box>
+      </Box>
+      <Box className={styles.buttonsSection}>
+        <Box className={styles.buttonsGrid}>
           {buttons.map((btn, index) => (
-            <div className={styles.buttonItem} key={index}>
-              <span className={styles.icon}>{btn.icon}</span>
-              <span className={styles.btnText}>{btn.text}</span>
-            </div>
+            <Box className={styles.buttonItem} key={index}>
+              <Box component="span" className={styles.icon}>{btn.icon}</Box>
+              <Box component="span" className={styles.btnText}>{btn.text}</Box>
+            </Box>
           ))}
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

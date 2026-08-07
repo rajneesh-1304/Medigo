@@ -1,5 +1,4 @@
-import React from 'react';
-import { Container } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import styles from './in-clinic.module.scss';
 
 const inClinicData = [
@@ -27,43 +26,39 @@ const inClinicData = [
 
 export const InClinic = () => {
   return (
-    <section className={styles.inClinicSection}>
+    <Box component="section" className={styles.inClinicSection}>
       <Container maxWidth="lg">
-        <div className={styles.inClinicHeader}>
-          <div className={styles.inClinicTitleGroup}>
-            <div className={styles.inClinicLabel}>
-              <span className={styles.inClinicLabelDot} />
+        <Box className={styles.inClinicHeader}>
+          <Box className={styles.inClinicTitleGroup}>
+            <Box className={styles.inClinicLabel}>
+              <Box component="span" className={styles.inClinicLabelDot} />
               In-Clinic Appointments
-            </div>
-            <h2 className={styles.inClinicTitle}>
+            </Box>
+            <Typography component="h2" className={styles.inClinicTitle}>
               Book an in-clinic consultation
-            </h2>
-            <p className={styles.inClinicSubtitle}>
+            </Typography>
+            <Typography component="p" className={styles.inClinicSubtitle}>
               Find experienced doctors across all specialities near you
-            </p>
-          </div>
+            </Typography>
+          </Box>
           <button className={styles.inClinicViewAllBtn}>
             View All Specialities
           </button>
-        </div>
+        </Box>
 
-        <div className={styles.inClinicGrid}>
+        <Box className={styles.inClinicGrid}>
           {inClinicData.map((item, index) => (
-            <div key={index} className={styles.inClinicCard}>
-              <img
-                src={item.image}
-                alt={item.title}
-                className={styles.inClinicCardImage}
-              />
-              <div className={styles.inClinicCardBody}>
-                <p className={styles.inClinicCardTitle}>{item.title}</p>
-                <p className={styles.inClinicCardSubtitle}>{item.subtitle}</p>
-                <span className={styles.inClinicCardCta}>BOOK NOW →</span>
-              </div>
-            </div>
+            <Box key={index} className={styles.inClinicCard}>
+              <Box component="img" src={item.image} alt={item.title} className={styles.inClinicCardImage} />
+              <Box className={styles.inClinicCardBody}>
+                <Typography component="p" className={styles.inClinicCardTitle}>{item.title}</Typography>
+                <Typography component="p" className={styles.inClinicCardSubtitle}>{item.subtitle}</Typography>
+                <Typography component="span" className={styles.inClinicCardCta}>BOOK NOW →</Typography>
+              </Box>
+            </Box>
           ))}
-        </div>
+        </Box>
       </Container>
-    </section>
+    </Box>
   );
 };

@@ -6,7 +6,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import styles from "./book-consultation.module.scss";
 import { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import LocationPicker from "@/components/general/location-picker/location-picker.component";
+import LocationPicker from "@/components/care/book-consultation/location-picker/location-picker.component";
 
 const ConsultationSchema = z.object({
     name: z.string().min(2, "Name is required"),
@@ -35,19 +35,6 @@ const BookConsultation = () => {
         console.log(data);
     };
 
-    const locations = [
-        'Delhi',
-        'Mumbai',
-        'Bangalore',
-        'Hyderabad',
-        'Chennai',
-        'Kolkata',
-        'Pune',
-        'Ahmedabad',
-        'Surat',
-        'Visakhapatnam',
-
-    ];
     const [value, setValue] = useState('');
 
 
@@ -71,10 +58,12 @@ const BookConsultation = () => {
                             renderInput={(params) => <TextField {...params} label="Surgery" />}
                         />
 
-                        <LocationPicker
-                            value={value}
-                            onChange={setValue}
-                        />
+                        <Box className={styles['input'] + ' ' + styles['dialog']}>
+                            <LocationPicker
+                                value={value}
+                                onChange={setValue}
+                            />
+                        </Box>
 
                         <TextField
                             label="Name"

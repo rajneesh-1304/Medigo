@@ -1,7 +1,6 @@
 "use client";
 
-import React from 'react';
-import { Container } from '@mui/material';
+import { Box, Container, Typography } from '@mui/material';
 import styles from './testimonials.module.scss';
 
 const testimonials = [
@@ -30,43 +29,39 @@ const testimonials = [
 
 export const Testimonials = () => {
   return (
-    <section className={styles.testimonialsSection}>
-      {/* Decorative blob */}
-      <div className={styles.testimonialsBlobRight} aria-hidden="true" />
+    <Box component="section" className={styles.testimonialsSection}>
+      <Box className={styles.testimonialsBlobRight} aria-hidden="true" />
 
       <Container maxWidth="lg">
-        <div className={styles.testimonialsHeader}>
-          <div className={styles.testimonialsLabel}>Patient Stories</div>
-          <h2 className={styles.testimonialsTitle}>
+        <Box className={styles.testimonialsHeader}>
+          <Box className={styles.testimonialsLabel}>Patient Stories</Box>
+          <Typography component="h2" className={styles.testimonialsTitle}>
             What our patients have to say
-          </h2>
-        </div>
+          </Typography>
+        </Box>
 
-        <div className={styles.testimonialsGrid}>
+        <Box className={styles.testimonialsGrid}>
           {testimonials.map((t, i) => (
-            <div key={i} className={styles.testimonialCard}>
-              {/* Star rating */}
-              <div className={styles.testimonialStars}>
+            <Box key={i} className={styles.testimonialCard}>
+              <Box className={styles.testimonialStars}>
                 {Array.from({ length: t.rating }).map((_, si) => (
-                  <span key={si} className={styles.testimonialStar}>★</span>
+                  <Typography key={si} component="span" className={styles.testimonialStar}>★</Typography>
                 ))}
-              </div>
+              </Box>
 
-              {/* Quote */}
-              <p className={styles.testimonialQuote}>"{t.quote}"</p>
+              <Typography component="p" className={styles.testimonialQuote}>"{t.quote}"</Typography>
 
-              {/* Author */}
-              <div className={styles.testimonialAuthorRow}>
-                <div className={styles.testimonialAvatar}>{t.initial}</div>
-                <div className={styles.testimonialAuthorInfo}>
-                  <span className={styles.testimonialAuthorName}>{t.name}</span>
-                  <span className={styles.testimonialAuthorRole}>{t.role}</span>
-                </div>
-              </div>
-            </div>
+              <Box className={styles.testimonialAuthorRow}>
+                <Box className={styles.testimonialAvatar}>{t.initial}</Box>
+                <Box className={styles.testimonialAuthorInfo}>
+                  <Typography component="span" className={styles.testimonialAuthorName}>{t.name}</Typography>
+                  <Typography component="span" className={styles.testimonialAuthorRole}>{t.role}</Typography>
+                </Box>
+              </Box>
+            </Box>
           ))}
-        </div>
+        </Box>
       </Container>
-    </section>
+    </Box>
   );
 };

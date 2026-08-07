@@ -51,19 +51,19 @@ export const RegisterForm = () => {
       onSubmit={handleSubmit(onSubmit)}
       className={styles.loginForm}
     >
-      <div className={styles.formBox}>
-        <div className={styles.header}>
-          <h2 className={styles.title}>Join Medigo</h2>
-          <p className={styles.subtitle}>
+      <Box className={styles.formBox}>
+        <Box className={styles.header}>
+          <Typography variant="h2" className={styles.title}>Join Medigo</Typography>
+          <Typography className={styles.subtitle}>
             Are you a doctor?{" "}
-            <span className={styles.link}>Register here</span>
-          </p>
-        </div>
+            <Typography component="span" className={styles.link}>Register here</Typography>
+          </Typography>
+        </Box>
 
         <Divider sx={{ my: 0.5, borderColor: "var(--neutral-200)" }} />
 
-        <div className={styles.fieldGroup}>
-          <label className={styles.label}>Full Name</label>
+        <Box className={styles.fieldGroup}>
+          <Typography component="label" className={styles.label}>Full Name</Typography>
           <Controller
             name="fullName"
             control={control}
@@ -78,10 +78,10 @@ export const RegisterForm = () => {
               />
             )}
           />
-        </div>
+        </Box>
 
-        <div className={styles.fieldGroup}>
-          <label className={styles.label}>Mobile Number</label>
+        <Box className={styles.fieldGroup}>
+          <Typography component="label" className={styles.label}>Mobile Number</Typography>
           <Controller
             name="mobileNumber"
             control={control}
@@ -96,10 +96,10 @@ export const RegisterForm = () => {
               />
             )}
           />
-        </div>
+        </Box>
 
-        <div className={styles.fieldGroup}>
-          <label className={styles.label}>Create Password</label>
+        <Box className={styles.fieldGroup}>
+          <Typography component="label" className={styles.label}>Create Password</Typography>
           <Controller
             name="password"
             control={control}
@@ -115,10 +115,10 @@ export const RegisterForm = () => {
               />
             )}
           />
-        </div>
+        </Box>
 
-        <div className={styles.infoBox}>
-          <label className={styles.checkboxContainer}>
+        <Box className={styles.infoBox}>
+          <Typography component="label" className={styles.checkboxContainer}>
             <Controller
               name="offers"
               control={control}
@@ -131,13 +131,13 @@ export const RegisterForm = () => {
               )}
             />
             Receive relevant offers and promotional communication from Medigo
-          </label>
+          </Typography>
 
-          <p className={styles.agreementText}>
+          <Typography className={styles.agreementText}>
             By signing up, I agree to Medigo's{" "}
-            <span>terms & conditions</span>
-          </p>
-        </div>
+            <Typography component="span">terms & conditions</Typography>
+          </Typography>
+        </Box>
 
         <Button
           type="submit"
@@ -146,7 +146,7 @@ export const RegisterForm = () => {
         >
           Send OTP
         </Button>
-      </div>
+      </Box>
     </Box>
   );
 };

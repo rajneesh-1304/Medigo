@@ -1,5 +1,5 @@
-import React from 'react';
 import Link from 'next/link';
+import { Box, Typography } from '@mui/material';
 import LocalHospitalRoundedIcon from '@mui/icons-material/LocalHospitalRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import styles from './footer.module.scss';
@@ -49,64 +49,60 @@ const socialLinks = ['Twitter', 'LinkedIn', 'Instagram', 'YouTube'];
 
 export const Footer = () => {
   return (
-    <footer className={styles.footer}>
-      {/* Gradient accent bar */}
-      <div className={styles.footerAccentBar} aria-hidden="true" />
+    <Box component="footer" className={styles.footer}>
+      <Box className={styles.footerAccentBar} aria-hidden="true" />
 
-      <div className={styles.footerInner}>
-        {/* Brand column */}
-        <div className={styles.footerBrandCol}>
-          <div className={styles.footerLogoMark}>
-            <span className={styles.footerLogoIconWrap}>
+      <Box className={styles.footerInner}>
+        <Box className={styles.footerBrandCol}>
+          <Box className={styles.footerLogoMark}>
+            <Box component="span" className={styles.footerLogoIconWrap}>
               <LocalHospitalRoundedIcon fontSize="inherit" />
-            </span>
-            <span className={styles.footerLogoText}>
-              medi<span className={styles.footerLogoAccent}>go</span>
-            </span>
-          </div>
+            </Box>
+            <Box component="span" className={styles.footerLogoText}>
+              medi<Box component="span" className={styles.footerLogoAccent}>go</Box>
+            </Box>
+          </Box>
 
-          <p className={styles.footerTagline}>
+          <Typography component="p" className={styles.footerTagline}>
             Modern healthcare, instantly accessible. Connect with top doctors,
             book labs, and manage your wellness — all in one place.
-          </p>
+          </Typography>
 
-          <div className={styles.footerSocialRow}>
+          <Box className={styles.footerSocialRow}>
             {socialLinks.map((s) => (
-              <a key={s} href="#" className={styles.footerSocialPill} aria-label={s}>
+              <Box key={s} component="a" href="#" className={styles.footerSocialPill} aria-label={s}>
                 {s}
-              </a>
+              </Box>
             ))}
-          </div>
-        </div>
+          </Box>
+        </Box>
 
-        {/* Link grid */}
-        <div className={styles.footerLinkGrid}>
+        <Box className={styles.footerLinkGrid}>
           {footerColumns.map((col) => (
-            <div key={col.heading} className={styles.footerLinkCol}>
-              <h4 className={styles.footerColHeading}>{col.heading}</h4>
-              <ul className={styles.footerLinkList}>
+            <Box key={col.heading} className={styles.footerLinkCol}>
+              <Typography component="h4" className={styles.footerColHeading}>{col.heading}</Typography>
+              <Box component="ul" className={styles.footerLinkList}>
                 {col.links.map((link) => (
-                  <li key={link.label}>
+                  <Box component="li" key={link.label}>
                     <Link href={link.href} className={styles.footerLink}>
                       {link.label}
                     </Link>
-                  </li>
+                  </Box>
                 ))}
-              </ul>
-            </div>
+              </Box>
+            </Box>
           ))}
-        </div>
-      </div>
+        </Box>
+      </Box>
 
-      {/* Bottom strip */}
-      <div className={styles.footerBottomStrip}>
-        <span className={styles.footerCopyright}>
+      <Box className={styles.footerBottomStrip}>
+        <Typography component="span" className={styles.footerCopyright}>
           © {new Date().getFullYear()} Medigo. All rights reserved.
-        </span>
-        <span className={styles.footerMadeWith}>
+        </Typography>
+        <Typography component="span" className={styles.footerMadeWith}>
           Made with <FavoriteRoundedIcon className={styles.footerHeartIcon} /> for better health
-        </span>
-      </div>
-    </footer>
+        </Typography>
+      </Box>
+    </Box>
   );
 };

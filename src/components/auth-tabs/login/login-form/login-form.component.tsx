@@ -7,6 +7,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styles from "./login-form.module.scss";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const loginSchema = z.object({
   username: z
@@ -43,23 +44,25 @@ export const LoginForm = () => {
     console.log("Login Data:", data);
   };
 
+  const [loginWithOtp, setLoginWithOtp] = useState(true);
+
   return (
     <Box
       component="form"
       onSubmit={handleSubmit(onSubmit)}
       className={styles.loginForm}
     >
-      <div className={styles.formBox}>
-        <div>
-          <h2 className={styles.formTitle}>Welcome back</h2>
-          <p className={styles.formSubtitle}>
+      <Box className={styles.formBox}>
+        <Box>
+          <Typography variant="h2" className={styles.formTitle}>Welcome back</Typography>
+          <Typography className={styles.formSubtitle}>
             New to Medigo?{" "}
-            <span onClick={() => router.push("/register")}>Create account</span>
-          </p>
-        </div>
+            <Typography component="span" onClick={() => router.push("/register")}>Create account</Typography>
+          </Typography>
+        </Box>
 
-        <div className={styles.fieldGroup}>
-          <label className={styles.label}>Mobile Number</label>
+        <Box className={styles.fieldGroup}>
+          <Typography component="label" className={styles.label}>Mobile Number</Typography>
           <Controller
             name="username"
             control={control}
@@ -74,13 +77,14 @@ export const LoginForm = () => {
               />
             )}
           />
-        </div>
+        </Box>
 
-        <div className={styles.fieldGroup}>
-          <label className={styles.label}>Password</label>
+        <Box className={styles.fieldGroup}>
+          <Typography component="label" className={styles.label} style={{ opacity: !loginWithOtp ? 0.5 : 1 }}>Password</Typography>
           <Controller
             name="password"
             control={control}
+            disabled={!loginWithOtp}
             render={({ field }) => (
               <TextField
                 {...field}
@@ -93,14 +97,15 @@ export const LoginForm = () => {
               />
             )}
           />
-        </div>
+        </Box>
 
-        <div className={styles.infoBox}>
-          <div className={styles.rememberRow}>
-            <label className={styles.checkboxContainer}>
+        <Box className={styles.infoBox}>
+          <Box className={styles.rememberRow}>
+            <Typography component="label" className={styles.checkboxContainer} style={{ opacity: !loginWithOtp ? 0.5 : 1 }}>
               <Controller
                 name="remember"
                 control={control}
+                disabled={!loginWithOtp}
                 render={({ field: { value, onChange, ...field } }) => (
                   <Checkbox
                     {...field}
@@ -110,11 +115,11 @@ export const LoginForm = () => {
                 )}
               />
               Remember me
-            </label>
-            <span className={styles.forgotText}>Forgot password?</span>
-          </div>
+            </Typography>
+            <Typography component="span" className={styles.forgotText}  style={{ opacity: !loginWithOtp ? 0.5 : 1 }} onClick={() => router.push("/forgot-password")}>Forgot password?</Typography>
+          </Box>
 
-          <label className={styles.otpOption}>
+          <Typography component="label" className={styles.otpOption}>
             <Controller
               name="otpLogin"
               control={control}
@@ -123,12 +128,13 @@ export const LoginForm = () => {
                   {...field}
                   checked={value}
                   onChange={onChange}
+                  onClick={() => setLoginWithOtp(!loginWithOtp)}
                 />
               )}
             />
             Login with OTP instead of password
-          </label>
-        </div>
+          </Typography>
+        </Box>
 
         <Button
           type="submit"
@@ -137,7 +143,7 @@ export const LoginForm = () => {
         >
           Sign In
         </Button>
-      </div>
+      </Box>
     </Box>
   );
 };
