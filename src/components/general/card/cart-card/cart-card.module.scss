@@ -1,0 +1,27 @@
+.cart-card{
+    border: 1px solid var(--primary-100);
+    width: 100%;
+
+    .cart-card-content{
+        padding-inline: 1rem;
+        padding-top: 1rem;
+    }
+
+    .cart-card-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .cart-card-header-title, .cart-card-header-price{
+        font-weight: 500;
+        font-size: 0.8rem;
+    }
+
+    .cart-card-body-text{
+        margin-block: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+}
+

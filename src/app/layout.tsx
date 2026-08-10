@@ -11,7 +11,7 @@ export default function RootLayout({
     return (
         <html lang="en" >
             <body suppressHydrationWarning>
-                <AppRouterCacheProvider>
+                <AppRouterCacheProvider options={{ enableCssLayer: true }}>
                     <ThemeProviderWrapper>
                         <Header />
                         {children}

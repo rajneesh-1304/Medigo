@@ -1,0 +1,33 @@
+.diagnosis-test-container {
+
+}
+
+.diagnosis-test-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1.5px;;
+}
+
+.diagnosis-test-reports{
+    background: linear-gradient(
+        to right, 
+        var(--primary-100) 0%,
+        var(--primary-100) 70%,
+        transparent 100%);
+    width: fit-content;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: calc(var(--border-radius) * 2px);
+}
+
+.icon{
+    font-size: 0.8rem;
+}
+
+.diagnosis-test-list{
+    display: flex;    
+}
