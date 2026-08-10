@@ -2,12 +2,9 @@ import { Box, Button, Dialog, DialogContent, DialogTitle, IconButton, List, List
 import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import Autocomplete from '@mui/material/Autocomplete';
 import styles from "./book-consultation.module.scss";
 import { useState } from "react";
-import CloseIcon from "@mui/icons-material/Close";
 import LocationPicker from "@/components/care/book-consultation/location-picker/location-picker.component";
-import SurgicalAlignment from "./surgical-alignment/surgical-alignment.component";
 import SurgicalAliment from "./surgical-alignment/surgical-aliment.component";
 
 const ConsultationSchema = z.object({
@@ -90,7 +87,7 @@ const BookConsultation = () => {
                             Book Appointment
                         </Button>
 
-                        <Typography>
+                        <Typography className={styles['terms-condition']}>
                             By submitting the form, you agree to Medigo's T&C
                         </Typography>
                     </form>

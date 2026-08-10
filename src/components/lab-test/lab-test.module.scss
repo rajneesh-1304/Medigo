@@ -1,0 +1,55 @@
+.lab-test-header {
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.lab-test-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.lab-test-cart {
+    background-color: var(--primary-100);
+
+    &:hover {
+        color: white;
+        background-color: var(--primary-500);
+        transition: 0.3s ease-in-out;
+    }
+}
+
+.lab-test-search-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.lab-test-btn-container {
+    display: flex;
+    margin-bottom: 1rem;
+    gap: 0.5rem;
+}
+
+.lab-test-search-box {
+    mix-width: 600px;
+    ;
+}
+
+.lab-test-btn {
+    padding: 0.4rem;
+    display: flex;
+    gap: 0.5rem;
+    border-radius: calc(var(--border-radius) * 5px);
+    background-color: var(--primary-700);
+    color: var(--white);
+    font-size: 0.7rem;
+
+    .icon {
+        background-color: var(--primary-300);
+        border-radius: calc(var(--border-radius) * 5px);
+        padding: 0.5rem;
+        width: 2rem;
+        height: 2rem;
+    }
+}

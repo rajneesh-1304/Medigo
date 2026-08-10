@@ -1,0 +1,46 @@
+.contact-us-container{
+    width: 100%;
+    padding-top: 1rem;
+}
+
+.divider{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dividerLine{
+    flex:1;
+}
+
+.dividerText{
+    font-size: 1rem;
+    color: var(--neutral-600);
+}
+
+.reach-out-container{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-100);
+    padding: 0.5rem;
+    border-radius: calc(var(--border-radius) * 2px);
+    margin-top: 1rem;
+}
+
+.reach-out-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.reach-out-icon-container{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.text{
+    font-size: 0.8rem;
+}

@@ -1,0 +1,55 @@
+.trust-experience-container {
+    margin-top: 2.5rem;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.card {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: var(--white);
+    border-radius: calc(var(--border-radius) * 2px);
+
+    .rating {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .rating-card-track {
+        display: flex;
+        overflow-x: auto;
+        padding: 1rem;
+        background-color: var(--primary-900);
+        border-radius: calc(var(--border-radius) * 2px);
+        gap: 1rem;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+.rating-card-item {
+    flex: 0 0 20rem;
+    animation: scroll 5s linear infinite;
+}
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(-50% - 0.5rem));
+    }
+}
+
+.rating-card:hover .rating-card-track {
+    animation-play-state: paused;
+}
+
+}

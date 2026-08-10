@@ -1,7 +1,56 @@
-.title-container {
-    background-image: url('https://www.practostatic.com/consumer-home/practo-care/Assured_Form/assured-upload/assured-hero-doctor.png');
-    background-size: cover;
-    background-position: center;
-    height: 30vh;
-    width: 30%;
+.title-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    border-radius: calc(var(--border-radius) * 2px);
+    padding: 0.2rem;
+}
+
+.image-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    width: 100%;
+    border-radius: calc(var(--border-radius) * 2px);
+}
+
+.title{
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.subtitle{
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--primary-500);
+}
+
+@media (max-width: 900px) {
+    .title{
+        font-size: 1.4rem;
+    }
+
+    .subtitle{
+        font-size: 0.9rem;
+    }
+
+    .title-container{
+        padding: 1rem;
+    }
+
+}
+
+@media (max-width: 600px) {
+    .title{
+        font-size: 1.1rem;
+    }
+
+    .subtitle{
+        font-size: 0.7rem;
+    }
 }

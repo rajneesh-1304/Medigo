@@ -1,10 +1,80 @@
+.care-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-inline: 1.5rem;
+}
+
 .consultation {
     width: 100%;
-    max-width: 380px;
-    margin: 0 auto; 
+    max-width: 75rem;
+    display: flex;
+    padding-top: 1rem;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-inline: 3rem;
+}
 
-    @media (max-width: 900px){
-        // display: flex;
-        // justify-content: center;
+.network {
+    flex: 1;
+    min-width: 0;
+}
+
+.book-consultation {
+    flex: 0 0 22rem;
+    width: 22rem;
+    max-width: 100%;
+}
+
+.mobile-contact{
+    position: fixed !important;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.whatsapp{
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.call-btn{
+    background-color: var(--primary-100);
+}
+
+@media (max-width: 900px) {
+    .consultation {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2rem;
+        padding-inline: 0;
+    }
+
+    .network {
+        width: 100%;
+    }
+
+    .book-consultation {
+        width: 100%;
+        max-width: 30rem;
+        margin-inline: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .care-container {
+        padding-inline: 0.75rem;
+    }
+
+    .consultation {
+        gap: 1.5rem;
+    }
+
+    .book-consultation {
+        max-width: none;
     }
 }

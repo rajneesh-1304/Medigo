@@ -1,6 +1,5 @@
 .book-consultation-container {
     width: 100%;
-    padding: 1rem;
 
 
     .book-consultation {
@@ -34,5 +33,11 @@
 
     .dialog {
         width: 20rem;
+    }
+
+    .terms-condition {
+        font-size: 0.7rem;
+        font-weight: 400;
+        margin-top: 1rem;
     }
 }

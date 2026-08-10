@@ -22,7 +22,7 @@ const navLinks = [
   { label: "Find Doctors", href: "/doctors" },
   { label: "Video Consult", href: "/consult" },
   { label: "Care Plans", href: "/care" },
-  { label: "Lab Tests", href: "#" },
+  { label: "Lab Tests", href: "/tests" },
   { label: "Surgeries", href: "#" },
 ];
 
