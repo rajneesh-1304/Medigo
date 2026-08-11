@@ -34,6 +34,18 @@
             background-color: var(--primary-500);
             transition: 0.3s ease-in-out;
         }
+
+        @media (max-width: 900px) {
+            padding: 0.5rem 1rem;
+
+            .icon{
+                font-size: 2rem;
+            }
+
+            .lab-test-cart-text{
+                display: none;
+            }
+        }
     }
 
     .lab-test-search-container {
@@ -42,6 +54,7 @@
         justify-content: space-between;
         gap: 1.5rem;
         padding-bottom: 2rem;
+        flex-wrap: wrap;
 
         @media (max-width: 900px) {
             flex-direction: column;
@@ -50,12 +63,13 @@
     }
 
     .lab-test-search-box {
-        flex: 1;
-        max-width: 600px;
+        flex: 1 1 700px;
         width: 100%;
-
+        min-width: 300px;
+        
         @media (max-width: 900px) {
-            max-width: 100%;
+            flex: none;
+            min-width: 100%;
         }
     }
 

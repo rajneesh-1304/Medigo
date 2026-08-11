@@ -149,3 +149,77 @@
     color: var(--neutral-600);
     margin-top: 8px;
 }
+
+.card-vital {
+  border-radius: 12px !important;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  cursor: pointer;
+  transition: box-shadow 0.2s, border-color 0.2s;
+  box-shadow: none !important;
+  border: 1px solid var(--neutral-200);
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+    border-color: var(--primary-300);
+  }
+}
+
+.card-vital-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-vital-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+}
+
+.card-vital-title {
+  font-weight: 600;
+  color: var(--neutral-900);
+  font-size: 1rem;
+}
+
+.card-vital-subtitle {
+  color: var(--neutral-500);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+.card-vital-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+.card-vital-btn {
+  border-radius: 8px !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  color: var(--neutral-700) !important;
+  border-color: var(--neutral-300) !important;
+  padding: 4px 24px !important;
+
+  &:hover {
+    background-color: var(--primary-50) !important;
+    border-color: var(--primary-300) !important;
+    color: var(--primary-700) !important;
+  }
+}

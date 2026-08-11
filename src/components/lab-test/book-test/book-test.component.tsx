@@ -12,8 +12,8 @@ const BookTest = () => {
       <Box className={styles['lab-test-header']}>
         <Typography className={styles['lab-test-title']}>Book Lab Tests Online</Typography>
         <Button variant='outlined' className={styles['lab-test-cart']}>
-          <ShoppingCartIcon />
-          Cart
+          <ShoppingCartIcon className={styles['icon']}/>
+          <Typography component="span" className={styles['lab-test-cart-text']}>Cart</Typography>
         </Button>
       </Box>
       <Box className={styles['lab-test-search-container']}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card as MuiCard, CardContent, CardMedia, Typography, Box } from '@mui/material';
+import { Card as MuiCard, CardContent, CardMedia, Typography, Box, Button } from '@mui/material';
 import styles from './card.module.scss';
 
 interface ReusableCardProps {
@@ -8,7 +8,7 @@ interface ReusableCardProps {
   title: string;
   subtitle?: string;
   actionText?: string;
-  variant?: 'vertical' | 'circular' | 'horizontal' | 'article';
+  variant?: 'vertical' | 'circular' | 'horizontal' | 'article' | 'vital';
   onClick?: () => void;
   bgColor?: string;
 }
@@ -53,6 +53,27 @@ export const ReusableCard: React.FC<ReusableCardProps> = ({
             </Typography>}
             {actionText && <Typography variant="button" className={styles['card-horizontal-action']}>{actionText}</Typography>}
           </CardContent>
+        </Box>
+      </MuiCard>
+    );
+  }
+
+  if (variant === 'vital') {
+    return (
+      <MuiCard className={styles['card-vital']} variant="outlined" onClick={onClick}>
+        <Box className={styles['card-vital-header']}>
+          {image && (
+            <Box className={styles['card-vital-icon']}>
+              <img src={image} alt={title} />
+            </Box>
+          )}
+          <Typography className={styles['card-vital-title']}>{title}</Typography>
+        </Box>
+        <Typography className={styles['card-vital-subtitle']}>{subtitle}</Typography>
+        <Box className={styles['card-vital-footer']}>
+          <Button variant="outlined" size="small" className={styles['card-vital-btn']}>
+            {actionText || 'Book'}
+          </Button>
         </Box>
       </MuiCard>
     );

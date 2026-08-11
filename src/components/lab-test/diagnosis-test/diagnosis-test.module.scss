@@ -1,12 +1,11 @@
 .diagnosis-test-container {
-
 }
 
 .diagnosis-test-title {
     font-size: 1.5rem;
     font-weight: 500;
     margin-bottom: 0.5rem;
-    letter-spacing: -1.5px;;
+    letter-spacing: -1.5px;
 }
 
 .diagnosis-test-reports{
@@ -22,6 +21,7 @@
     align-items: center;
     gap: 0.5rem;
     border-radius: calc(var(--border-radius) * 2px);
+    margin-bottom: 1rem;
 }
 
 .icon{
@@ -29,5 +29,16 @@
 }
 
 .diagnosis-test-list{
-    display: flex;    
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    &::-webkit-scrollbar{
+        display: none;
+    }
+}
+
+.diagnosis-test-card{
+    flex: 0 0 200px;
+    border-radius: calc(var(--border-radius) * 1.5px);
+    border: 1px solid var(--primary-300);    
 }

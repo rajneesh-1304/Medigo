@@ -20,34 +20,36 @@ export const HeroSearch = ({ className, minimal = false }: HeroSearchProps) => {
   const [query, setQuery] = useState('');
 
   const searchBar = (
-    <Box className={`${styles.heroSearchCard} ${className || ''}`}>
-      <Box className={styles.heroSearchField}>
-        <LocationOnRoundedIcon className={styles.heroSearchIcon} />
-        <InputBase
-          placeholder="Your city"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-          className={styles.heroSearchInput}
-          inputProps={{ 'aria-label': 'Select city' }}
-        />
-      </Box>
+    <Box className={`${styles.heroSearchWrapper} ${minimal ? styles.minimal : ''} ${className || ''}`}>
+      <Box className={styles.heroSearchCard}>
+        <Box className={styles.heroSearchField}>
+          <LocationOnRoundedIcon className={styles.heroSearchIcon} />
+          <InputBase
+            placeholder="Your city"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+            className={styles.heroSearchInput}
+            inputProps={{ 'aria-label': 'Select city' }}
+          />
+        </Box>
 
-      <Box className={styles.heroSearchDivider} />
+        <Box className={styles.heroSearchDivider} />
 
-      <Box className={styles.heroSearchField} sx={{ flex: 1 }}>
-        <SearchRoundedIcon className={styles.heroSearchIcon} />
-        <InputBase
-          placeholder="Doctor, specialty, clinic…"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          className={styles.heroSearchInput}
-          inputProps={{ 'aria-label': 'Search doctors' }}
-        />
-      </Box>
+        <Box className={styles.heroSearchField} sx={{ flex: 1.5 }}>
+          <SearchRoundedIcon className={styles.heroSearchIcon} />
+          <InputBase
+            placeholder="Doctor, specialty, clinic…"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className={styles.heroSearchInput}
+            inputProps={{ 'aria-label': 'Search doctors' }}
+          />
+        </Box>
 
-      <Box component="button" className={styles.heroSearchBtn} aria-label="Search">
-        <SearchRoundedIcon />
-        <Typography component="span">Search</Typography>
+        <Box component="button" className={styles.heroSearchBtn} aria-label="Search">
+          <SearchRoundedIcon />
+          <Typography component="span">Search</Typography>
+        </Box>
       </Box>
     </Box>
   );

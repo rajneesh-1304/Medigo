@@ -1,8 +1,9 @@
-import { Box, Divider, Typography } from '@mui/material'
+import { Box, Divider, Step, StepLabel, Stepper, Typography } from '@mui/material'
 import NearMeIcon from '@mui/icons-material/NearMe';
 import ForumIcon from '@mui/icons-material/Forum';
 import FollowTheSignsIcon from '@mui/icons-material/FollowTheSigns';
 import styles from './work.module.scss';
+import StepperComponent from '@/components/general/mui/stepper/stepper.component';
 
 const Work = () => {
     const data = [
@@ -24,30 +25,26 @@ const Work = () => {
         }
     ];
 
+    const steps = [
+        {
+            "label": "Select a speciality or symptom",
+            "icon": <NearMeIcon />
+        },
+        {
+            "label": "Audio/ video call with a verified doctor",
+            "icon": <ForumIcon />
+        },
+        {
+            "label": "Get a digital prescription & a free follow-up",
+            "icon": <FollowTheSignsIcon />
+        }
+    ];
+
     return (
         <>
             <Box className={styles['work-container']}>
                 <Typography className={styles['work-title']}>How it works</Typography>
-                <Box className={styles['work-steps']}>
-                    <Box className={styles['step']}>
-                        <Box className={styles['icon-box']}>
-                            <NearMeIcon />
-                        </Box>
-                        <Typography className={styles['work-text']}>Select a speciality or symptom</Typography>
-                    </Box>
-                    <Box className={styles['step']}>
-                        <Box className={styles['icon-box']}>
-                            <ForumIcon />
-                        </Box>
-                        <Typography className={styles['work-text']}>Audio/ video call with a verified doctor</Typography>
-                    </Box>
-                    <Box className={styles['step']}>
-                        <Box className={styles['icon-box']}>
-                            <FollowTheSignsIcon />
-                        </Box>
-                        <Typography className={styles['work-text']}>Get a digital prescription & a free follow-up</Typography>
-                    </Box>
-                </Box>
+                <StepperComponent steps={steps} />
             </Box>
             <Box className={styles['stats-container']}>
                 {data.map((item, idx) => (

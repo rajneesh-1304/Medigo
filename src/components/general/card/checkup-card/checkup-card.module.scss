@@ -1,0 +1,103 @@
+.checkup-card-container {
+    height: 100%;
+    position: relative;
+}
+
+.checkup-card-image-container {
+    width: 100%;
+    max-height: 250px;
+
+    .image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: calc(var(--border-radius)*1.5px);
+    }
+}
+
+.checkup-card-discount {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    background: var(--primary-600);
+    color: white;
+    padding-inline: 0.5rem;
+    border-radius: calc(var(--border-radius)*1px);
+
+}
+
+.discount {
+    font-size: 0.8rem;
+    letter-spacing: 0.1px;
+}
+
+.checkup-card-content {
+    padding: 0.3rem 1rem 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 300px;
+}
+
+.checkup-card-tests-included {
+    padding: 0.3rem 0.8rem;
+    text-align: center;
+}
+
+.includes {
+    width: 100%;
+    background-color: var(--primary-200);
+    border-radius: calc(var(--border-radius)*0.5px);
+    font-size: 0.8rem;
+}
+
+.checkup-card-info {
+
+    .checkup-card-title {
+        font-size: 1rem;
+        font-weight: 600;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: block;
+        width: 100%;
+    }
+
+    .checkup-card-age-group {
+        font-size: 0.8rem;
+        color: var(--neutral-500);
+        padding-block: 0 0.4rem;
+    }
+}
+
+.checkup-card-price {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    .checkup-card-price-info {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .checkup-card-price-original {
+        text-decoration: line-through;
+        color: var(--neutral-500);
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+}
+
+.checkup-card-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .checkup-card-book-button {
+        width: 100%;
+        background-color: var(--primary-600);
+        color: white;
+        border-radius: calc(var(--border-radius)*1px);
+    }
+}

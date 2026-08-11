@@ -10,4 +10,14 @@
     max-width: 80vw;
     padding-inline: 5rem;
     width: 100%;
+    background: linear-gradient(
+        to right, 
+        transparent 0%,
+        var(--primary-100) 50%,
+        transparent 100%);
+
+    @media (max-width: 900px) {
+        padding-inline: 1rem;
+        max-width: 100vw;
+    }
 }

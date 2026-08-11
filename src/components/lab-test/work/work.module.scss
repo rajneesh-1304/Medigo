@@ -1,0 +1,22 @@
+.container {
+    padding-block: 1rem;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        var(--primary-300) 50%,
+        transparent 100%
+    );
+    
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .work-title{
+        font-size: 1.8rem;
+        font-weight: 550;
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+
+}
