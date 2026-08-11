@@ -1,13 +1,13 @@
 .step-label {
     padding: 0.5rem;
-    
+
     @media (max-width: 900px) {
         padding: 0.5rem 1rem;
         font-size: 0.7rem;
     }
 }
 
-.step-icon{
+.step-icon {
     background-color: var(--primary-200) !important;
     display: flex;
     align-items: center;

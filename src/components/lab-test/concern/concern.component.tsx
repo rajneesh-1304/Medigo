@@ -6,6 +6,7 @@ import { ReusableCard } from '@/components/general/card/card.component'
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
+import ReviewCard from '@/components/general/card/review-card/review-card.component'
 
 const vitalCheckups = [
     {
@@ -95,12 +96,11 @@ const Concern = () => {
                 <Typography className={styles['concern-title']}>Why Book With Us?</Typography>
                 <Box className={styles['benefit-list']}>
                     {benefits.map((benefit, idx) => (
-                        <Box className={styles['benefit-card']} key={idx}>
-                            <Box className={styles['benefit-icon']}>
-                                {benefit.icon}
-                            </Box>
-                            <Typography className={styles['benefit-title']}>{benefit.text}</Typography>
-                        </Box>
+                       <ReviewCard
+                        key={idx}
+                        icon={benefit.icon}
+                        text={benefit.text}
+                       />
                     ))}
                 </Box>
             </Box>

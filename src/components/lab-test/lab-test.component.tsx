@@ -5,6 +5,7 @@ import { DiagnosisTest } from './diagnosis-test/diagnosis-test.component'
 import PopularTest from './popular-test/popular-test.component'
 import Work from './work/work.component'
 import Concern from './concern/concern.component'
+import Reviews from './reviews/reviews.component'
 
 
 const LabTest = () => {
@@ -15,6 +16,7 @@ const LabTest = () => {
             <PopularTest />
             <Work/>
             <Concern />
+            <Reviews />
         </Box>
     )
 }
