@@ -1,0 +1,125 @@
+.container {
+  min-height: 95vh;
+  padding: 2.5rem;
+  background-color: var(--neutral-100);
+}
+
+.form {
+  width: 100%;
+  max-width: 76rem;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 1.5rem;
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--neutral-900);
+}
+
+.info{
+    font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--neutral-900);
+  margin-bottom: 1rem;
+}
+
+.saveButton {
+  min-width: 8.5rem;
+  padding: 0.55rem 1.25rem;
+  border-radius: calc(var(--border-radius) * 1px);
+  text-transform: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.section {
+  padding: 2rem;
+  margin-bottom: 1rem;
+  background-color: var(--white);
+  border: 1px solid var(--neutral-200);
+  border-radius: calc(var(--border-radius) * 1.5px);
+}
+
+.sectionTitle {
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--neutral-800);
+}
+
+.fieldLabel {
+  margin-bottom: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--neutral-500);
+}
+
+.profilePhoto {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 4.5rem;
+  height: 4.5rem;
+  border: 1px solid var(--neutral-200);
+  font-size: 1.35rem;
+  background-color: var(--neutral-100);
+}
+
+.photoText {
+  max-width: 12rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--neutral-400);
+}
+
+.uploadButton {
+  min-width: 0;
+  padding: 0;
+  color: var(--primary-500);
+  text-transform: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+@media (max-width: 48rem) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header {
+    padding-bottom: 1rem;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .section {
+    padding: 1.25rem;
+  }
+
+  .saveButton {
+    min-width: auto;
+  }
+
+  .profilePhoto {
+    align-items: flex-start;
+  }
+}

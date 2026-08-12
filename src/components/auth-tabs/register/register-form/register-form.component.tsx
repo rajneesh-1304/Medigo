@@ -7,6 +7,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styles from "./register-form.module.scss";
 import Divider from "@mui/material/Divider";
+import { useState } from "react";
 
 const registerSchema = z.object({
   fullName: z
@@ -25,6 +26,8 @@ const registerSchema = z.object({
 type RegisterFormData = z.infer<typeof registerSchema>;
 
 export const RegisterForm = () => {
+  const [patient, setPatient] = useState(true);
+
   const {
     control,
     handleSubmit,
@@ -53,9 +56,9 @@ export const RegisterForm = () => {
     >
       <Box className={styles.formBox}>
         <Box className={styles.header}>
-          <Typography variant="h2" className={styles.title}>Join Medigo</Typography>
+          <Typography variant="h2" className={patient ? styles.title : styles.join}>{patient ? "Join Medigo" : "Join 125,000+ doctors"}</Typography>
           <Typography className={styles.subtitle}>
-            Are you a doctor?{" "}
+            <Typography component="span" onClick={() => setPatient(!patient)}>{patient ? "Are you a doctor?  ": "Not a doctor?  "}</Typography>
             <Typography component="span" className={styles.link}>Register here</Typography>
           </Typography>
         </Box>

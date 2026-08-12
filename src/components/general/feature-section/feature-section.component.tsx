@@ -38,32 +38,32 @@ const FeatureSection = ({
 }: FeatureSectionProps) => {
   return (
     <Box
-      className={`${styles["feature-section"]} ${
-        reverse ? styles["reverse"] : ""
-      }`}
+      className={`${styles["feature-section"]} ${reverse ? styles["reverse"] : ""
+        }`}
       sx={{ backgroundColor }}
     >
       <Box className={styles["content"]}>
         <Box className={styles["heading"]}>{title}</Box>
 
-        <Box className={styles["points"]}>
-          {points.map((point, index) => (
-            <Box key={index} className={styles["point"]}>
-              <DoneIcon color="primary" />
+        <Box className={styles["points-container"]}>
+          <Box className={styles["points"]}>
+            {points.map((point, index) => (
+              <Box key={index} className={styles["point"]}>
+                <DoneIcon color="primary" />
 
-              {point.number && (
-                <Box className={styles["number"]}>{point.number}</Box>
-              )}
+                {point.number && (
+                  <Box className={styles["number"]}>{point.number}</Box>
+                )}
 
-              <Box className={styles["text"]}>{point.text}</Box>
-            </Box>
-          ))}
+                <Box className={styles["text"]}>{point.text}</Box>
+              </Box>
+            ))}
+          </Box>
         </Box>
 
         <Box
-          className={`${styles["buttons"]} ${
-            icon ? styles["with-icon"] : ""
-          }`}
+          className={`${styles["buttons"]} ${icon ? styles["with-icon"] : ""
+            }`}
         >
           <Button variant="contained" onClick={onButtonClick}>
             {buttonText}

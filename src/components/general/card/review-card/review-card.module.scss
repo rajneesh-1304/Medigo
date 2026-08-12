@@ -1,15 +1,10 @@
 .benefit-card {
-        flex: 0 0 250px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem;
-
-        @media (max-width: 600px) {
-            flex: 0 0 200px;
-        }
-    }
+    flex: 0 0 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
 
     .benefit-icon {
         display: flex;
@@ -33,3 +28,8 @@
         color: var(--neutral-900);
         text-align: center;
     }
+
+    @media (max-width: 600px) {
+        flex: 0 0 200px;
+    }
+}

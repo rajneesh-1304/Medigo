@@ -5,6 +5,9 @@ import { Box, Container, InputBase, Typography } from '@mui/material';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
 import styles from './hero-search.module.scss';
+import { useDispatch } from 'react-redux';
+import { fetchLocationApi } from '@/store/features/locations';
+import { useAppDispatch } from '@/hooks/redux-hook';
 
 interface HeroSearchProps {
   className?: string;
@@ -18,6 +21,12 @@ const quickSearchTags = [
 export const HeroSearch = ({ className, minimal = false }: HeroSearchProps) => {
   const [location, setLocation] = useState('');
   const [query, setQuery] = useState('');
+  const dispatch = useAppDispatch();
+
+  const handleSearch = () => {
+    dispatch(fetchLocationApi(location));
+  };
+  
 
   const searchBar = (
     <Box className={`${styles.heroSearchWrapper} ${minimal ? styles.minimal : ''} ${className || ''}`}>
@@ -48,7 +57,7 @@ export const HeroSearch = ({ className, minimal = false }: HeroSearchProps) => {
 
         <Box component="button" className={styles.heroSearchBtn} aria-label="Search">
           <SearchRoundedIcon />
-          <Typography component="span">Search</Typography>
+          <Typography component="span" onClick={handleSearch}>Search</Typography>
         </Box>
       </Box>
     </Box>

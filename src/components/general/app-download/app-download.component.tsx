@@ -32,13 +32,15 @@ const DownloadPage = ({ image, title, subtitle, data }: DownloadProps) => {
                         {subtitle}
                     </Typography>
                 }
-                <Box className={styles['points']}>
+                <Box className={styles['points-container']}>
+                    <Box className={styles['points']}>
                     {data.map((item, index) => (
                         <Box key={index} className={styles['app-download-item']}>
                             <Box className={styles['app-download-icon']}><DoneIcon /></Box>
                             <Box className={styles['app-download-text']}>{item.text}</Box>
                         </Box>
                     ))}
+                </Box>
                 </Box>
                 <Box className={styles['stores']}>
                     <Box className={styles['app-download-stores']}>

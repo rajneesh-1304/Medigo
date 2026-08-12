@@ -3,7 +3,7 @@ import NearMeIcon from '@mui/icons-material/NearMe';
 import ForumIcon from '@mui/icons-material/Forum';
 import FollowTheSignsIcon from '@mui/icons-material/FollowTheSigns';
 import styles from './work.module.scss';
-import StepperComponent from '@/components/general/mui/stepper/stepper.component';
+import StepperComponent from '@/components/ui/stepper/stepper.component';
 
 const Work = () => {
     const data = [

@@ -1,8 +1,9 @@
+'use client';
+
 import { Footer } from "@/components/layout/footer/footer.component";
 import './global.styles.scss';
 import Header from "@/components/layout/header/header.component";
-import ThemeProviderWrapper from "@/theme/theme-provider";
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { AppProvider } from "@/providers/app-provider";
 export default function RootLayout({
     children,
 }: Readonly<{
@@ -10,14 +11,12 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" >
-            <body suppressHydrationWarning>
-                <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-                    <ThemeProviderWrapper>
-                        <Header />
+            <body>
+                <AppProvider>
+                    <Header />
                         {children}
                         <Footer />
-                    </ThemeProviderWrapper>
-                </AppRouterCacheProvider>
+                </AppProvider>
             </body>
         </html>
     )

@@ -6,14 +6,22 @@ import { useRouter } from "next/navigation"
 import { AuthTabs } from "@/components/auth-tabs/auth-tabs.component"
 
 export const LoginPage = () => {
-    const router = useRouter();
-
     return (
-        <Box>
-            <AuthTabs />
-            <Box className={styles["mainBox"]}>
-                <Image src="/login.png" alt="" width={400} height={400} />
-                <LoginForm />
+        <Box className={styles.splitScreen}>
+            <Box className={styles.leftPane}>
+                <Typography className={styles.leftTitle}>Medigo</Typography>
+                <Typography className={styles.leftSubtitle}>
+                    The whole world, one fast API.
+                </Typography>
+                <Typography className={styles.leftText}>
+                    Countries, states, and cities — comprehensive, structured, and ready to drop into your product.
+                </Typography>
+            </Box>
+            <Box className={styles.rightPane}>
+                <Box className={styles.formContainer}>
+                    <AuthTabs />
+                    <LoginForm />
+                </Box>
             </Box>
         </Box>
     )

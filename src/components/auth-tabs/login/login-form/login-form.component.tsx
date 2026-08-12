@@ -7,7 +7,6 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styles from "./login-form.module.scss";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
 const loginSchema = z.object({
   username: z
@@ -15,10 +14,18 @@ const loginSchema = z.object({
     .min(1, "Mobile Number is required")
     .length(10, "Mobile Number must be exactly 10 digits")
     .regex(/^[0-9]+$/, "Must be a valid number"),
-  password: z.string().min(8, "Password must be at least 8 characters"),
+  password: z.string().optional(),
   remember: z.boolean().optional(),
   otpLogin: z.boolean().optional(),
-});
+  }).superRefine((data, ctx) => {
+    if (!data.otpLogin && (!data.password || data.password.length < 8)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["password"],
+        message: "Password must be at least 8 characters",
+      });
+    }
+  });
 
 type LoginFormData = z.infer<typeof loginSchema>;
 
@@ -29,6 +36,9 @@ export const LoginForm = () => {
     handleSubmit,
     formState: { errors },
     reset,
+    watch,
+    setValue,
+    clearErrors
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -39,12 +49,12 @@ export const LoginForm = () => {
     },
   });
 
+  const otpLogin = watch("otpLogin");
+
   const onSubmit = (data: LoginFormData) => {
     reset();
     console.log("Login Data:", data);
   };
-
-  const [loginWithOtp, setLoginWithOtp] = useState(true);
 
   return (
     <Box
@@ -80,11 +90,11 @@ export const LoginForm = () => {
         </Box>
 
         <Box className={styles.fieldGroup}>
-          <Typography component="label" className={styles.label} style={{ opacity: !loginWithOtp ? 0.5 : 1 }}>Password</Typography>
+          <Typography component="label" className={styles.label} style={{ opacity: otpLogin ? 0.5 : 1 }}>Password</Typography>
           <Controller
             name="password"
             control={control}
-            disabled={!loginWithOtp}
+            disabled={otpLogin}
             render={({ field }) => (
               <TextField
                 {...field}
@@ -101,11 +111,11 @@ export const LoginForm = () => {
 
         <Box className={styles.infoBox}>
           <Box className={styles.rememberRow}>
-            <Typography component="label" className={styles.checkboxContainer} style={{ opacity: !loginWithOtp ? 0.5 : 1 }}>
+            <Typography component="label" className={styles.checkboxContainer} style={{ opacity: otpLogin ? 0.5 : 1 }}>
               <Controller
                 name="remember"
                 control={control}
-                disabled={!loginWithOtp}
+                disabled={otpLogin}
                 render={({ field: { value, onChange, ...field } }) => (
                   <Checkbox
                     {...field}
@@ -116,7 +126,7 @@ export const LoginForm = () => {
               />
               Remember me
             </Typography>
-            <Typography component="span" className={styles.forgotText}  style={{ opacity: !loginWithOtp ? 0.5 : 1 }} onClick={() => router.push("/forgot-password")}>Forgot password?</Typography>
+            <Typography component="span" className={styles.forgotText}  style={{ opacity: otpLogin ? 0.5 : 1 }} onClick={() => router.push("/forgot-password")}>Forgot password?</Typography>
           </Box>
 
           <Typography component="label" className={styles.otpOption}>
@@ -127,8 +137,15 @@ export const LoginForm = () => {
                 <Checkbox
                   {...field}
                   checked={value}
-                  onChange={onChange}
-                  onClick={() => setLoginWithOtp(!loginWithOtp)}
+                  onChange={(event) => {
+                    const checked = event.target.checked;
+                    onChange(checked);
+
+                    if (checked) {
+                      setValue("password", "");
+                      clearErrors("password");
+                    }
+                  }}
                 />
               )}
             />

@@ -60,6 +60,15 @@
   margin: 0;
 }
 
+.points-container{
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 900px) {
+    align-items: center;
+  }
+}
+
 .points {
   display: flex;
   flex-direction: column;
@@ -67,7 +76,7 @@
   width: 100%;
 
   @media (max-width: 900px) {
-    align-items: center;
+    align-items: flex-start;
   }
 }
 

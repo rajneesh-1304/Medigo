@@ -1,4 +1,4 @@
-import StepperComponent from '@/components/general/mui/stepper/stepper.component'
+import StepperComponent from '@/components/ui/stepper/stepper.component'
 import { Box, Typography } from '@mui/material'
 import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
 import BookOnlineIcon from "@mui/icons-material/BookOnline";
@@ -26,7 +26,7 @@ const Work = () => {
         <Box className={styles['container']}>
             <Box className={styles['work-container']}>
                 <Typography className={styles['work-title']}>How it works</Typography>
-                <StepperComponent steps={steps}/>
+                <StepperComponent steps={steps} />
             </Box>
         </Box>
     )
