@@ -1,31 +1,80 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { Box, Container, InputBase, Typography } from '@mui/material';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
 import styles from './hero-search.module.scss';
-import { useDispatch } from 'react-redux';
 import { fetchLocationApi } from '@/store/features/locations';
-import { useAppDispatch } from '@/hooks/redux-hook';
+import { useAppDispatch, useAppSelector } from '@/hooks/redux-hook';
+import { Autocomplete } from '@/components/ui/autocomplete_component/autocomplete.component';
+import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
+import { useRouter, useSearchParams } from 'next/navigation';
 
 interface HeroSearchProps {
   className?: string;
   minimal?: boolean;
 }
 
-const quickSearchTags = [
-  'Cardiologist', 'Dermatologist', 'Dentist', 'Psychiatrist', 'General Physician',
+interface Specialist {
+  id: string;
+  name: string;
+}
+
+const quickSearchTags: Specialist[] = [
+  {
+    id: "1",
+    name: "Cardiologist"
+  },
+  {
+    id: "2",
+    name: "Dermatologist"
+  },
+  {
+    id: "3",
+    name: "Dentist"
+  },
+  {
+    id: "4",
+    name: "Psychiatrist"
+  },
+  {
+    id: "5",
+    name: "General Physician"
+  },
 ];
 
-export const HeroSearch = ({ className, minimal = false }: HeroSearchProps) => {
-  const [location, setLocation] = useState('');
-  const [query, setQuery] = useState('');
-  const dispatch = useAppDispatch();
+interface Location {
+  id: string;
+  name: string;
+}
 
+const HeroSearchContent = ({ className, minimal = false }: HeroSearchProps) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  
+  const initialLocation = searchParams.get('location');
+  const initialSpecialist = searchParams.get('specialist');
+
+  const [location, setLocation] = useState<Location | null>(initialLocation ? { id: initialLocation, name: initialLocation } : null);
+  const [speciality, setSpeciality] = useState<Specialist | null>(initialSpecialist ? { id: initialSpecialist, name: initialSpecialist } : null);
+  const dispatch = useAppDispatch();
+  const locations = useAppSelector((state) => state.location.locationData);
+  
   const handleSearch = () => {
-    dispatch(fetchLocationApi(location));
+    const params = new URLSearchParams();
+    if (location?.name) {
+      params.set('location', location.name);
+    }
+    if (speciality?.name) {
+      params.set('specialist', speciality.name);
+    }
+    router.push(`/doctors/search?${params.toString()}`);
+    dispatch(fetchLocationApi(location?.name || ""));
   };
+
+  useEffect(() => {
+    dispatch(fetchLocationApi(location?.name || ""));
+  }, []);
   
 
   const searchBar = (
@@ -33,12 +82,14 @@ export const HeroSearch = ({ className, minimal = false }: HeroSearchProps) => {
       <Box className={styles.heroSearchCard}>
         <Box className={styles.heroSearchField}>
           <LocationOnRoundedIcon className={styles.heroSearchIcon} />
-          <InputBase
-            placeholder="Your city"
+          <Autocomplete
+            placeholder="Select city"
+            options={locations}
             value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            className={styles.heroSearchInput}
-            inputProps={{ 'aria-label': 'Select city' }}
+            onChange={(value) => setLocation(value)}
+            valueKey="id"
+            labelKey="name"
+            icon={<LocationOnRoundedIcon className={styles.heroSearchIcon} />}
           />
         </Box>
 
@@ -46,12 +97,15 @@ export const HeroSearch = ({ className, minimal = false }: HeroSearchProps) => {
 
         <Box className={styles.heroSearchField} sx={{ flex: 1.5 }}>
           <SearchRoundedIcon className={styles.heroSearchIcon} />
-          <InputBase
-            placeholder="Doctor, specialty, clinic…"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            className={styles.heroSearchInput}
-            inputProps={{ 'aria-label': 'Search doctors' }}
+
+          <Autocomplete
+            placeholder="Doctor, specialit..."
+            options={quickSearchTags}
+            value={speciality}
+            onChange={(value) => setSpeciality(value)}
+            valueKey="id"
+            labelKey="name"
+            icon={<SearchRoundedIcon className={styles.heroSearchIcon} />}
           />
         </Box>
 
@@ -95,11 +149,11 @@ export const HeroSearch = ({ className, minimal = false }: HeroSearchProps) => {
           {quickSearchTags.map((tag) => (
             <Box
               component="button"
-              key={tag}
+              key={tag.id}
               className={styles.heroTag}
-              onClick={() => setQuery(tag)}
+              onClick={() => setSpeciality(tag)}
             >
-              {tag}
+              {tag.name}
             </Box>
           ))}
         </Box>
@@ -119,5 +173,13 @@ export const HeroSearch = ({ className, minimal = false }: HeroSearchProps) => {
         </Box>
       </Container>
     </Box>
+  );
+};
+
+export const HeroSearch = (props: HeroSearchProps) => {
+  return (
+    <Suspense fallback={<div>Loading search...</div>}>
+      <HeroSearchContent {...props} />
+    </Suspense>
   );
 };

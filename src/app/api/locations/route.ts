@@ -8,14 +8,21 @@ export async function POST(request: NextRequest) {
         //     // headers: { 'X-CSCAPI-KEY': process.env.LOCATION_API_KEY as string }
         // });
         const apikey = process.env.LOCATION2_API_KEY;
-        const response = await axios.get(`https://api.geoapify.com/v1/geocode/autocomplete?text=${search}&type=city&filter=countrycode:in&limit=10&apiKey=${apikey}`, {
-            // headers: { 'X-CSCAPI-KEY': process.env.LOCATION_API_KEY as string }
-        });
-        const countries = await response.data;
+        const response =
+            !search ?
+                await axios.get("https://api.countrystatecity.in/v1/countries/IN/states",
+                    {
+                        headers: {
+                            "X-CSCAPI-KEY": process.env.LOCATION_API_KEY!,
+                        },
+                    }
+                )
+                :
+                await axios.get(`https://api.geoapify.com/v1/geocode/autocomplete?text=${search}&type=city&filter=countrycode:in&limit=10&apiKey=${apikey}`);
+        
+        const states = await response.data;
+        return NextResponse.json(states);
 
-        console.log(countries, "coutnires");
-
-        return NextResponse.json(countries);
     } catch (error: any) {
         console.log("Error: ", error);
         return NextResponse.json(

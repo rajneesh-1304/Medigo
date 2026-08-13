@@ -1,13 +1,11 @@
-'use client';
-
-import Profile from '@/components/profile/user-profile/user-profile.component';
+import DoctorProfile from '@/components/profile/doctor-profile/doctor-profile.component'
 import { Box } from '@mui/material'
 import React from 'react'
 
 const page = () => {
   return (
     <Box>
-        <Profile/>
+        <DoctorProfile/>
     </Box>
   )
 }

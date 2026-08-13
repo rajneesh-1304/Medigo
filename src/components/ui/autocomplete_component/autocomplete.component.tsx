@@ -2,23 +2,26 @@
 
 import React, { useState } from 'react'
 import MuiAutocomplete from "@mui/material/Autocomplete";
-import { MenuItem, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Chip, CircularProgress, InputAdornment, MenuItem, TextField, Tooltip, Typography } from '@mui/material';
 import styles from './autocomplete.module.scss';
 import SearchIcon from '@mui/icons-material/Search';
 
 interface AutoCompleteProps<T> {
     options: T[];
-    value: T[];
+    value: T | null;
     inputValue?: string;
-    onChange: (value: T[]) => void;
+    onChange: (value: T | null) => void;
     limitTags?: number;
     placeholder?: string;
     onOpen?: () => void;
+    valueKey: keyof T;
+    labelKey: keyof T;
     loading?: boolean;
     hasMore?: boolean;
     getOptionLabel?: (option: T) => string;
     onSearchChange?: (search: string) => void;
     disabled?: boolean;
+    icon?: React.ReactNode;
 }
 
 
@@ -27,61 +30,91 @@ export const Autocomplete = <T extends Record<string, any>>({
     value,
     inputValue,
     onChange,
-    limitTags,
+    limitTags = 1,
     placeholder = "",
     onOpen,
+    valueKey,
+    labelKey,
     loading = false,
     hasMore = false,
     getOptionLabel,
     onSearchChange,
-    disabled = false
+    disabled = false,
+    icon
 }: AutoCompleteProps<T>) => {
+    // const getMenuOptionLabel = (option: T) => {
+    //     if (getOptionLabel) return getOptionLabel(option);
+    //     // if (labelKey) return option[labelKey];
+    //     else return option["label"] || "";
+    // };
+    console.log(options, 'fasd');
     const getMenuOptionLabel = (option: T) => {
-        if (getOptionLabel) return getOptionLabel(option);
-        // if (labelKey) return option[labelKey];
-        else return option["label"] || "";
+        if (getOptionLabel) {
+            return getOptionLabel(option);
+        }
+
+        return String(option[labelKey] ?? "");
     };
 
     const [localInputValue, setLocalInputValue] = useState("");
 
     return (
         <MuiAutocomplete
-            multiple
             options={options}
             value={value}
             size="small"
+            fullWidth
             disableCloseOnSelect
             getOptionLabel={getMenuOptionLabel}
             filterOptions={(options) => options}
             autoHighlight={false}
+
             onChange={(_, selected) => {
                 onChange(selected);
             }}
             onOpen={() => onOpen?.()}
             onClose={() => setLocalInputValue("")}
-            // renderTags={(selected: T[], getTagProps) => {
-
-            // }}
-            renderOption={(props, option) => {
-                const isSelected = value.some(
-                    (val) => val[valuekey] === option[valuekey]
+            noOptionsText={
+                loading ? (
+                    <Box>
+                        <CircularProgress
+                            size={16}
+                        />
+                    </Box>
+                ) : (
+                    <Typography
+                        component="span"
+                        variant="body2"
+                    >
+                        No options
+                    </Typography>
                 )
-                const {key, ...restProps} = props;
+            }
+            renderOption={(props, option) => {
+                const isSelected = value?.[valueKey] === option[valueKey];
+                const { key, ...restProps } = props;
                 const optionLabel = getMenuOptionLabel(option);
+
                 return (
-                    <MenuItem
+                    <Box
+                        component="li"
                         key={key}
                         {...restProps}
-                        className={isSelected ? styles.selectedOption : ""}
+                        className={`${styles.optionItem} ${isSelected ? styles.selectedOption : ""
+                            }`}
                     >
-                        <SearchIcon />
-                        <Tooltip title={getOptionLabel?.(option)} placement='top' enterTouchDelay={0}>
+                        {icon}
+                        <Tooltip
+                            title={optionLabel}
+                            placement="bottom-start"
+                            enterTouchDelay={0}
+                        >
                             <Typography className={styles.option}>
                                 {optionLabel}
                             </Typography>
                         </Tooltip>
-                    </MenuItem>
-                )
+                    </Box>
+                );
             }}
             renderInput={(params) => (
                 <TextField

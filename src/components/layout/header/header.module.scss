@@ -11,6 +11,11 @@
   transition: background 0.3s ease, box-shadow 0.3s ease;
 
   &.scrolled {
+    width: calc(100% - 20px);
+    left: 10px;
+    top: 10px;
+
+    border-radius: 20px;
     background: color-mix(in srgb, var(--primary-900) 97%, transparent);
     box-shadow: 0 4px 32px color-mix(in srgb, var(--primary-900) 22%, transparent);
   }
@@ -34,7 +39,6 @@
   }
 }
 
-/* ---- Logo ---- */
 .headerLogoBtn {
   display: flex;
   align-items: center;
@@ -72,7 +76,6 @@
   color: var(--primary-300);
 }
 
-/* ---- Desktop nav ---- */
 .headerNav {
   display: flex;
   align-items: center;
@@ -109,7 +112,6 @@
   background: color-mix(in srgb, var(--primary-300) 12%, transparent) !important;
 }
 
-/* ---- Right side ---- */
 .headerRightSide {
   margin-left: auto;
   flex-shrink: 0;
@@ -161,7 +163,6 @@
   }
 }
 
-/* ---- Mobile hamburger ---- */
 .headerMenuBtn {
   display: none !important;
   color: var(--white) !important;
@@ -172,7 +173,6 @@
   }
 }
 
-/* ---- Mobile Drawer ---- */
 .headerDrawer {
   width: 300px;
   background: var(--primary-800) !important;

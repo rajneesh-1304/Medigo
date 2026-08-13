@@ -1,10 +1,10 @@
 import { Avatar, Box, Button, Grid, TextField, Typography } from "@mui/material";
 import { Form, useForm } from "react-hook-form";
-import styles from './profile.module.scss';
-import SelectComponent from "../ui/select_component/select.component";
-import { ProfileFormSchemaValues, profileSchema } from "./profile.schema";
+import styles from './user-profile.module.scss';
+import { ProfileFormSchemaValues, profileSchema } from "./user-profile.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import SelectComponent from "@/components/ui/select_component/select.component";
 
 const genderOptions = [
     { label: "Male", value: "male" },

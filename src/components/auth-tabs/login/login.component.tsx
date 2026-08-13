@@ -19,7 +19,7 @@ export const LoginPage = () => {
             </Box>
             <Box className={styles.rightPane}>
                 <Box className={styles.formContainer}>
-                    <AuthTabs />
+                    {/* <AuthTabs /> */}
                     <LoginForm />
                 </Box>
             </Box>

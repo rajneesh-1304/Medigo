@@ -18,7 +18,7 @@ export const Register = () => {
             </Box>
             <Box className={styles.rightPane}>
                 <Box className={styles.formContainer}>
-                    <AuthTabs />
+                    {/* <AuthTabs /> */}
                     <RegisterForm />
                 </Box>
             </Box>

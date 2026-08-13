@@ -1,16 +1,15 @@
 .loginForm {
-  width: 25vw;
-  min-width: 360px;
-  padding: 2.5rem 2rem;
+  flex:1;
+  padding: 16px;
   border-radius: 16px;
-  background: var(--white);
-  border: 1px solid var(--neutral-200);
-  box-shadow: 0 10px 30px color-mix(in srgb, var(--neutral-900) 4%, transparent);
+  // background: var(--white);
+  // border: 1px solid var(--neutral-200);
+  // box-shadow: 0 10px 30px color-mix(in srgb, var(--neutral-900) 4%, transparent);
 
   @media (max-width: 900px) {
     width: 100%;
     max-width: 400px;
-    padding: 2rem 1.5rem;
+    padding: 1rem;
   }
 }
 

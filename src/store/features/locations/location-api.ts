@@ -9,6 +9,7 @@ export const fetchLocationApi = createAsyncThunk(
                 "/api/locations",
                 { search }
             );
+            console.log(response?.data)
             return { response: response?.data }
         } catch (error: any) {
             const errorMessage = error?.response?.data || error?.message;
