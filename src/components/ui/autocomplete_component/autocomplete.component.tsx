@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react'
 import MuiAutocomplete from "@mui/material/Autocomplete";
-import { Box, Chip, CircularProgress, InputAdornment, MenuItem, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Chip, CircularProgress, IconButton, InputAdornment, MenuItem, TextField, Tooltip, Typography } from '@mui/material';
 import styles from './autocomplete.module.scss';
-import SearchIcon from '@mui/icons-material/Search';
+import { Clear } from "@mui/icons-material";
 
 interface AutoCompleteProps<T> {
     options: T[];
@@ -22,6 +22,7 @@ interface AutoCompleteProps<T> {
     onSearchChange?: (search: string) => void;
     disabled?: boolean;
     icon?: React.ReactNode;
+    variant?: 'small' | 'medium';
 }
 
 
@@ -39,6 +40,7 @@ export const Autocomplete = <T extends Record<string, any>>({
     hasMore = false,
     getOptionLabel,
     onSearchChange,
+    variant="medium",
     disabled = false,
     icon
 }: AutoCompleteProps<T>) => {
@@ -47,7 +49,6 @@ export const Autocomplete = <T extends Record<string, any>>({
     //     // if (labelKey) return option[labelKey];
     //     else return option["label"] || "";
     // };
-    console.log(options, 'fasd');
     const getMenuOptionLabel = (option: T) => {
         if (getOptionLabel) {
             return getOptionLabel(option);
@@ -62,13 +63,17 @@ export const Autocomplete = <T extends Record<string, any>>({
         <MuiAutocomplete
             options={options}
             value={value}
-            size="small"
+            size={variant}
             fullWidth
-            disableCloseOnSelect
+            forcePopupIcon={false}
             getOptionLabel={getMenuOptionLabel}
             filterOptions={(options) => options}
             autoHighlight={false}
-
+            sx={{
+                '& .MuiOutlinedInput-notchedOutline': {
+                    border: 'none'
+                }
+            }}
             onChange={(_, selected) => {
                 onChange(selected);
             }}
@@ -119,9 +124,34 @@ export const Autocomplete = <T extends Record<string, any>>({
             renderInput={(params) => (
                 <TextField
                     {...params}
-                    label={placeholder}
+                    label={icon ? '' : placeholder}
+                    placeholder={icon ? placeholder : ''}
                     disabled={disabled}
                     className={styles.textfield}
+                    slotProps={{
+                        ...params.slotProps,
+                        input: {
+                            ...params.slotProps?.input,
+                            startAdornment: icon ? (
+                                <InputAdornment position="start">
+                                    {icon}
+                                </InputAdornment>
+                            ) : params.slotProps?.input?.startAdornment,
+                            endAdornment: (
+                                <>
+                                    {loading && <CircularProgress size={16} />}
+                                    {value && (
+                                        <IconButton
+                                            size="small"
+                                            onClick={() => onChange(null)}
+                                        >
+                                            <Clear sx={{ fontSize: "20px" }} />
+                                        </IconButton>
+                                    )}
+                                </>
+                            ),
+                        },
+                    }}
                 />
             )}
         />

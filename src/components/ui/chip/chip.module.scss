@@ -1,0 +1,86 @@
+
+.chip {
+    height: auto;
+    border: 1.5px solid var(--neutral-300);
+    padding: 6px 16px;
+    cursor: pointer;
+    background-color: var(--neutral-200) !important;
+    max-width: 250px;
+
+    &:hover {
+        border-color: var(--neutral-400);
+    }
+
+    :global(.MuiChip-label) {
+        padding: 0;
+    }
+
+    :global(.MuiChip-deleteIcon) {
+        margin: 0;
+    }
+}
+
+.chipContent {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.label {
+    display: block;
+    max-width: 150px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.label {
+    font-size: 14px;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 500;
+    color: var(--neutral-800);
+    line-height: 1;
+}
+
+.arrow {
+    font-size: 18px !important;
+    color: var(--neutral-500) !important;
+    margin-left: 8px !important;
+}
+
+.arrowOpen {
+    transform: rotate(180deg);
+}
+
+.popover {
+    border-radius: calc(var(--border-radius)*1px);
+    overflow: hidden;
+    min-width: 180px;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    gap: 12px;
+
+    &:hover {
+        background-color: var(--neutral-200, );
+    }
+}
+
+.optionSelected {
+    background-color: var(--primary-100);
+}
+
+.optionLabel {
+    font-size: 14px;
+    color: var(--neutral-800);
+    font-weight: 400;
+}

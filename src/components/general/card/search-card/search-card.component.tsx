@@ -41,7 +41,7 @@ const SearchCard = ({
         <Box className={`${styles.searchCard} ${isActive ? styles.active : ''}`}>
             <Box className={styles.searchCardImage}>
                 <Box className={styles.searchImage}>
-                    <img src={image} alt='' className={styles.searchImage} />
+                    <img src={image} alt='' className={styles.image} />
                 </Box>
             </Box>
             <Typography component="span" className={styles.rating}>

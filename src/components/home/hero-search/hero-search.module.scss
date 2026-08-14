@@ -113,7 +113,7 @@
 .heroSearchWrapper {
   container-type: inline-size;
   width: 100%;
-  max-width: 700px;
+  max-width: 760px;
   margin-bottom: 1.25rem;
 
   &.minimal {
@@ -125,37 +125,70 @@
 .heroSearchCard {
   display: flex;
   align-items: center;
-  background: var(--white);
-  border-radius: 14px;
-  box-shadow: 0 8px 40px color-mix(in srgb, var(--primary-900) 35%, transparent);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 18px;
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.18),
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
   overflow: hidden;
   width: 100%;
+  padding: 0!important;
+  gap: 0;
+  transition: box-shadow 0.25s ease;
 
-  @container (max-width: 600px) {
+  &:focus-within {
+    box-shadow:
+      0 12px 48px rgba(0, 0, 0, 0.22),
+      0 4px 16px color-mix(in srgb, var(--primary-400) 30%, transparent),
+      inset 0 0 0 1.5px var(--primary-300);
+  }
+
+  @container (max-width: 580px) {
     flex-direction: column;
-    border-radius: 12px;
+    border-radius: 16px;
+    padding: 0;
+    gap: 0;
   }
 }
 
 .heroSearchField {
   display: flex;
   align-items: center;
-  padding: 0.8rem 1rem;
   flex: 1;
-  min-width: 120px;
+  min-width: 0;
+  padding: 0px;
+  position: relative;
 
-  @container (max-width: 600px) {
+  &:not(:last-of-type)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 36px;
+    background: var(--neutral-200);
+  }
+
+  @container (max-width: 580px) {
     width: 100%;
-    padding: 0.8rem 1rem;
-    border-bottom: 1px solid var(--neutral-200);
+    padding: 4px 12px;
+    border-bottom: 1px solid var(--neutral-100);
+
+    &::after {
+      display: none;
+    }
   }
 }
 
 .heroSearchIcon {
   color: var(--primary-400);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   flex-shrink: 0;
-  margin-right: 0.5rem;
+  margin-right: 2px;
 }
 
 .heroSearchInput {
@@ -172,41 +205,46 @@
 }
 
 .heroSearchDivider {
-  width: 1px;
-  height: 32px;
-  background: var(--neutral-200);
-  flex-shrink: 0;
-
-  @container (max-width: 600px) {
-    display: none;
-  }
+  display: none; 
 }
 
 .heroSearchBtn {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin: 6px;
-  padding: 0.65rem 1.5rem 0.65rem 1rem;
-  background: linear-gradient(135deg, var(--primary-400), var(--primary-500));
+  gap: 0.45rem;
+  flex-shrink: 0;
+  padding: 0.75rem 1.6rem 0.75rem 1.2rem;
+  margin: 2px;
+  background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-400) 100%);
   border: none;
-  border-radius: 10px;
+  border-radius: 13px;
   color: var(--white);
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 0.92rem;
+  font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
-  transition: box-shadow 0.2s, transform 0.15s;
-  flex-shrink: 0;
+  letter-spacing: 0.01em;
+  transition: box-shadow 0.2s ease, transform 0.15s ease, background 0.2s ease;
+  box-shadow: 0 2px 12px color-mix(in srgb, var(--primary-500) 40%, transparent);
 
-  &:hover {
-    box-shadow: 0 4px 18px color-mix(in srgb, var(--primary-500) 50%, transparent);
-    transform: translateY(-1px);
+  svg {
+    font-size: 1.1rem;
   }
 
-  @container (max-width: 600px) {
-    width: calc(100% - 12px);
+  &:hover {
+    background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-500) 100%);
+    box-shadow: 0 6px 24px color-mix(in srgb, var(--primary-500) 55%, transparent);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @container (max-width: 580px) {
+    width: calc(100% - 16px);
+    margin: 8px;
     justify-content: center;
+    border-radius: 12px;
   }
 }
 

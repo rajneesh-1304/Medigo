@@ -1,11 +1,15 @@
 'use client';
 
 import SearchCard from '@/components/general/card/search-card/search-card.component'
-import { Box } from '@mui/material';
+import { Box, Typography, useMediaQuery } from '@mui/material';
 import styles from './doctor-search.module.scss';
 import React, { useState } from 'react'
 import { HeroSearch } from '@/components/home/hero-search/hero-search.component';
 import DoctorProfile from '@/components/profile/doctor-profile/doctor-profile.component';
+import ChipComponent from '@/components/ui/chip/chip.component';
+import SelectComponent from '@/components/ui/select_component/select.component';
+import { useForm } from 'react-hook-form';
+import MobileViewFilter from '@/components/general/filter/mobile_view-filter/mobile-view-filter.component';
 
 const doctors = [
     {
@@ -145,34 +149,145 @@ const doctors = [
     },
 ];
 
+const experience = [{
+    label: "5+ Years of Experience",
+    value: "5"
+}, {
+    label: "10+ Years of Experience",
+    value: "10"
+}, {
+    label: "15 Years of Experience",
+    value: "15"
+}, {
+    label: "20+ Years of Experience",
+    value: "20"
+}]
+
+const fees = [{
+    label: "₹500 - ₹1000",
+    value: "500-1000"
+}, {
+    label: "₹1000 - ₹1500",
+    value: "1000-1500"
+}, {
+    label: "₹1500 - ₹2000",
+    value: "1500-2000"
+}, {
+    label: "₹2000+",
+    value: "2000+"
+}]
+
+interface Option { label: string; value: string; }
+
 const DoctorSearch = () => {
     const [selectedDoctorId, setSelectedDoctorId] = useState<string | null>(null);
+    const [selectedExperience, setSelectedExperience] = useState<Option | null>(null);
+    const [selectedFees, setSelectedFees] = useState<Option | null>(null);
+    const experienceFilter = selectedExperience?.value ?? null;
+    const feesFilter = selectedFees?.value ?? null;
+    const [open, setOpen] = useState(false);
+
+    const isMobileView = useMediaQuery(theme => theme.breakpoints.down('sm'));
+
+    const {control } = useForm();
+    const filteredDoctors = doctors.filter((doctor) => {
+        const experienceMatches = !experienceFilter ||
+            doctor.years_of_experience >= Number(experienceFilter);
+
+        let feesMatch = true;
+
+        if (feesFilter) {
+            if (feesFilter.endsWith("+")) {
+                const minFees = Number(feesFilter.replace("+", ""));
+                feesMatch = doctor.fees >= minFees;
+            } else {
+                const [minFees, maxFees] = feesFilter.split("-").map(Number);
+
+                feesMatch =
+                    doctor.fees >= minFees &&
+                    doctor.fees <= maxFees;
+            }
+        }
+
+        return experienceMatches && feesMatch;
+    });
 
     return (
         <Box className={styles.container}>
             <Box className={styles.search}>
                 <HeroSearch minimal />
+                <Box className={styles.filters}>
+                    {!isMobileView ?
+                        <Box className={styles.filter}>
+                            <ChipComponent
+                                label="Experience"
+                                options={experience}
+                                selected={selectedExperience}
+                                onSelect={setSelectedExperience}
+                            />
+                            <ChipComponent
+                                label="Fees"
+                                options={fees}
+                                selected={selectedFees}
+                                onSelect={setSelectedFees}
+                            />
+                        </Box> 
+                        :
+                        <MobileViewFilter 
+                            open={open}
+                            onClose={() => setOpen(false)}
+                            onOpen={() => setOpen(true)}
+                            filterOptions={experience}
+                        />
+                        // <Box className={styles.filter}>
+                        //     <SelectComponent
+                        //         name="Experience"
+                        //         label="Experience"
+                        //         control={control}
+                        //         options={experience}
+                        //         variant = "medium"
+                        //     />
+                        //     <SelectComponent
+                        //         name="Fees"
+                        //         label="Fees"
+                        //         control={control}
+                        //         options={fees}
+                        //         variant = "medium"
+                        //     />
+
+                        // </Box>
+                    }
+                </Box>
             </Box>
-            
             <Box className={selectedDoctorId ? styles.contentSplit : styles.content}>
                 <Box className={selectedDoctorId ? styles.listContainerSplit : styles.listContainer}>
                     <Box className={selectedDoctorId ? styles.doctorsGridSplit : styles.doctorsGrid}>
-                        {doctors.map((doctor) => (
-                            <Box className={styles.searchCardWrapper}
-                                key={doctor.id}>
-                                <SearchCard
-                                    id={doctor.id}
-                                    image={doctor.image}
-                                    name={doctor.name}
-                                    specialist={doctor.specialist}
-                                    years_of_experience={doctor.years_of_experience}
-                                    rating={doctor.rating}
-                                    fees={doctor.fees}
-                                    onViewProfile={(id) => setSelectedDoctorId(id)}
-                                    isActive={selectedDoctorId === doctor.id}
-                                />
+                        {filteredDoctors.length > 0 ? (
+                            filteredDoctors.map((doctor) => (
+                                <Box
+                                    className={styles.searchCardWrapper}
+                                    key={doctor.id}
+                                >
+                                    <SearchCard
+                                        id={doctor.id}
+                                        image={doctor.image}
+                                        name={doctor.name}
+                                        specialist={doctor.specialist}
+                                        years_of_experience={doctor.years_of_experience}
+                                        rating={doctor.rating}
+                                        fees={doctor.fees}
+                                        onViewProfile={(id) => setSelectedDoctorId(id)}
+                                        isActive={selectedDoctorId === doctor.id}
+                                    />
+                                </Box>
+                            ))
+                        ) : (
+                            <Box className={styles.noResults}>
+                                <Typography>
+                                    No doctors found matching your filters.
+                                </Typography>
                             </Box>
-                        ))}
+                        )}
                     </Box>
                 </Box>
 

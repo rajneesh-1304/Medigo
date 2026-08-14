@@ -82,7 +82,20 @@
     }
 }
 
-@media (max-width: 768px) {
+.filters{
+    width: 100%;
+}
+
+.filter{
+    padding: 1rem;
+    padding-left: 0;
+    display: flex;
+    gap: 0.5rem;
+    max-width: 100%;
+    width: 600px;
+}
+
+@media (max-width: 900px) {
     .container {
         padding: 1rem;
     }

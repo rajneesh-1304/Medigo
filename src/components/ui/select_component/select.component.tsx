@@ -1,19 +1,21 @@
-import { FormControl, FormHelperText, InputAdornment, InputLabel, MenuItem, Select, Typography } from '@mui/material'
+import { FormControl, FormHelperText, InputAdornment, InputLabel, MenuItem, Select, SelectChangeEvent, Typography } from '@mui/material'
 import React, { FC } from 'react'
 import { Controller, useWatch } from 'react-hook-form'
 import { t } from "i18next";
 import styles from "./select.module.scss";
 import { Clear } from "@mui/icons-material";
 
-type SelectComponentProps = FormInputFieldProps
+type SelectComponentProps = FormInputFieldProps & {
+    onChange?: (event: SelectChangeEvent<unknown> | unknown) => void;
+}
 
 const SelectComponent: FC<SelectComponentProps> = ({
     name,
     label,
-    control,
     options,
     trigger,
     rules,
+    onChange: onChangeProp,
     variant = "medium",
     disabled = false,
     clearable = false,
@@ -25,13 +27,13 @@ const SelectComponent: FC<SelectComponentProps> = ({
 
     const handleClearSelectedValue = (onChange: any) => {
         onChange("");
+        onChangeProp?.("");
         if (trigger) trigger();
     }
 
     return (
 
         <Controller
-            control={control}
             name={name}
             rules={rules}
             render={(
@@ -57,6 +59,7 @@ const SelectComponent: FC<SelectComponentProps> = ({
                             size={variant}
                             onChange={(event) => {
                                 onChange(event.target?.value)
+                                onChangeProp?.(event);
                                 if (trigger) trigger();
                             }}
                             MenuProps={{

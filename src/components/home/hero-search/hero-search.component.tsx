@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from '@/hooks/redux-hook';
 import { Autocomplete } from '@/components/ui/autocomplete_component/autocomplete.component';
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import { useRouter, useSearchParams } from 'next/navigation';
+import ChipComponent from '@/components/ui/chip/chip.component';
 
 interface HeroSearchProps {
   className?: string;
@@ -81,7 +82,6 @@ const HeroSearchContent = ({ className, minimal = false }: HeroSearchProps) => {
     <Box className={`${styles.heroSearchWrapper} ${minimal ? styles.minimal : ''} ${className || ''}`}>
       <Box className={styles.heroSearchCard}>
         <Box className={styles.heroSearchField}>
-          <LocationOnRoundedIcon className={styles.heroSearchIcon} />
           <Autocomplete
             placeholder="Select city"
             options={locations}
@@ -93,13 +93,11 @@ const HeroSearchContent = ({ className, minimal = false }: HeroSearchProps) => {
           />
         </Box>
 
-        <Box className={styles.heroSearchDivider} />
 
         <Box className={styles.heroSearchField} sx={{ flex: 1.5 }}>
-          <SearchRoundedIcon className={styles.heroSearchIcon} />
 
           <Autocomplete
-            placeholder="Doctor, specialit..."
+            placeholder="Speciality"
             options={quickSearchTags}
             value={speciality}
             onChange={(value) => setSpeciality(value)}

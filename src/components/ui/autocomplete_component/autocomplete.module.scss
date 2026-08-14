@@ -27,3 +27,15 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.textfield{
+    width: 100%;
+
+    :global(.MuiOutlinedInput-root) {
+        padding-right: 8px !important;
+    }
+
+    :global(.MuiAutocomplete-endAdornment) {
+        right: 8px !important;
+    }
+}

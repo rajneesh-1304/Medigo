@@ -4,21 +4,12 @@
   top: 0;
   z-index: 1100;
   width: 100%;
-  background: color-mix(in srgb, var(--primary-900) 82%, transparent);
+  background: color-mix(in srgb, var(--primary-900) 97%, transparent);
+    box-shadow: 0 4px 32px color-mix(in srgb, var(--primary-900) 22%, transparent);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid color-mix(in srgb, var(--white) 6%, transparent);
   transition: background 0.3s ease, box-shadow 0.3s ease;
-
-  &.scrolled {
-    width: calc(100% - 20px);
-    left: 10px;
-    top: 10px;
-
-    border-radius: 20px;
-    background: color-mix(in srgb, var(--primary-900) 97%, transparent);
-    box-shadow: 0 4px 32px color-mix(in srgb, var(--primary-900) 22%, transparent);
-  }
 }
 
 .headerInner {

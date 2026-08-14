@@ -197,4 +197,49 @@
         }
     }
 
+    @media (max-width: 950px) {
+    .section1 {
+        gap: 0;
+    }
+
+    .name {
+        gap: 0.75rem;
+        min-width: 0;
+    }
+
+    .doctor-image {
+        width: 65px;
+        height: 65px;
+    }
+
+    .doctor-name-container {
+        min-width: 0;
+    }
+
+    .doctor-name {
+        font-size: 1.2rem;
+    }
+
+    .doctor-detail-container {
+        padding: 0.4rem 0;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+    }
+
+    .doctor-detail {
+        font-size: 0.6rem !important;
+    }
+
+    .button {
+        flex-shrink: 0;
+        padding: 0;
+    }
+
+    .book-appointment-btn {
+        padding: 0.4rem 0.5rem;
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+}
+
 }
