@@ -1,55 +1,68 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from "./mobile-view-filter.module.scss"
-import { AppBar, ButtonBase, Dialog, DialogContent, Icon, Toolbar, Tooltip, Typography } from '@mui/material'
+import { AppBar, Button, ButtonBase, Dialog, DialogContent, Icon, IconButton, Toolbar, Tooltip, Typography, Box } from '@mui/material'
 import FilterListIcon from '@mui/icons-material/FilterList';
 import CloseIcon from "@mui/icons-material/Close";
-import SelectComponent from '@/components/ui/select_component/select.component';
 import SelectFilter from '../select_filter/select-filter.component';
 
-const experience = [{
-    label: "5+ Years of Experience",
-    value: "5"
-}, {
-    label: "10+ Years of Experience",
-    value: "10"
-}, {
-    label: "15 Years of Experience",
-    value: "15"
-}, {
-    label: "20+ Years of Experience",
-    value: "20"
-}]
-
-const fees = [{
-    label: "₹500 - ₹1000",
-    value: "500-1000"
-}, {
-    label: "₹1000 - ₹1500",
-    value: "1000-1500"
-}, {
-    label: "₹1500 - ₹2000",
-    value: "1500-2000"
-}, {
-    label: "₹2000+",
-    value: "2000+"
-}]
-
-
+interface Option { label: string; value: string; }
 
 interface MobileViewFilterProps {
     open: boolean;
     onClose: () => void;
     onOpen: () => void;
-    filterOptions?: any[];
+    experienceOptions: Option[];
+    feesOptions: Option[];
+    selectedExperience: Option | null;
+    setSelectedExperience: (option: Option | null) => void;
+    selectedFees: Option | null;
+    setSelectedFees: (option: Option | null) => void;
 }
 
-const MobileViewFilter = ({ open, onClose, onOpen, filterOptions }: MobileViewFilterProps) => {
-    const [value, setValue] = useState(null);
+const MobileViewFilter = ({ 
+    open, 
+    onClose, 
+    onOpen, 
+    experienceOptions,
+    feesOptions,
+    selectedExperience,
+    setSelectedExperience,
+    selectedFees,
+    setSelectedFees
+}: MobileViewFilterProps) => {
 
+    const [localExperience, setLocalExperience] = useState<Option | null>(selectedExperience);
+    const [localFees, setLocalFees] = useState<Option | null>(selectedFees);
+
+    useEffect(() => {
+        if (open) {
+            setLocalExperience(selectedExperience);
+            setLocalFees(selectedFees);
+        }
+    }, [open, selectedExperience, selectedFees]);
 
     const handleClose = () => {
         onClose();
     }
+
+    const handleApply = () => {
+        setSelectedExperience(localExperience);
+        setSelectedFees(localFees);
+        onClose();
+    }
+
+    const handleExperienceChange = (event: any) => {
+        const val = event.target.value;
+        const option = experienceOptions.find(o => o.value === val) || null;
+        setLocalExperience(option);
+    };
+
+    const handleFeesChange = (event: any) => {
+        const val = event.target.value;
+        const option = feesOptions.find(o => o.value === val) || null;
+        setLocalFees(option);
+    };
+
     return (
         <>
             <ButtonBase onClick={onOpen}>
@@ -67,43 +80,52 @@ const MobileViewFilter = ({ open, onClose, onOpen, filterOptions }: MobileViewFi
                 open={open}
                 onClose={handleClose}
                 className={styles.dialog}
+                fullScreen
             >
-                <AppBar>
-                    <Toolbar>
-                        <Typography>
+                <AppBar sx={{ position: 'relative', boxShadow: 'none', borderBottom: '1px solid var(--neutral-200)' }} color="inherit">
+                    <Toolbar sx={{ justifyContent: 'space-between' }}>
+                        <Typography variant="h6">
                             Filters
                         </Typography>
-                        <Icon onClick={handleClose}>
+                        <IconButton color="inherit" onClick={handleClose} aria-label="close">
                             <CloseIcon />
-                        </Icon>
+                        </IconButton>
                     </Toolbar>
                 </AppBar>
                 <DialogContent 
                     className={styles.dialogContent}
+                    sx={{ display: 'flex', flexDirection: 'column', gap: 3, pt: 3, pb: 10 }}
                 >
-                    {/* <Box className={styles.filter}> */}
                     <SelectFilter
                         name="Experience"
                         label="Experience"
-                        options={experience}
+                        options={experienceOptions}
                         variant="medium"
-                        value={value}
+                        value={localExperience?.value || ""}
+                        onChange={handleExperienceChange}
                     />
-                        {/* <SelectComponent
-                            name="Experience"
-                            label="Experience"
-                            options={experience}
-                            variant="medium"
-                        />
-                        <SelectComponent
-                            name="Fees"
-                            label="Fees"
-                            options={fees}
-                            variant="medium"
-                        /> */}
-
-                    {/* </Box> */}
+                    
+                    <SelectFilter
+                        name="Fees"
+                        label="Fees"
+                        options={feesOptions}
+                        variant="medium"
+                        value={localFees?.value || ""}
+                        onChange={handleFeesChange}
+                    />
                 </DialogContent>
+                <Box sx={{ p: 2, borderTop: '1px solid var(--neutral-200)', position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: 'var(--white)' }}>
+                    <Button 
+                        variant="contained" 
+                        color="primary" 
+                        fullWidth 
+                        size="large"
+                        onClick={handleApply}
+                        sx={{ py: 1.5, borderRadius: '8px', fontWeight: 600 }}
+                    >
+                        Apply Filters
+                    </Button>
+                </Box>
             </Dialog>
         </>
     )

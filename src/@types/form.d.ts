@@ -13,7 +13,7 @@ interface OptionObject {
 }
 
 interface FormInputFieldProps {
-  control: Control;
+  control?: Control;
   name: string;
   label: string;
   disabled?: boolean;

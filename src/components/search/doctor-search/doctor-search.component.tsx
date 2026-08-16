@@ -214,85 +214,89 @@ const DoctorSearch = () => {
 
     return (
         <Box className={styles.container}>
-            <Box className={styles.search}>
-                <HeroSearch minimal />
-                <Box className={styles.filters}>
-                    {!isMobileView ?
-                        <Box className={styles.filter}>
-                            <ChipComponent
-                                label="Experience"
-                                options={experience}
-                                selected={selectedExperience}
-                                onSelect={setSelectedExperience}
+            {(!isMobileView || !selectedDoctorId) && (
+                <Box className={styles.search}>
+                    <HeroSearch minimal />
+                    <Box className={styles.filters}>
+                        {!isMobileView ?
+                            <Box className={styles.filter}>
+                                <ChipComponent
+                                    label="Experience"
+                                    options={experience}
+                                    selected={selectedExperience}
+                                    onSelect={setSelectedExperience}
+                                />
+                                <ChipComponent
+                                    label="Fees"
+                                    options={fees}
+                                    selected={selectedFees}
+                                    onSelect={setSelectedFees}
+                                />
+                            </Box> 
+                            :
+                            <MobileViewFilter 
+                                open={open}
+                                onClose={() => setOpen(false)}
+                                onOpen={() => setOpen(true)}
+                                experienceOptions={experience}
+                                feesOptions={fees}
+                                selectedExperience={selectedExperience}
+                                setSelectedExperience={setSelectedExperience}
+                                selectedFees={selectedFees}
+                                setSelectedFees={setSelectedFees}
                             />
-                            <ChipComponent
-                                label="Fees"
-                                options={fees}
-                                selected={selectedFees}
-                                onSelect={setSelectedFees}
-                            />
-                        </Box> 
-                        :
-                        <MobileViewFilter 
-                            open={open}
-                            onClose={() => setOpen(false)}
-                            onOpen={() => setOpen(true)}
-                            filterOptions={experience}
-                        />
-                        // <Box className={styles.filter}>
-                        //     <SelectComponent
-                        //         name="Experience"
-                        //         label="Experience"
-                        //         control={control}
-                        //         options={experience}
-                        //         variant = "medium"
-                        //     />
-                        //     <SelectComponent
-                        //         name="Fees"
-                        //         label="Fees"
-                        //         control={control}
-                        //         options={fees}
-                        //         variant = "medium"
-                        //     />
-
-                        // </Box>
-                    }
-                </Box>
-            </Box>
-            <Box className={selectedDoctorId ? styles.contentSplit : styles.content}>
-                <Box className={selectedDoctorId ? styles.listContainerSplit : styles.listContainer}>
-                    <Box className={selectedDoctorId ? styles.doctorsGridSplit : styles.doctorsGrid}>
-                        {filteredDoctors.length > 0 ? (
-                            filteredDoctors.map((doctor) => (
-                                <Box
-                                    className={styles.searchCardWrapper}
-                                    key={doctor.id}
-                                >
-                                    <SearchCard
-                                        id={doctor.id}
-                                        image={doctor.image}
-                                        name={doctor.name}
-                                        specialist={doctor.specialist}
-                                        years_of_experience={doctor.years_of_experience}
-                                        rating={doctor.rating}
-                                        fees={doctor.fees}
-                                        onViewProfile={(id) => setSelectedDoctorId(id)}
-                                        isActive={selectedDoctorId === doctor.id}
-                                    />
-                                </Box>
-                            ))
-                        ) : (
-                            <Box className={styles.noResults}>
-                                <Typography>
-                                    No doctors found matching your filters.
-                                </Typography>
-                            </Box>
-                        )}
+                        }
                     </Box>
                 </Box>
+            )}
+
+            <Box className={selectedDoctorId ? styles.contentSplit : styles.content}>
+                {(!isMobileView || !selectedDoctorId) && (
+                    <Box className={selectedDoctorId ? styles.listContainerSplit : styles.listContainer}>
+                        <Box className={selectedDoctorId ? styles.doctorsGridSplit : styles.doctorsGrid}>
+                            {filteredDoctors.length > 0 ? (
+                                filteredDoctors.map((doctor) => (
+                                    <Box
+                                        className={styles.searchCardWrapper}
+                                        key={doctor.id}
+                                    >
+                                        <SearchCard
+                                            id={doctor.id}
+                                            image={doctor.image}
+                                            name={doctor.name}
+                                            specialist={doctor.specialist}
+                                            years_of_experience={doctor.years_of_experience}
+                                            rating={doctor.rating}
+                                            fees={doctor.fees}
+                                            onViewProfile={(id) => setSelectedDoctorId(id)}
+                                            isActive={selectedDoctorId === doctor.id}
+                                        />
+                                    </Box>
+                                ))
+                            ) : (
+                                <Box className={styles.noResults}>
+                                    <Typography>
+                                        No doctors found matching your filters.
+                                    </Typography>
+                                </Box>
+                            )}
+                        </Box>
+                    </Box>
+                )}
 
                 {selectedDoctorId && (
                     <Box className={styles.profileView}>
+                        {isMobileView && (
+                            <Box sx={{ p: 2, borderBottom: '1px solid var(--primary-100)' }}>
+                                <Typography 
+                                    color="primary" 
+                                    sx={{ cursor: 'pointer', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 0.5 }}
+                                    onClick={() => setSelectedDoctorId(null)}
+                                >
+                                    ← Back to Search
+                                </Typography>
+                            </Box>
+                        )}
                         <DoctorProfile />
                     </Box>
                 )}
