@@ -1,15 +1,13 @@
 "use client";
 
-import React, { useEffect, useState, Suspense } from 'react';
+import React, { useState, Suspense } from 'react';
 import { Box, Container, InputBase, Typography } from '@mui/material';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import styles from './hero-search.module.scss';
-import { fetchLocationApi } from '@/store/features/locations';
-import { useAppDispatch, useAppSelector } from '@/hooks/redux-hook';
+import { searchCities, getCityByName } from './location';
 import { Autocomplete } from '@/components/ui/autocomplete_component/autocomplete.component';
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import { useRouter, useSearchParams } from 'next/navigation';
-import ChipComponent from '@/components/ui/chip/chip.component';
 
 interface HeroSearchProps {
   className?: string;
@@ -56,27 +54,26 @@ const HeroSearchContent = ({ className, minimal = false }: HeroSearchProps) => {
   const initialLocation = searchParams.get('location');
   const initialSpecialist = searchParams.get('specialist');
 
-  const [location, setLocation] = useState<Location | null>(initialLocation ? { id: initialLocation, name: initialLocation } : null);
+  const [location, setLocation] = useState<Location | null>(initialLocation ? (getCityByName(initialLocation) || { id: initialLocation, name: initialLocation }) : null);
   const [speciality, setSpeciality] = useState<Specialist | null>(initialSpecialist ? { id: initialSpecialist, name: initialSpecialist } : null);
-  const dispatch = useAppDispatch();
-  const locations = useAppSelector((state) => state.location.locationData);
-  
+  const [locationSearch, setLocationSearch] = useState('');
+
+  const filteredLocations = searchCities(locationSearch);
+
   const handleSearch = () => {
-    const params = new URLSearchParams();
-    if (location?.name) {
+    const params = new URLSearchParams(searchParams.toString());
+    if (location) {
       params.set('location', location.name);
+    } else {
+      params.delete('location');
     }
-    if (speciality?.name) {
-      params.set('specialist', speciality.name);
+    if (speciality) {
+      params.set('specialist', speciality.id);
+    } else {
+      params.delete('specialist');
     }
     router.push(`/doctors/search?${params.toString()}`);
-    dispatch(fetchLocationApi(location?.name || ""));
   };
-
-  useEffect(() => {
-    dispatch(fetchLocationApi(location?.name || ""));
-  }, []);
-  
 
   const searchBar = (
     <Box className={`${styles.heroSearchWrapper} ${minimal ? styles.minimal : ''} ${className || ''}`}>
@@ -84,9 +81,10 @@ const HeroSearchContent = ({ className, minimal = false }: HeroSearchProps) => {
         <Box className={styles.heroSearchField}>
           <Autocomplete
             placeholder="Select city"
-            options={locations}
+            options={filteredLocations}
             value={location}
             onChange={(value) => setLocation(value)}
+            onSearchChange={(search) => setLocationSearch(search)}
             valueKey="id"
             labelKey="name"
             icon={<LocationOnRoundedIcon className={styles.heroSearchIcon} />}

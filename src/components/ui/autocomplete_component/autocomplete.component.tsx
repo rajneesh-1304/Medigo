@@ -69,6 +69,15 @@ export const Autocomplete = <T extends Record<string, any>>({
             getOptionLabel={getMenuOptionLabel}
             filterOptions={(options) => options}
             autoHighlight={false}
+            inputValue={localInputValue}
+            onInputChange={(_, newValue, reason) => {
+                setLocalInputValue(newValue);
+                if (reason === 'input') {
+                    onSearchChange?.(newValue);
+                } else if (reason === 'clear') {
+                    onSearchChange?.('');
+                }
+            }}
             sx={{
                 '& .MuiOutlinedInput-notchedOutline': {
                     border: 'none'
@@ -99,11 +108,10 @@ export const Autocomplete = <T extends Record<string, any>>({
                 const isSelected = value?.[valueKey] === option[valueKey];
                 const { key, ...restProps } = props;
                 const optionLabel = getMenuOptionLabel(option);
-
                 return (
                     <Box
                         component="li"
-                        key={key}
+                        key={String(option[valueKey])}
                         {...restProps}
                         className={`${styles.optionItem} ${isSelected ? styles.selectedOption : ""
                             }`}
@@ -143,7 +151,11 @@ export const Autocomplete = <T extends Record<string, any>>({
                                     {value && (
                                         <IconButton
                                             size="small"
-                                            onClick={() => onChange(null)}
+                                            onClick={() => {
+                                                onChange(null);
+                                                setLocalInputValue('');
+                                                onSearchChange?.('');
+                                            }}
                                         >
                                             <Clear sx={{ fontSize: "20px" }} />
                                         </IconButton>

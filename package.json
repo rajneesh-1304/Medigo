@@ -19,6 +19,7 @@
     "@next/swc-linux-x64-musl": "^16.2.12",
     "@reduxjs/toolkit": "^2.12.0",
     "axios": "^1.19.0",
+    "country-state-city": "^3.2.1",
     "embla-carousel-react": "^8.6.0",
     "i18next": "^26.3.6",
     "next": "16.2.12",
