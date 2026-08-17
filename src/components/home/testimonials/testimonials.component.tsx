@@ -68,7 +68,7 @@ export const Testimonials = () => {
             //     </Box>
             //   </Box>
             // </Box>
-            <RatingCard {...testimonial} key={i} /> 
+            <RatingCard {...testimonial} key={i} variant="dark" />
           ))}
         </Box>
       </Container>

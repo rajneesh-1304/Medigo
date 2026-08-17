@@ -231,13 +231,13 @@
         }
 
         .review-card {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
             padding: 1rem;
             border-radius: 12px;
             background-color: var(--neutral-50);
-            height: 50vh;
+            max-height: 50vh;
             overflow-y: auto;
             
             &::-webkit-scrollbar {
@@ -247,20 +247,32 @@
                 background-color: var(--neutral-300);
                 border-radius: 6px;
             }
+
+            @media (max-width: 600px) {
+                grid-template-columns: 1fr;
+            }
         }
 
         .rating-card-item {
             width: 100%;
+            min-height: 160px;
         }
     }
 
     @media (max-width: 950px) {
-        padding: 1.5rem;
+        padding: 1rem;
+        gap: 16px;
+
+        .rating{
+            font-size: 0.7rem;
+            padding: 2px 8px;
+        }
 
         .section1 {
             flex-direction: column;
             align-items: flex-start;
-            gap: 1.5rem;
+            gap: 1.2rem;
+            padding-bottom: 0;
         }
 
         .name {
@@ -268,17 +280,27 @@
         }
 
         .doctor-image {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
         }
 
         .doctor-name {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .doctor-detail-container {
             padding: 0;
             gap: 0.5rem;
+
+            .doctor-detail {
+            font-size: 0.75rem;
+            padding: 2px 10px;
+            background-color: var(--lagoon-50);
+            color: var(--primary-700);
+            border-radius: 20px;
+            font-weight: 500;
+        }
         }
 
         .button {
@@ -288,22 +310,77 @@
         .book-appointment-btn {
             width: 100%;
             padding: 1rem;
-            font-size: 1rem;
+            font-size: 0.85rem;
         }
 
         .section2 {
             grid-template-columns: 1fr;
-            gap: 1rem;
+            gap: 8px;
+            padding: 8px;
+
+            .education, .experience, .education-text, .certificate-text{
+                font-size: 0.75rem;
+            }
         }
 
-        .schedule-container {
+        .section3{
+            .available-time-container{
+                gap: 8px;
+            }           
+        }
+
+        .available-text, .schedule-text, .symptoms-text, .procedures-text{
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .schedule-container{
+            padding: 8px;
+            gap: 8px;
             flex-direction: column;
             align-items: flex-start;
-            gap: 1rem;
+        }
+
+        .procedures-container {
+            gap: 8px;
+        }
+
+        .day{
+            font-size: 14px;
+        }
+
+        .available-time, .time, .procedure, .review-text{
+            padding: 2px 8px;
+            font-size: 12px;        
+        }
+
+        .symptoms-list{
+            font-size: 12px;
         }
         
         .time-container {
             flex-wrap: wrap;
         }
+
+        .rating-card-item {
+            min-height: 100px;   
+        }
+
+        .review-text{
+            font-size: 14px !important;
+            margin-bottom: 8px !important;
+        }
+
+        .review-card {
+            gap: 8px !important;
+            padding: 8px !important;
+        }
+
+        .review-count{
+            font-size: 12px !important;
+        }
+
+
+        
     }
 }

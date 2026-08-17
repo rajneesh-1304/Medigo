@@ -51,21 +51,19 @@ const MobileViewFilter = ({
         onClose();
     }
 
-    const handleExperienceChange = (event: any) => {
-        const val = event.target.value;
+    const handleExperienceChange = (val: string) => {
         const option = experienceOptions.find(o => o.value === val) || null;
         setLocalExperience(option);
     };
 
-    const handleFeesChange = (event: any) => {
-        const val = event.target.value;
-        const option = feesOptions.find(o => o.value === val) || null;
+    const handleFeesChange = (val: string) => {
+        const option = feesOptions.find(fee => fee.value === val) || null;
         setLocalFees(option);
     };
 
     return (
         <>
-            <ButtonBase onClick={onOpen}>
+            <ButtonBase onClick={onOpen} className=''>
                 <Icon>
                     <FilterListIcon />
                     <Typography
@@ -103,6 +101,7 @@ const MobileViewFilter = ({
                         variant="medium"
                         value={localExperience?.value || ""}
                         onChange={handleExperienceChange}
+                        clearable
                     />
                     
                     <SelectFilter
@@ -112,6 +111,7 @@ const MobileViewFilter = ({
                         variant="medium"
                         value={localFees?.value || ""}
                         onChange={handleFeesChange}
+                        clearable
                     />
                 </DialogContent>
                 <Box sx={{ p: 2, borderTop: '1px solid var(--neutral-200)', position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: 'var(--white)' }}>

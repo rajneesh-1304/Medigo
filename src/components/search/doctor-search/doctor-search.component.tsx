@@ -189,7 +189,7 @@ const DoctorSearch = () => {
 
     const isMobileView = useMediaQuery(theme => theme.breakpoints.down('sm'));
 
-    const {control } = useForm();
+    const { control } = useForm();
     const filteredDoctors = doctors.filter((doctor) => {
         const experienceMatches = !experienceFilter ||
             doctor.years_of_experience >= Number(experienceFilter);
@@ -218,34 +218,35 @@ const DoctorSearch = () => {
                 <Box className={styles.search}>
                     <HeroSearch minimal />
                     <Box className={styles.filters}>
-                        {!isMobileView ?
-                            <Box className={styles.filter}>
-                                <ChipComponent
-                                    label="Experience"
-                                    options={experience}
-                                    selected={selectedExperience}
-                                    onSelect={setSelectedExperience}
+                        <Box className={styles.filter}>
+                            {!isMobileView ?
+                                <>
+                                    <ChipComponent
+                                        label="Experience"
+                                        options={experience}
+                                        selected={selectedExperience}
+                                        onSelect={setSelectedExperience}
+                                    />
+                                    <ChipComponent
+                                        label="Fees"
+                                        options={fees}
+                                        selected={selectedFees}
+                                        onSelect={setSelectedFees}
+                                    /></>
+                                :
+                                <MobileViewFilter
+                                    open={open}
+                                    onClose={() => setOpen(false)}
+                                    onOpen={() => setOpen(true)}
+                                    experienceOptions={experience}
+                                    feesOptions={fees}
+                                    selectedExperience={selectedExperience}
+                                    setSelectedExperience={setSelectedExperience}
+                                    selectedFees={selectedFees}
+                                    setSelectedFees={setSelectedFees}
                                 />
-                                <ChipComponent
-                                    label="Fees"
-                                    options={fees}
-                                    selected={selectedFees}
-                                    onSelect={setSelectedFees}
-                                />
-                            </Box> 
-                            :
-                            <MobileViewFilter 
-                                open={open}
-                                onClose={() => setOpen(false)}
-                                onOpen={() => setOpen(true)}
-                                experienceOptions={experience}
-                                feesOptions={fees}
-                                selectedExperience={selectedExperience}
-                                setSelectedExperience={setSelectedExperience}
-                                selectedFees={selectedFees}
-                                setSelectedFees={setSelectedFees}
-                            />
-                        }
+                            }
+                        </Box>
                     </Box>
                 </Box>
             )}
@@ -288,8 +289,8 @@ const DoctorSearch = () => {
                     <Box className={styles.profileView}>
                         {isMobileView && (
                             <Box sx={{ p: 2, borderBottom: '1px solid var(--primary-100)' }}>
-                                <Typography 
-                                    color="primary" 
+                                <Typography
+                                    color="primary"
                                     sx={{ cursor: 'pointer', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 0.5 }}
                                     onClick={() => setSelectedDoctorId(null)}
                                 >

@@ -123,7 +123,7 @@ const DoctorProfile = () => {
             </Box>
 
             <Box className={styles['section5']}>
-                <Typography className={styles['review-text']}>Doctor's Reviews <span>(210 Reviews)</span></Typography>
+                <Typography className={styles['review-text']}>Doctor's Reviews <span className={styles['review-count']}>(210 Reviews)</span></Typography>
                 <Box className={styles['review-card']}>
                     {Testimonials.map((testimonial, i) => (
                             <Box className={styles['rating-card-item']} key={i}>
