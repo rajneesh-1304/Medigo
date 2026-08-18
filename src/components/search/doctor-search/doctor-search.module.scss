@@ -17,10 +17,10 @@
 
 .contentSplit {
     display: flex;
-    gap: 2rem;
     align-items: flex-start;
     max-width: 1400px;
     margin: 0 auto;
+    gap: 16px;
 }
 
 .listContainer {
@@ -112,6 +112,22 @@
     color: var(--grey-600);
     font-size: 1.1rem;
 }
+
+.appointmentView{
+    width: 100%;
+    max-width: 300px;
+    max-height: 600px;
+
+}
+
+:global(.MuiTab-root){
+    padding: 0px !important;
+    padding-inline: 12px !important;
+    font-size: 12px;
+    line-height: 14px !important;
+    
+}
+
 
 @media (max-width: 900px) {
     .container {

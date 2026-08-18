@@ -1,0 +1,62 @@
+.appointmentCard{
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: var(--white);
+    border-radius: calc(var(--border-radius) * 1px);
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.heading{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.viewAll{
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.search{
+    padding: 8px;
+    border-radius: calc(var(--border-radius)* 1px);
+    border: 1px solid var(--primary-500);
+    background-color: var(--primary-100);
+    display: flex;
+    justify-content: space-between;
+}
+
+.date{
+    font-size: 14px;
+}
+
+.iconButton{
+    padding: 0;
+}
+
+.timeContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-block: 8px;
+}
+
+.time{
+    padding: 4px !important;
+    font-size: 12px;
+    border: 1px solid var(--primary-200);
+    border-radius: calc(var(--border-radius) * 1px);
+    width: fit-content;
+}
+
+.timeActive{
+    background-color: var(--primary-600);
+    color: var(--white);
+}
