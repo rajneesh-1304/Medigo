@@ -1,7 +1,7 @@
 'use client';
 
 import SearchCard from '@/components/general/card/search-card/search-card.component'
-import { Box, Typography, useMediaQuery } from '@mui/material';
+import { Box, Typography, useMediaQuery, useTheme } from '@mui/material';
 import styles from './doctor-search.module.scss';
 import React, { useState } from 'react'
 import { HeroSearch } from '@/components/home/hero-search/hero-search.component';
@@ -188,9 +188,8 @@ const DoctorSearch = () => {
     const feesFilter = selectedFees?.value ?? null;
     const [open, setOpen] = useState(false);
 
-    const isMobileView = useMediaQuery(theme => theme.breakpoints.down('sm'));
+    const isMobileView = useMediaQuery(theme => theme.breakpoints.down('md'));
 
-    const { control } = useForm();
     const filteredDoctors = doctors.filter((doctor) => {
         const experienceMatches = !experienceFilter ||
             doctor.years_of_experience >= Number(experienceFilter);
@@ -286,28 +285,32 @@ const DoctorSearch = () => {
                     </Box>
                 )}
 
-                {selectedDoctorId && (
-                    <Box className={styles.profileView}>
-                        {isMobileView && (
-                            <Box sx={{ p: 2, borderBottom: '1px solid var(--primary-100)' }}>
-                                <Typography
-                                    color="primary"
-                                    sx={{ cursor: 'pointer', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 0.5 }}
-                                    onClick={() => setSelectedDoctorId(null)}
-                                >
-                                    ← Back to Search
-                                </Typography>
-                            </Box>
-                        )}
-                        <DoctorProfile />
-                    </Box>
-                )}
+                <Box className={styles['profile-appointment-view']}>
+                    {selectedDoctorId && (
+                        <Box className={styles.profileView}>
+                            {isMobileView && (
+                                <Box sx={{ p: 2, borderBottom: '1px solid var(--primary-100)' }}>
+                                    <Typography
+                                        color="primary"
+                                        sx={{ cursor: 'pointer', fontWeight: 600, display: 'flex', alignItems: 'center', gap: 0.5 }}
+                                        onClick={() => setSelectedDoctorId(null)}
+                                    >
+                                        ← Back to Search
+                                    </Typography>
+                                </Box>
+                            )}
+                            <DoctorProfile />
+                        </Box>
+                    )}
 
-                {selectedDoctorId && (
-                    <Box className={styles.appointmentView}>
-                        <Appointment />
-                    </Box>
-                )}
+                    {selectedDoctorId && (
+                        <Box className={styles['appointment']}>
+                            <Box className={styles.appointmentView}>
+                                <Appointment />
+                            </Box>
+                        </Box>
+                    )}
+                </Box>
             </Box>
         </Box>
     )

@@ -18,7 +18,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1.5rem 1rem
+    padding: 16px
 
 }
 
@@ -65,7 +65,7 @@
 }
 
 .details{
-    padding: 1rem;
+    padding: 0px 16px 16px 16px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -100,10 +100,58 @@
 .viewProfileButton{
     background: var(--primary-400);
     color: var(--white);
-    border-radius: calc(var(--border-radius) * 1px);
+    border-radius: calc(var(--border-radius) * 0.5px);
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     padding: 0.5rem;
     width: 100%;
     transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 600px) {
+    .searchCard{
+        display: flex ;
+        flex-direction: row;
+        padding: 16px;
+        gap: 24px;
+    }
+
+    .searchImage{
+        height: 5rem;
+        width: 5rem;
+    }
+
+    .rating{
+        height: 20px;
+        font-size: 12px;
+        top: 8px;
+    }
+
+    .name{
+        font-size: 16px;
+    }
+
+    .experience, .fees{
+        font-size: 12px;
+        align-items: flex-start;
+    }
+
+    .searchCardImage{
+        width: fit-content;
+        padding: 0;
+        padding-left: 16px;
+    }
+
+    .details{
+        padding: 0px;
+        align-items: flex-start;
+        min-width: 250px;
+    }
+
+    .specialist{
+        font-size: 12px;
+        font-weight: 500;
+        padding: 0.1rem 0.5rem;
+    }
+
 }

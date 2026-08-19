@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useState, Suspense } from 'react';
-import { Box, Container, InputBase, Typography } from '@mui/material';
+import React, { useState, Suspense, useMemo } from 'react';
+import { Box, Container, InputBase, Typography, useMediaQuery, useTheme } from '@mui/material';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import styles from './hero-search.module.scss';
 import { searchCities, getCityByName } from './location';
 import { Autocomplete } from '@/components/ui/autocomplete_component/autocomplete.component';
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import { useRouter, useSearchParams } from 'next/navigation';
+import FilterDialog from './mobile-dialog/mobile-dialog-filter.component';
 
 interface HeroSearchProps {
   className?: string;
@@ -49,16 +50,22 @@ interface Location {
 
 const HeroSearchContent = ({ className, minimal = false }: HeroSearchProps) => {
   const router = useRouter();
+  const theme = useTheme();
   const searchParams = useSearchParams();
-  
+
+  const [openModal, setOpenModal] = useState(false);
+
   const initialLocation = searchParams.get('location');
   const initialSpecialist = searchParams.get('specialist');
+  const desktopView = useMediaQuery(theme.breakpoints.up("sm"));
 
   const [location, setLocation] = useState<Location | null>(initialLocation ? (getCityByName(initialLocation) || { id: initialLocation, name: initialLocation }) : null);
   const [speciality, setSpeciality] = useState<Specialist | null>(initialSpecialist ? { id: initialSpecialist, name: initialSpecialist } : null);
   const [locationSearch, setLocationSearch] = useState('');
 
-  const filteredLocations = searchCities(locationSearch);
+  const filteredLocations = useMemo(() => (
+    searchCities(locationSearch)
+  ), [locationSearch]);
 
   const handleSearch = () => {
     const params = new URLSearchParams(searchParams.toString());
@@ -78,97 +85,134 @@ const HeroSearchContent = ({ className, minimal = false }: HeroSearchProps) => {
   const searchBar = (
     <Box className={`${styles.heroSearchWrapper} ${minimal ? styles.minimal : ''} ${className || ''}`}>
       <Box className={styles.heroSearchCard}>
-        <Box className={styles.heroSearchField}>
+        {desktopView && (
+          <Box className={styles.heroSearchField}>
+            <Autocomplete
+              placeholder="Select city"
+              options={filteredLocations}
+              value={location}
+              onChange={(value) => setLocation(value)}
+              onSearchChange={(search) => setLocationSearch(search)}
+              valueKey="id"
+              labelKey="name"
+              icon={<LocationOnRoundedIcon className={styles.heroSearchIcon} />}
+            />
+          </Box>
+        )}
+
+
+        <Box className={styles.heroSearchField} sx={{ flex: 1.5 }}
+          onClick={() => {
+            if (!desktopView) {
+              setOpenModal(true);
+            }
+          }}
+        >
+
           <Autocomplete
-            placeholder="Select city"
-            options={filteredLocations}
-            value={location}
-            onChange={(value) => setLocation(value)}
-            onSearchChange={(search) => setLocationSearch(search)}
-            valueKey="id"
-            labelKey="name"
-            icon={<LocationOnRoundedIcon className={styles.heroSearchIcon} />}
-          />
-        </Box>
-
-
-        <Box className={styles.heroSearchField} sx={{ flex: 1.5 }}>
-
-          <Autocomplete
-            placeholder="Speciality"
+            placeholder={desktopView ? "Speciality" : "Location, Speciality ..."}
             options={quickSearchTags}
             value={speciality}
-            onChange={(value) => setSpeciality(value)}
+            onChange={(value) => {
+              if (desktopView) {
+                setSpeciality(value);
+              }
+            }}
             valueKey="id"
             labelKey="name"
-            icon={<SearchRoundedIcon className={styles.heroSearchIcon} />}
+            icon={<SearchRoundedIcon className={styles.heroSearchIcon}/>}
+            readonly={!desktopView}
           />
         </Box>
 
         <Box component="button" className={styles.heroSearchBtn} aria-label="Search">
           <SearchRoundedIcon />
-          <Typography component="span" onClick={handleSearch}>Search</Typography>
+          <Typography component="span" onClick={!desktopView ? ()=>setOpenModal(true): handleSearch}>Search</Typography>
         </Box>
       </Box>
     </Box>
   );
 
+
+  const filterDialog = (
+    <FilterDialog
+      open={openModal}
+      onClose={() => setOpenModal(false)}
+      location={location}
+      speciality={speciality}
+      setLocation={setLocation}
+      setSpeciality={setSpeciality}
+      locationSearch={locationSearch}
+      setLocationSearch={setLocationSearch}
+      filteredLocations={filteredLocations}
+      handleSearch={handleSearch}
+    />
+  );
+
   if (minimal) {
-    return searchBar;
+    return (
+      <>
+        {searchBar}
+        {filterDialog}
+      </>
+    );
   }
 
   return (
-    <Box component="section" className={`${styles.heroSection} ${className || ''}`}>
-      <Box className={styles.heroBlobTopRight} aria-hidden="true" />
-      <Box className={styles.heroBlobBottomLeft} aria-hidden="true" />
+    <>
+      <Box component="section" className={`${styles.heroSection} ${className || ''}`}>
+        <Box className={styles.heroBlobTopRight} aria-hidden="true" />
+        <Box className={styles.heroBlobBottomLeft} aria-hidden="true" />
 
-      <Container maxWidth="lg" className={styles.heroContainer}>
-        <Box className={styles.heroEyebrow}>
-          <Box component="span" className={styles.heroBadgeDot} />
-          <Typography component="span">Trusted by 10M+ patients across India</Typography>
-        </Box>
+        <Container maxWidth="lg" className={styles.heroContainer}>
+          <Box className={styles.heroEyebrow}>
+            <Box component="span" className={styles.heroBadgeDot} />
+            <Typography component="span">Trusted by 10M+ patients across India</Typography>
+          </Box>
 
-        <Typography variant="h1" className={styles.heroHeadline}>
-          Your health, your&nbsp;
-          <Typography component="span" className={styles.heroHeadlineAccent}>terms</Typography>
-        </Typography>
+          <Typography variant="h1" className={styles.heroHeadline}>
+            Your health, your&nbsp;
+            <Typography component="span" className={styles.heroHeadlineAccent}>terms</Typography>
+          </Typography>
 
-        <Typography className={styles.heroSubtext}>
-          Instant video consults, in-clinic bookings, lab tests & more —
-          all from one place, available 24/7.
-        </Typography>
+          <Typography className={styles.heroSubtext}>
+            Instant video consults, in-clinic bookings, lab tests & more —
+            all from one place, available 24/7.
+          </Typography>
 
-        {searchBar}
+          {searchBar}
 
-        <Box className={styles.heroQuickTags}>
-          <Box component="span" className={styles.heroTagsLabel}>Popular:</Box>
-          {quickSearchTags.map((tag) => (
-            <Box
-              component="button"
-              key={tag.id}
-              className={styles.heroTag}
-              onClick={() => setSpeciality(tag)}
-            >
-              {tag.name}
-            </Box>
-          ))}
-        </Box>
+          <Box className={styles.heroQuickTags}>
+            <Box component="span" className={styles.heroTagsLabel}>Popular:</Box>
+            {quickSearchTags.map((tag) => (
+              <Box
+                component="button"
+                key={tag.id}
+                className={styles.heroTag}
+                onClick={() => setSpeciality(tag)}
+              >
+                {tag.name}
+              </Box>
+            ))}
+          </Box>
 
-        <Box className={styles.heroStats}>
-          {[
-            { value: '50K+', label: 'Verified Doctors' },
-            { value: '500+', label: 'Specialities' },
-            { value: '24/7', label: 'Available' },
-            { value: '4.8★', label: 'App Rating' },
-          ].map((stat) => (
-            <Box key={stat.label} className={styles.heroStatItem}>
-              <Box component="span" className={styles.heroStatValue}>{stat.value}</Box>
-              <Box component="span" className={styles.heroStatLabel}>{stat.label}</Box>
-            </Box>
-          ))}
-        </Box>
-      </Container>
-    </Box>
+          <Box className={styles.heroStats}>
+            {[
+              { value: '50K+', label: 'Verified Doctors' },
+              { value: '500+', label: 'Specialities' },
+              { value: '24/7', label: 'Available' },
+              { value: '4.8★', label: 'App Rating' },
+            ].map((stat) => (
+              <Box key={stat.label} className={styles.heroStatItem}>
+                <Box component="span" className={styles.heroStatValue}>{stat.value}</Box>
+                <Box component="span" className={styles.heroStatLabel}>{stat.label}</Box>
+              </Box>
+            ))}
+          </Box>
+        </Container>
+      </Box>
+      {filterDialog}
+    </>
   );
 };
 

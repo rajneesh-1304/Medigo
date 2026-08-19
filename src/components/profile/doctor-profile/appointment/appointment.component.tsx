@@ -1,9 +1,21 @@
 import { Box, Button, IconButton, Tab, Tabs, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import styles from "./appointment.module.scss";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import dates from './date';
+import { DateRangeCalendar } from '@mui/x-date-pickers-pro/DateRangeCalendar';
+import { LocalizationProvider } from '@mui/x-date-pickers-pro/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers-pro/AdapterDayjs';
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
+import z from 'zod';
+
+const AppointmentValidation = z.object({
+    slot: z.string().nonempty("Please select a slot"),
+    date: z.date(),
+})
+
 
 const Appointment = () => {
     const [open, setOpen] = useState<boolean>(false);
@@ -23,6 +35,7 @@ const Appointment = () => {
         time: "8:30PM"
     }];
     const [slot, setSlot] = useState<string | null>(null);
+    const dateList = useMemo(() => (dates), [dates]);
 
     return (
         <Box className={styles.appointmentCard}>
@@ -38,54 +51,37 @@ const Appointment = () => {
                 </Typography>
             </Box>
 
-            <Tabs
-                variant='scrollable'
-                value={0}
-                indicatorColor='primary'
-                sx={{
-        minHeight: "32px",
-
-        "& .MuiTab-root": {
-            minHeight: "32px",
-            height: "32px",
-            padding: "0 12px",
-            lineHeight: 1,
-        },
-    }}
+            <LocalizationProvider dateAdapter={AdapterDayjs}
             >
-                <Tab className={styles.tab} label="Today" />
-                <Tab className={styles.tab} label="Tomorrow" />
-                <Tab className={styles.tab} label="Day After" />
-                <Tab className={styles.tab} label="Day After" />
-            </Tabs>
-            <Box className={styles.search}>
-                <Box>
-                    
+                <DateCalendar
+                    disablePast
+                />
+            </LocalizationProvider>
+
+            <Box>
+                <Typography className={styles.slots}>Avaliable Time Slots</Typography>
+                <Box className={styles.timeContainer}>
+                    {data.map((date, idx) => (
+                        <Box className={`${styles.time} ${slot === date.time ? styles.timeActive : ""}`} key={idx}
+                            onClick={() => {
+                                setSlot(date.time);
+                            }}
+                        >
+                            {date.time}
+                        </Box>
+                    ))}
+
                 </Box>
-                <IconButton className={styles.iconButton}>
-                    {open ? <KeyboardArrowUpIcon sx={{ fontSize: 20 }} /> : <KeyboardArrowDownIcon sx={{ fontSize: 20 }} />}
-                </IconButton>
             </Box>
 
-            <Box className={styles.timeContainer}>
-                {data.map((time, idx) => (
-                    <Box className={`${styles.time} ${slot === time.time ? styles.timeActive : ""}`} key={idx}
-                        onClick={() => {
-                            setSlot(time.time);
-                        }}
-                    >
-                        {time.time}
-                    </Box>
-                ))}
-
-            </Box>
-
-            {slot && (
-                <Button variant='contained'>
-                    Book Appointment
-                </Button>
-            )}
-        </Box>
+            {
+                slot && (
+                    <Button variant='contained'>
+                        Book Appointment
+                    </Button>
+                )
+            }
+        </Box >
     )
 }
 

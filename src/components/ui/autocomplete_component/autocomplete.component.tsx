@@ -23,6 +23,8 @@ interface AutoCompleteProps<T> {
     disabled?: boolean;
     icon?: React.ReactNode;
     variant?: 'small' | 'medium';
+    readonly?: boolean;
+    bordered?: boolean;
 }
 
 
@@ -40,9 +42,11 @@ export const Autocomplete = <T extends Record<string, any>>({
     hasMore = false,
     getOptionLabel,
     onSearchChange,
-    variant="medium",
+    variant = "medium",
     disabled = false,
-    icon
+    icon,
+    bordered = false,
+    readonly = false
 }: AutoCompleteProps<T>) => {
     // const getMenuOptionLabel = (option: T) => {
     //     if (getOptionLabel) return getOptionLabel(option);
@@ -61,6 +65,7 @@ export const Autocomplete = <T extends Record<string, any>>({
 
     return (
         <MuiAutocomplete
+            readOnly={readonly}    
             options={options}
             value={value}
             size={variant}
@@ -80,7 +85,7 @@ export const Autocomplete = <T extends Record<string, any>>({
             }}
             sx={{
                 '& .MuiOutlinedInput-notchedOutline': {
-                    border: 'none'
+                    border: bordered ? undefined : 'none',
                 }
             }}
             onChange={(_, selected) => {

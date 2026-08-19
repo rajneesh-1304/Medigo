@@ -11,9 +11,15 @@ const allIndianCities = State.getStatesOfCountry(INDIA_CODE).flatMap((state) =>
 );
 
 export const searchCities = (query: string) => {
-    if (!query.trim()) return allIndianCities;
+    if (!query.trim()) {
+        return allIndianCities.slice(0, 20);
+    }
+
     const lowerQuery = query.toLowerCase();
-    return allIndianCities.filter((city) => city.name.toLowerCase().includes(lowerQuery));
+
+    return allIndianCities
+        .filter((city) => city.name.toLowerCase().includes(lowerQuery))
+        .slice(0, 20);
 };
 
 export const getCityByName = (name: string) => {

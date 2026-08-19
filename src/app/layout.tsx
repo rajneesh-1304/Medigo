@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/footer/footer.component";
 import './global.styles.scss';
 import Header from "@/components/layout/header/header.component";
 import { AppProvider } from "@/providers/app-provider";
+import NoSSR from "@/components/no-ssr";
 export default function RootLayout({
     children,
 }: Readonly<{
@@ -11,11 +12,13 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" >
-            <body>
+            <body suppressHydrationWarning>
                 <AppProvider>
-                    <Header />
+                    <NoSSR>
+                        <Header />
                         {children}
                         <Footer />
+                    </NoSSR>
                 </AppProvider>
             </body>
         </html>

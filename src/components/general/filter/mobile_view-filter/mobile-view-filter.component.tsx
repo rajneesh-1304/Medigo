@@ -19,10 +19,10 @@ interface MobileViewFilterProps {
     setSelectedFees: (option: Option | null) => void;
 }
 
-const MobileViewFilter = ({ 
-    open, 
-    onClose, 
-    onOpen, 
+const MobileViewFilter = ({
+    open,
+    onClose,
+    onOpen,
     experienceOptions,
     feesOptions,
     selectedExperience,
@@ -63,16 +63,15 @@ const MobileViewFilter = ({
 
     return (
         <>
-            <ButtonBase onClick={onOpen} className=''>
-                <Icon>
-                    <FilterListIcon />
-                    <Typography
-                        variant="paragraphMd"
-                        color="primary"
-                    >
-                        Filters
-                    </Typography>
+            <ButtonBase onClick={onOpen} className={styles.filterIcon}>
+                <Icon >
+                    <FilterListIcon sx={{fontSize: "20px"}}/>
                 </Icon>
+                <Typography
+                    variant="paragraphMd"
+                >
+                    Filters
+                </Typography>
             </ButtonBase>
             <Dialog
                 open={open}
@@ -90,7 +89,7 @@ const MobileViewFilter = ({
                         </IconButton>
                     </Toolbar>
                 </AppBar>
-                <DialogContent 
+                <DialogContent
                     className={styles.dialogContent}
                     sx={{ display: 'flex', flexDirection: 'column', gap: 3, pt: 3, pb: 10 }}
                 >
@@ -103,7 +102,7 @@ const MobileViewFilter = ({
                         onChange={handleExperienceChange}
                         clearable
                     />
-                    
+
                     <SelectFilter
                         name="Fees"
                         label="Fees"
@@ -114,16 +113,30 @@ const MobileViewFilter = ({
                         clearable
                     />
                 </DialogContent>
-                <Box sx={{ p: 2, borderTop: '1px solid var(--neutral-200)', position: 'fixed', bottom: 0, left: 0, right: 0, backgroundColor: 'var(--white)' }}>
-                    <Button 
-                        variant="contained" 
-                        color="primary" 
-                        fullWidth 
+                <Box className={styles.buttonBox}>
+                    <Button
+                        variant="outlined"
+                        color="primary"
+                        fullWidth
+                        size="large"
+                        onClick={() => {
+                            setLocalExperience(null);
+                            setLocalFees(null);
+                        }}
+                        sx={{ py: 1.5, borderRadius: '8px', fontWeight: 600 }}
+                    >
+                        Clear
+                    </Button>
+                    
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        fullWidth
                         size="large"
                         onClick={handleApply}
                         sx={{ py: 1.5, borderRadius: '8px', fontWeight: 600 }}
                     >
-                        Apply Filters
+                        Apply
                     </Button>
                 </Box>
             </Dialog>
