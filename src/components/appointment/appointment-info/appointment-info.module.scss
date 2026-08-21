@@ -1,0 +1,125 @@
+.infoContainer {
+  width: 100%;
+  background: var(--white);
+  border-radius: 12px;
+}
+
+.appointmentType {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    color: var(--white);
+    background: var(--primary-500);
+    border-radius: 50%;
+  }
+}
+
+.type {
+  color: #1f2937;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.schedule {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--neutral-700);
+    font-size: 14px;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+    color: var(--neutral-500);
+  }
+}
+
+.doctor {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+}
+
+.doctorImage, .clinicImage {
+    img{
+    object-fit: cover;
+    }
+}
+
+.info {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.doctorName {
+  color: var(--black);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.clinic {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+}
+
+.link {
+  margin-top: 2px;
+  color: var(--primary-500);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .infoContainer {
+    max-width: none;
+  }
+
+  .appointmentType,
+  .schedule,
+  .doctor,
+  .clinic {
+    padding: 8px 12px;
+  }
+
+  .schedule {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 8px 12px;
+    gap: 4px;
+
+    > div {
+        font-size: 12px;
+    }
+  }
+
+  .doctorName{
+    font-size: 14px;
+  }
+
+  .info, .link{
+    font-size: 12px;
+  }
+
+  .doctorImage,
+  .clinicImage {
+    width: 72px;
+    height: 72px;
+  }
+}

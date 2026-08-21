@@ -1,0 +1,61 @@
+.container {
+    width: 100%;
+    height: 100vh;
+}
+
+.innerContainer {
+    max-width: 800px;
+    display: flex;
+    padding: 16px;
+    gap: 16px;
+    margin: auto;
+}
+
+.actionContainer {
+    padding: 24px 16px;
+    background-color: var(--white);
+    border-radius: calc(var(--border-radius) * 1px);
+    height: fit-content;
+}
+
+.appointmentInformation {
+    width: 400px;
+}
+
+.appointmentConfirmed {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.appointmentInfo {
+    margin: 0;
+    font-size: 13px;
+    color: var(--primary-600);
+}
+
+.appointmentDetails {
+    margin-bottom: 12px;
+}
+
+.patientInfo {
+    margin-bottom: 12px;
+}
+
+.text {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.info {
+    font-size: 14px;
+}
+
+.actionInfo{
+    margin-bottom: 24px;;
+}
+
+.actionBtns {
+    display: flex;
+    gap: 8px;
+}
