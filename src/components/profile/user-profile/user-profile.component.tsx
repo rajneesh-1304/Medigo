@@ -51,24 +51,24 @@ const languageOptions = [
 const Profile = () => {
     const [image, setImage] = useState("");
     const { register, handleSubmit, control, formState: { errors }, reset} = useForm<ProfileFormSchemaValues>({
-        resolver: zodResolver(profileSchema) as any,
-        // defaultValues: {
-        //     name: "",
-        //     email: "",
-        //     phone: "",
-        //     address: "",
-        //     dateOfBirth: "",
-        //     gender: "",
-        //     bloodGroup: "",
-        //     timezone: "Asia/Kolkata",
-        //     country: "india",
-        //     language: "english",
-        //     pinCode: undefined,
-        //     locality: "",
-        //     city: "",
-        //     state: ""
-        // }
-    })
+        resolver: zodResolver(profileSchema),
+        defaultValues: {
+            name: "",
+            email: "",
+            phone: "",
+            address: "",
+            dateOfBirth: "",
+            gender: "",
+            bloodGroup: "",
+            timezone: "Asia/Kolkata",
+            country: "india",
+            language: "english",
+            pinCode: "",
+            locality: "",
+            city: "",
+            state: ""
+        }
+    });
 
     const onSubmit = (data: ProfileFormSchemaValues) => {
         console.log(data);

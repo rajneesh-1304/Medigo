@@ -5,6 +5,7 @@ import SpecialistCard from '@/components/general/specialist-card/card';
 import useEmblaCarousel from 'embla-carousel-react';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import EmblaSlider from '@/components/general/embla-slider/embla-slider.component';
 
 const Specialist = () => {
     const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -79,21 +80,12 @@ const Specialist = () => {
                 <Button variant='outlined'>See all Specialists</Button>
             </Box>
 
-            <Box className={styles['embla']}>
-                <Button onClick={scrollPrev}><ArrowBackIosIcon /></Button>
-
-                <Box className={styles['embla_viewport']} ref={emblaRef}>
-                    <Box className={styles['embla_container']}>
-                        {data.map((item, idx) => (
-                            <Box className={styles['embla_slide']} key={idx}>
-                                <SpecialistCard name={item.name} fee={item.fee} link={item.link} image={item.image} />
-                            </Box>
-                        ))}
-                    </Box>
-                </Box>
-
-                <Button onClick={scrollNext}><ArrowForwardIosIcon /></Button>
-            </Box>
+            <EmblaSlider
+                data={data}
+                renderItem={(item, idx) => (
+                    <SpecialistCard key={idx} {...item} />
+                )}
+            />
         </Box>
     )
 }

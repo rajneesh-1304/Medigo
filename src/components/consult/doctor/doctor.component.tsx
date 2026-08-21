@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './doctor.module.scss';
 import { Box, Typography } from '@mui/material';
 import DoctorCard from '@/components/general/doctor-card/doctor-card.component';
+import EmblaSlider from '@/components/general/embla-slider/embla-slider.component';
 
 const Doctor = () => {
     const data = [
@@ -68,6 +69,8 @@ const Doctor = () => {
         <Box className={styles['doctors-container']}>
             <Typography component="span" className={styles['doctor-title']}>Our Doctors</Typography>
             <Box className={styles['doctors']}>
+                {/* <EmblaSlider /> */}
+
                 {data.map((doctor, idx) => (
                     <Box className={styles['doc-card']} key={idx}>
                         <DoctorCard  {...doctor} />

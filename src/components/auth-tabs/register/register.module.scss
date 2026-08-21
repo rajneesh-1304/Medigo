@@ -1,6 +1,6 @@
 .splitScreen {
     display: flex;
-    min-height: calc(100vh - 80px); /* Adjust based on header/footer */
+    min-height: calc(100vh - 80px);
     width: 100%;
 
     @media (max-width: 900px) {
@@ -11,7 +11,7 @@
 .leftPane {
     flex: 1;
     background-color: var(--primary);
-    color: white;
+    color: var(--white);
     padding: 6rem 4rem;
     display: flex;
     flex-direction: column;

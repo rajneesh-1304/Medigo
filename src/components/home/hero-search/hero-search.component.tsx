@@ -120,15 +120,17 @@ const HeroSearchContent = ({ className, minimal = false }: HeroSearchProps) => {
             }}
             valueKey="id"
             labelKey="name"
-            icon={<SearchRoundedIcon className={styles.heroSearchIcon}/>}
+            icon={<SearchRoundedIcon className={styles.heroSearchIcon} />}
             readonly={!desktopView}
           />
         </Box>
 
-        <Box component="button" className={styles.heroSearchBtn} aria-label="Search">
-          <SearchRoundedIcon />
-          <Typography component="span" onClick={!desktopView ? ()=>setOpenModal(true): handleSearch}>Search</Typography>
-        </Box>
+        {desktopView && (
+          <Box component="button" className={styles.heroSearchBtn} aria-label="Search">
+            <SearchRoundedIcon />
+            <Typography component="span" onClick={!desktopView ? () => setOpenModal(true) : handleSearch}>Search</Typography>
+          </Box>
+        )}
       </Box>
     </Box>
   );

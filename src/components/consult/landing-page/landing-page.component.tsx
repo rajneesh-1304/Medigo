@@ -17,7 +17,7 @@ const LandingPage = () => {
     <Box className={styles.landingPage}>
       <Box className={styles.left}>
         <Box className={styles.innerLeft}>
-          <Box className={styles.eyebrow}>24/7 Virtual Clinic</Box>
+          <Box className={styles.time}>24/7 Virtual Clinic</Box>
           <Typography component="h1" className={styles.title}>
             Skip the travel! <br />
             Consult top doctors <Typography component="span">online</Typography>

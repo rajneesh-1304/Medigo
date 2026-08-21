@@ -19,6 +19,7 @@ const SelectComponent: FC<SelectComponentProps> = ({
     variant = "medium",
     disabled = false,
     clearable = false,
+    control,
 }) => {
 
     const hasValue = (value: unknown) => {
@@ -35,6 +36,7 @@ const SelectComponent: FC<SelectComponentProps> = ({
 
         <Controller
             name={name}
+            control={control}
             rules={rules}
             render={(
                 { field: { onChange, value },

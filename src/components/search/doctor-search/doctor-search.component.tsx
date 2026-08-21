@@ -7,8 +7,6 @@ import React, { useState } from 'react'
 import { HeroSearch } from '@/components/home/hero-search/hero-search.component';
 import DoctorProfile from '@/components/profile/doctor-profile/doctor-profile.component';
 import ChipComponent from '@/components/ui/chip/chip.component';
-import SelectComponent from '@/components/ui/select_component/select.component';
-import { useForm } from 'react-hook-form';
 import MobileViewFilter from '@/components/general/filter/mobile_view-filter/mobile-view-filter.component';
 import Appointment from '@/components/profile/doctor-profile/appointment/appointment.component';
 

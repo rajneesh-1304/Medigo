@@ -2,14 +2,9 @@
 .header {
   position: sticky;
   top: 0;
-  z-index: 1100;
+  z-index: 100;
   width: 100%;
   background: color-mix(in srgb, var(--primary-900) 97%, transparent);
-    box-shadow: 0 4px 32px color-mix(in srgb, var(--primary-900) 22%, transparent);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid color-mix(in srgb, var(--white) 6%, transparent);
-  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .headerInner {
@@ -24,6 +19,7 @@
   @media (max-width: 1100px) {
     padding: 0 1.25rem;
   }
+  
   @media (max-width: 768px) {
     padding: 0 1rem;
     height: 60px;
@@ -38,7 +34,6 @@
   border: none;
   cursor: pointer;
   padding: 0;
-  flex-shrink: 0;
   text-decoration: none;
 }
 
@@ -48,7 +43,7 @@
   justify-content: center;
   width: 34px;
   height: 34px;
-  border-radius: 10px;
+  border-radius: calc(var(--border-radius) * 1.2px);
   background: linear-gradient(135deg, var(--primary-400), var(--primary-500));
   color: var(--white);
   font-size: 20px;
@@ -63,7 +58,7 @@
   font-family: 'Fraunces', 'Georgia', serif;
 }
 
-.headerLogoAccent {
+.headerLogoGO {
   color: var(--primary-300);
 }
 
@@ -84,7 +79,7 @@
   display: flex;
   align-items: center;
   padding: 0.45rem 0.9rem;
-  border-radius: 99px;
+  border-radius: calc(var(--border-radius) * 5px);
   font-size: 0.875rem;
   font-weight: 500;
   color: color-mix(in srgb, var(--white) 72%, transparent);
@@ -118,7 +113,7 @@
 .headerGhostBtn {
   background: none;
   border: 1px solid color-mix(in srgb, var(--white) 20%, transparent);
-  border-radius: 99px;
+  border-radius: calc(var(--border-radius) * 5px);
   color: color-mix(in srgb, var(--white) 82%, transparent);
   font-size: 0.85rem;
   font-weight: 500;
@@ -135,7 +130,7 @@
 .headerCtaBtn {
   background: linear-gradient(135deg, var(--primary-400), var(--primary-500));
   border: none;
-  border-radius: 99px;
+  border-radius: calc(var(--border-radius) * 5px);
   color: var(--white);
   font-size: 0.85rem;
   font-weight: 600;
